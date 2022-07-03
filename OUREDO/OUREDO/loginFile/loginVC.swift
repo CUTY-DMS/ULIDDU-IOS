@@ -12,6 +12,9 @@ class loginVC: UIViewController {
     
     @IBOutlet weak var userId: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    var httpClient = HTTPClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +47,37 @@ class loginVC: UIViewController {
                 }
             }
         }
+    func loginUp(userId: String, password: String) {
+        httpClient.post(
+            url: AuthAPI.lagin.path(),
+            params: ["userId": userId, "password": password],
+            header: Header.tokenIsEmpty.header()
+        ).responseData(completionHandler: { res in
+            switch res.response?.statusCode {
+            case 200:
+                self.navigationController?.popViewController(animated: true)
+                print("loginUp성공✅")
+            default:
+                print(res.response?.statusCode ?? 0)
+                print("loginUp실패🤬")
+            }
+        })
+    }
+    func seelogin(userId: String, password: String) {
+        httpClient.get(
+            url: AuthAPI.lagin.path(),
+            params: ["userId" : userId, "password": password],
+            header: Header.tokenIsEmpty.header()).responseData(completionHandler: { res in
+            switch res.response?.statusCode {
+            case 200:
+                self.navigationController?.popViewController(animated: true)
+                print("seelogin성공✅")
+            default:
+                print(res.response?.statusCode ?? 0)
+                print("실패🤬")
+            }
+        })
+    }
     @IBAction func LoginButton(_ sender: Any) {
         postLogin()
         if(userId.text == "" && password.text == ""){
