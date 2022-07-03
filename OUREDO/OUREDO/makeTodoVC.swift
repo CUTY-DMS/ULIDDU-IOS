@@ -21,7 +21,7 @@ class makeTodo : UIViewController {
     }
     
     func addTodo() {
-        let url = "http://192.168.107.253:8080/api/auth"
+        let url = "http://43.200.97.218:8080"
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -16,11 +16,11 @@ enum AuthAPI : API {
     func path() -> String{
         switch self {
         case.lagin:
-            return "/signin"
+            return "/login"//로그인 반환
         case.signup:
-            return "/signin"
+            return "/register" //회원가입 반환
         case.todo:
-            return "/todo"
+            return "/todo" //todo반환
         }
     }
 }

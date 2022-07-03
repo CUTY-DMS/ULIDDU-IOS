@@ -34,15 +34,14 @@ class signUp: UIViewController {
         postsignUp()
     }
     func postsignUp() {
-            let url = "http://192.168.107.253:8080/api/auth"
+            let url = "http://43.200.97.218:8080"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.timeoutInterval = 10
 
             // POST 로 보낼 정보
-        let params = ["name": userName.text!,"email":userAge.text!,               "emailCheckCode":userId.text!,"pw":userPasssword.text!,
-                      "userType": "USER"
+        let params = ["name": userName.text!,"age":userAge.text!,               "userId":userId.text!,"password":userPasssword.text!
                      ] as Dictionary
 
             // httpBody 에 parameters 추가
@@ -62,17 +61,19 @@ class signUp: UIViewController {
                 }
             }
         }
-    func signup(email: String, password: String, nickName: String,emailCheckCode: String,userType: String) {
+    func signup(userName: String, password: String, age: String,userId: String,userType: String) {
         httpClient.post(
             url: AuthAPI.signup.path(),
-            params: ["email": email, "emailCheckCode": emailCheckCode, "pw": password, "name": nickName, "userType": userType],
+            params: ["name": userName, "age": age, "userId": userId, "password": password],
             header: Header.tokenIsEmpty.header()
         ).responseData(completionHandler: { res in
             switch res.response?.statusCode {
             case 200:
                 self.navigationController?.popViewController(animated: true)
+                print("성공✅")
             default:
                 print(res.response?.statusCode ?? 0)
+                print("실패🤬")
             }
         })
     }
