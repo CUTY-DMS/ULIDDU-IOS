@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1CA7BD287162C200B7DCC5 /* heraderKeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7BC287162C200B7DCC5 /* heraderKeyChain.swift */; };
+		0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7BE2871651C00B7DCC5 /* userModel.swift */; };
+		0E1CA7C32871B86800B7DCC5 /* successVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7C22871B86800B7DCC5 /* successVC.swift */; };
 		0E89A140286EEBC400F196A7 /* signUpVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A13F286EEBC400F196A7 /* signUpVO.swift */; };
 		0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A141286EEBF800F196A7 /* BaseNC.swift */; };
 		0E89A144286EEC1C00F196A7 /* header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A143286EEC1C00F196A7 /* header.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		005D23A4C7641BBA519F501E /* Pods-OUREDO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.debug.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.debug.xcconfig"; sourceTree = "<group>"; };
+		0E1CA7BC287162C200B7DCC5 /* heraderKeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = heraderKeyChain.swift; sourceTree = "<group>"; };
+		0E1CA7BE2871651C00B7DCC5 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
+		0E1CA7C22871B86800B7DCC5 /* successVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = successVC.swift; sourceTree = "<group>"; };
 		0E89A13F286EEBC400F196A7 /* signUpVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpVO.swift; sourceTree = "<group>"; };
 		0E89A141286EEBF800F196A7 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
 		0E89A143286EEC1C00F196A7 /* header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = header.swift; sourceTree = "<group>"; };
@@ -68,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				0E89A143286EEC1C00F196A7 /* header.swift */,
+				0E1CA7BC287162C200B7DCC5 /* heraderKeyChain.swift */,
 				0E89A145286EEC3500F196A7 /* TokenModel.swift */,
 			);
 			path = Header;
@@ -96,6 +103,7 @@
 			children = (
 				0EF5CF0B286EE5EE0036D9A5 /* loginHomeVC.swift */,
 				0E965DA5286EE7E100AE1CD0 /* loginVC.swift */,
+				0E1CA7BE2871651C00B7DCC5 /* userModel.swift */,
 			);
 			path = loginFile;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 				0EF5CEFB286ED2A90036D9A5 /* ViewController.swift */,
 				0E965DA7286EE84F00AE1CD0 /* loginFile */,
 				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
+				0E1CA7C22871B86800B7DCC5 /* successVC.swift */,
 				0ED0F074286F1081006E3C4F /* delTodo.swift */,
 				0E89C6EF286EF98700720A0B /* makeTodoVC.swift */,
 				0E89A14D286EECB800F196A7 /* signUp */,
@@ -274,12 +283,15 @@
 				0E965DA9286EE9CF00AE1CD0 /* signUpVC.swift in Sources */,
 				0E89A144286EEC1C00F196A7 /* header.swift in Sources */,
 				0EF5CEFC286ED2A90036D9A5 /* ViewController.swift in Sources */,
+				0E1CA7BD287162C200B7DCC5 /* heraderKeyChain.swift in Sources */,
 				0E89C6F0286EF98700720A0B /* makeTodoVC.swift in Sources */,
+				0E1CA7C32871B86800B7DCC5 /* successVC.swift in Sources */,
 				0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */,
 				0E965DA6286EE7E100AE1CD0 /* loginVC.swift in Sources */,
 				0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */,
 				0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
+				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
 				0E89A140286EEBC400F196A7 /* signUpVO.swift in Sources */,
 				0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */,
 				0ED0F075286F1081006E3C4F /* delTodo.swift in Sources */,

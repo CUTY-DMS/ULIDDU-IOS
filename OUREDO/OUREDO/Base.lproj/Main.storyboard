@@ -114,28 +114,46 @@
                     </view>
                     <navigationItem key="navigationItem" id="fAu-4e-bnh"/>
                     <connections>
-                        <outlet property="password" destination="1as-5a-0wy" id="pPt-DI-c50"/>
                         <outlet property="userId" destination="yxT-7v-G6V" id="r8H-n9-F5x"/>
+                        <outlet property="userPassword" destination="1as-5a-0wy" id="pPt-DI-c50"/>
+                        <segue destination="I2x-YW-S7J" kind="show" identifier="goToSuccessVC" id="L7p-aZ-UTc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dHy-hB-BSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-565.21739130434787" y="845.75892857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--SuccessVC-->
         <scene sceneID="u54-en-tBZ">
             <objects>
-                <viewController id="I2x-YW-S7J" sceneMemberID="viewController">
+                <viewController id="I2x-YW-S7J" customClass="successVC" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NF2-zI-N4B">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 성공!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osu-IF-MoR">
+                                <rect key="frame" x="163" y="437.5" width="88" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Xsl-Vv-QrN"/>
+                                    <constraint firstAttribute="width" constant="88" id="umv-6Q-cYr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yjw-Bi-2mE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="osu-IF-MoR" firstAttribute="centerX" secondItem="NF2-zI-N4B" secondAttribute="centerX" id="dwj-dk-KrF"/>
+                            <constraint firstItem="osu-IF-MoR" firstAttribute="centerY" secondItem="NF2-zI-N4B" secondAttribute="centerY" id="iko-g1-1uf"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HPR-zZ-iYD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GVk-Qw-xVv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="204" y="1832"/>
+            <point key="canvasLocation" x="-565" y="1688"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="UJm-e5-1Mf">

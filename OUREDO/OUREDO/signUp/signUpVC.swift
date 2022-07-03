@@ -34,7 +34,7 @@ class signUp: UIViewController {
         postsignUp()
     }
     func postsignUp() {
-            let url = "http://43.200.97.218:8080"
+            let url = "http://43.200.97.218:8080/register"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -58,6 +58,7 @@ class signUp: UIViewController {
                     print("✅POST 성공✅")
                 case .failure(let error):
                     print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                    print(url)
                 }
             }
         }
@@ -94,6 +95,12 @@ class signUp: UIViewController {
 //    }
     @IBAction func signInPressButton(_ sender: UIButton) {
         postsignUp()
+        print("------------------------------")
+        print("Name : \(userName.text!)")
+        print("Id : \(userId.text!)")
+        print("Password : \(userPasssword.text!)")
+        print("Age : \(userAge.text!)")
+        print("------------------------------")
         if(userName.text == "") {
             let checkAgainAction = UIAlertController(title: "아이디를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
             checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
