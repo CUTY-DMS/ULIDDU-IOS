@@ -27,11 +27,8 @@ class signUp: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         userName.layer.cornerRadius = CGFloat(radius)
-        userPasssword.layer.cornerRadius =
-        CGFloat(radius)
-        signUpButton.layer.cornerRadius =
-        CGFloat(15)
-        postsignUp()
+        userPasssword.layer.cornerRadius = CGFloat(radius)
+        signUpButton.layer.cornerRadius = CGFloat(15)
     }
     func postsignUp() {
             let url = "http://43.200.97.218:8080/register"
@@ -39,22 +36,26 @@ class signUp: UIViewController {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.timeoutInterval = 10
-
             // POST 로 보낼 정보
-        let params = ["name": userName.text!,"age":userAge.text!,               "userId":userId.text!,"password":userPasssword.text!
+        let params = [
+            "name": userName.text!,
+            "age":userAge.text!,
+            "user-id":userId.text!,
+            "password":userPasssword.text!
                      ] as Dictionary
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
+        request.httpBody = jsonData
 
-            // httpBody 에 parameters 추가
-            do {
-                try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
-            } catch {
-                print("http Body Error")
-            }
-
-            AF.request(request).responseString { (response) in
+        
+        AF.request(url, method: .post, parameters: params)
+            .responseString { (response) in
+                print(response.result)
                 switch response.result {
                 case .success:
-                    print("url 경로 : \(request.url as Any)")
+                    print(request.headers)
+                    print(response.response?.headers)
+                    self.navigationController?.popViewController(animated: true)
                     print("✅POST 성공✅")
                 case .failure(let error):
                     print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
@@ -62,10 +63,13 @@ class signUp: UIViewController {
                 }
             }
         }
-    func signup(userName: String, password: String, age: String,userId: String,userType: String) {
+    func signup(userName: String, age: String, userType: String,userId: String,password: String) {
         httpClient.post(
             url: AuthAPI.signup.path(),
-            params: ["name": userName, "age": age, "userId": userId, "password": password],
+            params: ["name": userName,
+                     "age": age,
+                     "user-Id": userId,
+                     "password": password],
             header: Header.tokenIsEmpty.header()
         ).responseData(completionHandler: { res in
             switch res.response?.statusCode {
@@ -78,21 +82,6 @@ class signUp: UIViewController {
             }
         })
     }
-    
-//    @IBAction func SendVerificationCodeButton(_ sender: UIButton) {
-//        httpClient.post(
-//            url: AuthAPI.emailcheck.path() + "?email="+userAge.text!,
-//            params: nil,
-//            header:Header.tokenIsEmpty.header()
-//        ).responseData(completionHandler: {res in
-//            switch res.response?.statusCode {
-//            case 200:
-//                sender.titleLabel?.text! = "인증번호 확인"
-//            default:
-//                print(res.response?.statusCode ?? 0)
-//            }
-//        })
-//    }
     @IBAction func signInPressButton(_ sender: UIButton) {
         postsignUp()
         print("------------------------------")
@@ -101,22 +90,22 @@ class signUp: UIViewController {
         print("Password : \(userPasssword.text!)")
         print("Age : \(userAge.text!)")
         print("------------------------------")
-        if(userName.text == "") {
-            let checkAgainAction = UIAlertController(title: "아이디를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
-            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-            self.present(checkAgainAction, animated: true, completion: nil)
-        };if(userAge.text == "") {
-            let checkAgainAction = UIAlertController(title: "email를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
-            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-            self.present(checkAgainAction, animated: true, completion: nil)
-        };if(userId.text == "") {
-            let checkAgainAction = UIAlertController(title: "전송된 코드를 입력해주세요.", message: "다시 입력해주세요.", preferredStyle: .alert)
-            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-            self.present(checkAgainAction, animated: true, completion: nil)
-        };if(userPasssword.text == "") {
-            let checkAgainAction = UIAlertController(title: "패스워드를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
-            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-            self.present(checkAgainAction, animated: true, completion: nil)
-        };
+//        if(userName.text == "") {
+//            let checkAgainAction = UIAlertController(title: "아이디를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
+//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
+//            self.present(checkAgainAction, animated: true, completion: nil)
+//        };if(userAge.text == "") {
+//            let checkAgainAction = UIAlertController(title: "email를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
+//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
+//            self.present(checkAgainAction, animated: true, completion: nil)
+//        };if(userId.text == "") {
+//            let checkAgainAction = UIAlertController(title: "전송된 코드를 입력해주세요.", message: "다시 입력해주세요.", preferredStyle: .alert)
+//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
+//            self.present(checkAgainAction, animated: true, completion: nil)
+//        };if(userPasssword.text == "") {
+//            let checkAgainAction = UIAlertController(title: "패스워드를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
+//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
+//            self.present(checkAgainAction, animated: true, completion: nil)
+//        };
     }
 }

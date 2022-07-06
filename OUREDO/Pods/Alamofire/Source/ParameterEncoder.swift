@@ -187,7 +187,7 @@ open class URLEncodedFormParameterEncoder: ParameterEncoder {
             request.url = newURL
         } else {
             if request.headers["Content-Type"] == nil {
-                request.headers.update(.contentType("application/x-www-form-urlencoded; charset=utf-8"))
+                request.headers.update(.contentType("application/json; charset=utf-8"))
             }
 
             request.httpBody = try Result<Data, Error> { try encoder.encode(parameters) }

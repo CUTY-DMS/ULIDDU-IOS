@@ -6,6 +6,10 @@ target 'OUREDO' do
   use_frameworks!
 
 pod 'Alamofire'
+pod 'FSCalendar'
+pod 'Then'
+pod 'SnapKit', '~> 5.6.0'
+
 
   # Pods for OUREDO
 

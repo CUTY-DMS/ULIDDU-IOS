@@ -18,7 +18,6 @@ enum AuthAPI : API {
     
     func path() -> String{
         switch self {
-//user
         case.lagin:
             return "/login"//로그인 반환
         case.signup:

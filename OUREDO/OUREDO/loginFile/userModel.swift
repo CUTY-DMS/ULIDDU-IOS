@@ -21,14 +21,14 @@ final class UserModel {
 
 //     아이디 형식 검사
     func isValidId(validUserId: String) -> Bool {
-        let emailRegEx = "^{1,}$" //1자리 이상
+        let emailRegEx = "^(.)+$" //1자리 이상
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: validUserId)
     }
     
     // 비밀번호 형식 검사
     func isValidPassword(validPassword: String) -> Bool {
-        let passwordRegEx = "^{1,}$" //1자리 이상
+        let passwordRegEx = "^(.)+$" //1자리 이상
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: validPassword)
     }

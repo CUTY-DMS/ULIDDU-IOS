@@ -173,7 +173,7 @@ public struct URLEncoding: ParameterEncoding {
             }
         } else {
             if urlRequest.headers["Content-Type"] == nil {
-                urlRequest.headers.update(.contentType("application/x-www-form-urlencoded; charset=utf-8"))
+                urlRequest.headers.update(.contentType("application/json; charset=utf-8"))
             }
 
             urlRequest.httpBody = Data(query(parameters).utf8)
