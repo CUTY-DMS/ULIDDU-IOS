@@ -48,7 +48,7 @@ class signUp: UIViewController {
         request.httpBody = jsonData
 
         
-        AF.request(url, method: .post, parameters: params)
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
             .responseString { (response) in
                 print(response.result)
                 switch response.result {
