@@ -15,7 +15,7 @@ class loginVC: UIViewController {
     
     var httpClient = HTTPClient()
     
-    var userModel = UserModel()
+//    var userModel = UserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,7 @@ class loginVC: UIViewController {
         AF.request(request).responseData() { (response) in
             switch response.result {
             case .success:
-
+                debugPrint(response)
                 if let data = try? JSONDecoder().decode(TokenModel.self, from: response.data!) {
                     KeyChain.create(key: Token.accessToken, token: data.access_token)
                     KeyChain.create(key: Token.refreshToken, token: data.resfresh_token)
@@ -49,6 +49,7 @@ class loginVC: UIViewController {
                     }
                 } else { print("ㅗㅗㅗㅗㅗ") }
                 print("🤑POST 성공")
+                
                 
             case .failure(let error):
                 if response.response?.statusCode == 404 {

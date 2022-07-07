@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class ViewController: UIViewController {
 
@@ -14,6 +15,14 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func buttonClicked(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let sideMenuViewController : SideMenuVC = storyboard.instantiateViewController(withIdentifier: "SideMenuVC") as! SideMenuVC
+        
+        let menu = customSideMenuNavigation(rootViewController: sideMenuViewController)
+        
+        present(menu, animated: true, completion: nil)
+    }
 }
-

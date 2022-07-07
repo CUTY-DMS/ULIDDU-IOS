@@ -22,9 +22,9 @@ class customSideMenuNavigation : SideMenuNavigationController {
         self.statusBarEndAlpha = 0.0
         
         //보여지는 속도
-        self.presentDuration = 1.5
+        self.presentDuration = 0.5
         
         //사라지는 속도
-        self.dismissDuration = 1.5
+        self.dismissDuration = 0.5
     }
 }

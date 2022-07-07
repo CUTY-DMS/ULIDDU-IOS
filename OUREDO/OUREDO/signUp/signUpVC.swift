@@ -30,6 +30,7 @@ class signUp: UIViewController {
         userPasssword.layer.cornerRadius = CGFloat(radius)
         signUpButton.layer.cornerRadius = CGFloat(15)
     }
+    
     func postsignUp() {
             let url = "http://43.200.97.218:8080/register"
             var request = URLRequest(url: URL(string: url)!)
@@ -37,6 +38,7 @@ class signUp: UIViewController {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.timeoutInterval = 10
             // POST 로 보낼 정보
+        print(url)
         let params = [
             "name": userName.text!,
             "age":userAge.text!,
@@ -47,41 +49,42 @@ class signUp: UIViewController {
         let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
         request.httpBody = jsonData
 
-        
-        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default)
+        /*
+        AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default)
             .responseString { (response) in
-                print(response.result)
+                print(response.response?.statusCode)
+                //print("-------------------")
+                debugPrint(response)
+                // print("-------------------")
+                
                 switch response.result {
                 case .success:
-                    print(request.headers)
-                    print(response.response?.headers)
+//                    print(request.headers)
+                    self.navigationController?.popViewController(animated: true)
+                    // print("✅POST 성공✅")
+                case .failure(let error):
+                    print("hi error")
+                    print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                    // print(url)
+                }
+            }*/
+        
+        
+        AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default)
+            .responseString { (response) in
+            debugPrint(response)
+                
+                switch response.response?.statusCode {
+                case 200:
                     self.navigationController?.popViewController(animated: true)
                     print("✅POST 성공✅")
-                case .failure(let error):
-                    print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
-                    print(url)
+                default:
+                    print("hi error")
                 }
             }
+ 
+        
         }
-    func signup(userName: String, age: String, userType: String,userId: String,password: String) {
-        httpClient.post(
-            url: AuthAPI.signup.path(),
-            params: ["name": userName,
-                     "age": age,
-                     "user-Id": userId,
-                     "password": password],
-            header: Header.tokenIsEmpty.header()
-        ).responseData(completionHandler: { res in
-            switch res.response?.statusCode {
-            case 200:
-                self.navigationController?.popViewController(animated: true)
-                print("성공✅")
-            default:
-                print(res.response?.statusCode ?? 0)
-                print("실패🤬")
-            }
-        })
-    }
     @IBAction func signInPressButton(_ sender: UIButton) {
         postsignUp()
         print("------------------------------")

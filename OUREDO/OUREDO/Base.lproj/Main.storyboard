@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4OI-Id-tCb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z4N-TN-MsX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -223,104 +223,18 @@
         <!--View Controller-->
         <scene sceneID="31r-Sd-sXo">
             <objects>
-                <viewController id="4OI-Id-tCb" sceneMemberID="viewController">
+                <viewController id="4OI-Id-tCb" customClass="ViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VbU-gk-kBM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNL-er-InB">
-                                <rect key="frame" x="130.5" y="432.5" width="153" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="사이드 뷰컨트롤러 열기"/>
-                                <connections>
-                                    <segue destination="QMq-PT-qhU" kind="show" id="8ZK-6O-sug"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1PZ-nh-bKY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="mNL-er-InB" firstAttribute="centerY" secondItem="VbU-gk-kBM" secondAttribute="centerY" id="CgT-9E-r23"/>
-                            <constraint firstItem="mNL-er-InB" firstAttribute="centerX" secondItem="VbU-gk-kBM" secondAttribute="centerX" id="zDt-BV-oIK"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sd3-rk-hRa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF8-9n-cSd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2039.1304347826087" y="3332.8125"/>
-        </scene>
-        <!--Custom Side Menu Navigation-->
-        <scene sceneID="zkp-hz-bcR">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FiL-Re-FAj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController id="QMq-PT-qhU" customClass="customSideMenuNavigation" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="CAC-Jg-k0p"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gi2-jl-WKF">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="6Sy-xL-IYg" kind="relationship" relationship="rootViewController" id="f4O-6B-MO0"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-2581" y="4138"/>
-        </scene>
-        <!--Side MenuVC-->
-        <scene sceneID="h0r-HP-eJd">
-            <objects>
-                <viewController storyboardIdentifier="SideMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Sy-xL-IYg" customClass="SideMenuVC" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z8z-5p-JKT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="118" translatesAutoresizingMaskIntoConstraints="NO" id="3A6-ig-h3U">
-                                <rect key="frame" x="131.5" y="135" width="151.5" height="626"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2y0-sr-Sfw">
-                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="68"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="45"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Py-gS-xUj">
-                                        <rect key="frame" x="0.0" y="186" width="151.5" height="68"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="45"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4VP-qm-cm5">
-                                        <rect key="frame" x="0.0" y="372" width="151.5" height="68"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="45"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cna-E8-hLl">
-                                        <rect key="frame" x="0.0" y="558" width="151.5" height="68"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="45"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Lmd-Dw-Nd6"/>
-                        <color key="backgroundColor" systemColor="labelColor"/>
-                        <constraints>
-                            <constraint firstItem="3A6-ig-h3U" firstAttribute="centerX" secondItem="z8z-5p-JKT" secondAttribute="centerX" id="XrE-Xg-4i3"/>
-                            <constraint firstItem="3A6-ig-h3U" firstAttribute="centerY" secondItem="z8z-5p-JKT" secondAttribute="centerY" id="lps-xn-ysC"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="nJk-yU-vDs"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cvR-k7-S2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1665.217391304348" y="4137.0535714285716"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6fZ-th-bS8">
