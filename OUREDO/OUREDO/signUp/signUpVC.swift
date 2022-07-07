@@ -110,5 +110,6 @@ class signUp: UIViewController {
 //            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
 //            self.present(checkAgainAction, animated: true, completion: nil)
 //        };
+//  보류
     }
 }
