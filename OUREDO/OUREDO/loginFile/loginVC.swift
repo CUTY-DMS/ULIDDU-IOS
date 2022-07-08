@@ -15,7 +15,7 @@ class loginVC: UIViewController {
     
     var httpClient = HTTPClient()
     
-//    var userModel = UserModel()
+    var userModel = UserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,14 @@ class loginVC: UIViewController {
         let params = ["user-id":userId.text!,
                       "password":userPassword.text!]
         
-        // httpBody 에 parameters 추가
-        let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
-        request.httpBody = jsonData
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
         
-        AF.request(request).responseData() { (response) in
+        
+        AF.request(request).responseString() { (response) in
             switch response.result {
             case .success:
                 debugPrint(response)
@@ -45,14 +48,13 @@ class loginVC: UIViewController {
                     if let removable = self.view.viewWithTag(102) {
                         removable.removeFromSuperview()
                         self.performSegue(withIdentifier: "goToSuccessVC", sender: self)
-                        print("이동만 했습니다")
                     }
                 } else { print("ㅗㅗㅗㅗㅗ") }
                 print("🤑POST 성공")
                 
                 
             case .failure(let error):
-                if response.response?.statusCode == 404 {
+                if response.response?.statusCode != 200 {
                     print("로그인 실패")
                     let loginFailLabel = UILabel(frame: CGRect(x: 95, y: 479, width: 279, height: 45))
                     loginFailLabel.text = "아이디나 비밀번호가 다릅니다."

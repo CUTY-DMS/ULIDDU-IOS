@@ -18,8 +18,6 @@ class calendarVO: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calendar.delegate = self
-    
                 calendar.dataSource = self
                 
                 // 한달 단위(기본값)
@@ -86,9 +84,8 @@ class calendarVO: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
                 
                 // day 폰트 설정
             calendar.appearance.titleFont = UIFont(name: "Roboto-Regular", size: 14)
-        
         }
-    
     }
 }
+
 
