@@ -257,49 +257,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g9P-cR-dFy">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="406" width="414" height="407"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celll" id="BZs-js-x45">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celll" textLabel="Ydm-jG-5H3" detailTextLabel="43Y-rP-pui" style="IBUITableViewCellStyleSubtitle" id="BZs-js-x45">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BZs-js-x45" id="KNt-7z-TLF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ydm-jG-5H3">
+                                                    <rect key="frame" x="20" y="6" width="25" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="43Y-rP-pui">
+                                                    <rect key="frame" x="20" y="22.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIp-Bb-SVH">
+                                <rect key="frame" x="0.0" y="364" width="46" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="tapEditButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="1dz-hI-Ohe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-7u-GG9">
+                                <rect key="frame" x="370" y="364" width="44" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="tapAddButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="j4S-8P-TNu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Ub-mz-KyN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" id="Cb2-7d-1JC"/>
+                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" constant="318" id="Cb2-7d-1JC"/>
+                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="mhf-7u-GG9" secondAttribute="bottom" constant="11" id="GLo-zj-8ha"/>
+                            <constraint firstItem="mhf-7u-GG9" firstAttribute="trailing" secondItem="8Ub-mz-KyN" secondAttribute="trailing" id="IPX-UZ-u0B"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="LZB-9u-5wT"/>
                             <constraint firstItem="8Ub-mz-KyN" firstAttribute="bottom" secondItem="g9P-cR-dFy" secondAttribute="bottom" id="dj8-9K-Uxj"/>
+                            <constraint firstItem="YIp-Bb-SVH" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="gmO-TU-h1X"/>
                             <constraint firstItem="8Ub-mz-KyN" firstAttribute="trailing" secondItem="g9P-cR-dFy" secondAttribute="trailing" id="njS-RG-PYA"/>
+                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="YIp-Bb-SVH" secondAttribute="bottom" constant="11" id="yOW-Po-Ur7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eiI-pE-lDc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="87r-SV-MIV">
-                            <connections>
-                                <action selector="tapEditButton:" destination="gFz-N9-46T" id="QFp-w0-NgJ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kp6-1e-L5J">
-                            <connections>
-                                <action selector="tapAddButton:" destination="gFz-N9-46T" id="fZp-w4-vAe"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="eiI-pE-lDc"/>
                     <connections>
-                        <outlet property="editButton" destination="87r-SV-MIV" id="2w0-Nv-GGa"/>
+                        <outlet property="editButton" destination="YIp-Bb-SVH" id="qPP-Ok-tbM"/>
                         <outlet property="tableView" destination="g9P-cR-dFy" id="dhQ-gM-zLa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQH-dd-G7J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="3333"/>
+            <point key="canvasLocation" x="305.79710144927537" y="3332.8125"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qwr-la-3yz">
@@ -585,6 +610,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

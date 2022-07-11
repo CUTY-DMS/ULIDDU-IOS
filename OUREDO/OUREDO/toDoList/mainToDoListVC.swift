@@ -11,7 +11,7 @@ class mainToDoListVC: UIViewController{
 
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var editButton: UIBarButtonItem!
+    @IBOutlet var editButton: UIButton!
     @objc var doneButton : UIBarButtonItem?
     var tasks = [Task]() {
         didSet {
@@ -28,23 +28,25 @@ class mainToDoListVC: UIViewController{
     }
     
     @objc func doneButtonTop() {
-        self.navigationItem.leftBarButtonItem = self.editButton
         self.tableView.setEditing(false, animated: true )
     }
     
-    @IBAction func tapEditButton(_ sender: UIBarButtonItem) {
+    @IBAction func tapEditButton(_ sender: UIButton) {
         guard !self.tasks.isEmpty else { return }
         self.navigationItem.leftBarButtonItem = self.doneButton
         self.tableView.setEditing(true, animated: true )
     }
     
-    @IBAction func tapAddButton(_ sender: UIBarButtonItem) {
+    @IBAction func tapAddButton(_ sender: UIButton) {
         
         let alert = UIAlertController(title: "할일 등록", message: nil, preferredStyle: .alert)
         
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
-            let task = Task(title: title, done: false)
+            guard let content = alert.textFields?[1].text else { return }
+            print(title)
+            print(content)
+            let task = Task(title: title, content: content, done: false)
             self?.tasks.append(task)
             self?.tableView.reloadData()
         })
@@ -52,6 +54,9 @@ class mainToDoListVC: UIViewController{
         let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alert.addAction(registerButton)
         alert.addAction(cancelButton)
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "제목을 입력해주세요."
+        })
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = "할 일을 입력해주세요."
         })
@@ -61,6 +66,7 @@ class mainToDoListVC: UIViewController{
         let data = self.tasks.map{
             [
                 "title" : $0.title,
+                "content" : $0.content,
                 "done" : $0.done
             ]
         }
@@ -72,8 +78,9 @@ class mainToDoListVC: UIViewController{
         guard let data = userDefaults.object(forKey: "tasks") as? [[String : Any]] else { return }
         self.tasks = data.compactMap({
             guard let title = $0["title"] as? String else {return nil}
+            guard let content = $0["content"] as? String else {return nil}
             guard let done = $0["done"] as? Bool else {return nil}
-            return Task(title: title, done: done)
+            return Task(title: title, content: content, done: done)
         })
     }
 }
@@ -122,4 +129,3 @@ extension mainToDoListVC : UITableViewDelegate {
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
-
