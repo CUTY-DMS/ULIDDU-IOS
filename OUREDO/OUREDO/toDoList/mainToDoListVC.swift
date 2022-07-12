@@ -7,109 +7,119 @@
 
 import UIKit
 
-class mainToDoListVC: UIViewController{
-
+class ViewController: UIViewController {
+    
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var editButton: UIButton!
-    @objc var doneButton : UIBarButtonItem?
+    var doneButton : UIButton?
     var tasks = [Task]() {
         didSet {
             self.saveTasks()
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //여기서 버그발생
-        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(getter: doneButton))
+        // Do any additional setup after loading the view.)
+//        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
         self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.loadTasks()
+        self.tableView.delegate = self
     }
-    
-    @objc func doneButtonTop() {
-        self.tableView.setEditing(false, animated: true )
+
+    @objc func doneButtonTap() {
+        self.doneButton = self.editButton
+        self.tableView.setEditing(false, animated: true)
     }
-    
-    @IBAction func tapEditButton(_ sender: UIButton) {
+
+    @IBAction func tapEditButton(_ sender: Any) {
         guard !self.tasks.isEmpty else { return }
-        self.navigationItem.leftBarButtonItem = self.doneButton
-        self.tableView.setEditing(true, animated: true )
+        self.editButton = self.doneButton
+        self.tableView.setEditing(true, animated: true)
     }
     
-    @IBAction func tapAddButton(_ sender: UIButton) {
+    
+    @IBAction func tapAddButton(_ sender: Any) {
         
-        let alert = UIAlertController(title: "할일 등록", message: nil, preferredStyle: .alert)
-        
+        let alert = UIAlertController(title: "할 일 등록", message: nil, preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
-            print(title)
-            print(content)
             let task = Task(title: title, content: content, done: false)
             self?.tasks.append(task)
             self?.tableView.reloadData()
         })
-        
-        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: "취소", style: .default, handler: nil)
         alert.addAction(registerButton)
         alert.addAction(cancelButton)
         alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "제목을 입력해주세요."
+            textField.placeholder = "제목을 입력해 주세요"
         })
         alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "할 일을 입력해주세요."
+            textField.placeholder = "할 일을 입력해주세요"
         })
         self.present(alert, animated: true, completion: nil)
+        
+        //button 클릭시 시간을 가져오기
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let nowDetaTime = formatter.string(from: Date())
+        print("지금 시간은 : \(nowDetaTime)")
     }
+    
+    //userDefaults의 값 저장하기
     func saveTasks() {
-        let data = self.tasks.map{
-            [
+        let date = self.tasks.map {
+             [
                 "title" : $0.title,
                 "content" : $0.content,
                 "done" : $0.done
-            ]
+             ]
         }
         let userDefaults = UserDefaults.standard
-        userDefaults.set(data, forKey: "tasks")
+        userDefaults.set(date, forKey: "tasks")
     }
+    //userDefaults 값 불러오기
     func loadTasks() {
         let userDefaults = UserDefaults.standard
         guard let data = userDefaults.object(forKey: "tasks") as? [[String : Any]] else { return }
-        self.tasks = data.compactMap({
-            guard let title = $0["title"] as? String else {return nil}
-            guard let content = $0["content"] as? String else {return nil}
-            guard let done = $0["done"] as? Bool else {return nil}
+        self.tasks = data.compactMap {
+            guard let title = $0["title"] as? String else { return nil }
+            guard let content = $0["content"] as? String else { return nil }
+            guard let done = $0["done"] as? Bool else { return nil }
             return Task(title: title, content: content, done: done)
-        })
+        }
     }
 }
 
-extension mainToDoListVC : UITableViewDataSource {
-    
+extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tasks.count
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Celll", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = self.tasks[indexPath.row]
         cell.textLabel?.text = task.title
-        if task.done {
+        cell.detailTextLabel?.text = task.content
+        //checkmark
+        if task.done{
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
         return cell
     }
+    //삭제 구현
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         self.tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        if self.tasks.isEmpty{
-            self.doneButtonTop()
+        if self.tasks.isEmpty {
+            self.doneButtonTap()
         }
     }
+    //정렬 구현
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -121,7 +131,8 @@ extension mainToDoListVC : UITableViewDataSource {
         self.tasks = tasks
     }
 }
-extension mainToDoListVC : UITableViewDelegate {
+
+extension ViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var task = self.tasks[indexPath.row]
         task.done = !task.done

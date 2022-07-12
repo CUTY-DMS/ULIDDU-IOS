@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="-1049" y="3333"/>
         </scene>
-        <!--Main To Do ListVC-->
+        <!--View Controller-->
         <scene sceneID="QTT-yu-PQS">
             <objects>
-                <viewController id="gFz-N9-46T" customClass="mainToDoListVC" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gFz-N9-46T" customClass="ViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tmc-br-wAj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +260,7 @@
                                 <rect key="frame" x="0.0" y="406" width="414" height="407"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Celll" textLabel="Ydm-jG-5H3" detailTextLabel="43Y-rP-pui" style="IBUITableViewCellStyleSubtitle" id="BZs-js-x45">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Ydm-jG-5H3" detailTextLabel="43Y-rP-pui" style="IBUITableViewCellStyleSubtitle" id="BZs-js-x45">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BZs-js-x45" id="KNt-7z-TLF">
@@ -291,7 +291,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system" title=""/>
                                 <connections>
-                                    <action selector="tapEditButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="1dz-hI-Ohe"/>
+                                    <action selector="tapEditButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="SHZ-Ns-rbO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-7u-GG9">
@@ -299,7 +299,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=""/>
                                 <connections>
-                                    <action selector="tapAddButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="j4S-8P-TNu"/>
+                                    <action selector="tapAddButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="ZuD-cJ-PuN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -318,8 +318,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="eiI-pE-lDc"/>
                     <connections>
-                        <outlet property="editButton" destination="YIp-Bb-SVH" id="qPP-Ok-tbM"/>
-                        <outlet property="tableView" destination="g9P-cR-dFy" id="dhQ-gM-zLa"/>
+                        <outlet property="editButton" destination="YIp-Bb-SVH" id="ssr-IU-CRV"/>
+                        <outlet property="tableView" destination="g9P-cR-dFy" id="bmh-aX-XXm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQH-dd-G7J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
