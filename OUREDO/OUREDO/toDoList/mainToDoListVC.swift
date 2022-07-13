@@ -57,12 +57,17 @@ class ViewController: UIViewController {
             let nowDetaTime = formatter.string(from: Date())
             print("지금 시간은 : \(nowDetaTime)\n")
             //post코드
-//-------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
+            let AT : String? = KeyChain.read(key: Token.accessToken)
+//            let RT : String? = KeyChain.read(key: Token.refreshToken)
             let url = "http://43.200.97.218:8080/todo"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.timeoutInterval = 10
+            var header = HTTPHeaders()
+            header.add(name: "Authorization", value: "Bearer \(AT!)")
+            
             // POST 로 보낼 정보
         let params = [
             "title": title,
@@ -89,7 +94,7 @@ class ViewController: UIViewController {
                 }
             }
         })
-//-------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
         let cancelButton = UIAlertAction(title: "취소", style: .default, handler: nil)
         alert.addAction(registerButton)
         alert.addAction(cancelButton)

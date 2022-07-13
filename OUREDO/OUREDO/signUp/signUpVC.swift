@@ -59,14 +59,14 @@ class signUp: UIViewController {
                     print("✅POST 성공✅")
 //------------------------------------------------------------------------------------------
                     //userDefaults 값 저장
-                    func saveUser() {
-                        let userDefaults = UserDefaults.standard
-                        userDefaults.set(params, forKey: "signUp")
-                    }
-                    //userDefaults 값 불러오기
-                    func loadUser() {
-                        let check = UserDefaults.standard.string(forKey: "signUp")
-                    }
+//                    func saveUser() {
+//                        let userDefaults = UserDefaults.standard
+//                        userDefaults.set(params, forKey: "signUp")
+//                    }
+//                    //userDefaults 값 불러오기
+//                    func loadUser() {
+//                        let check = UserDefaults.standard.string(forKey: "signUp")
+//                    }
 //------------------------------------------------------------------------------------------
                 default:
                     print("hi error")
