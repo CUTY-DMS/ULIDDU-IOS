@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
     
@@ -49,7 +50,46 @@ class ViewController: UIViewController {
             let task = Task(title: title, content: content, done: false)
             self?.tasks.append(task)
             self?.tableView.reloadData()
+            
+            //button 클릭시 시간을 가져오기
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let nowDetaTime = formatter.string(from: Date())
+            print("지금 시간은 : \(nowDetaTime)\n")
+            //post코드
+//-------------------------------------------------------------------------------------------------------------------------------
+            let url = "http://43.200.97.218:8080/todo"
+            var request = URLRequest(url: URL(string: url)!)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.timeoutInterval = 10
+            // POST 로 보낼 정보
+        let params = [
+            "title": title,
+            "content": content,
+            "todo-date": nowDetaTime
+                     ] as Dictionary
+        
+            print(title)
+            print(content)
+            print(nowDetaTime)
+            
+        let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
+        request.httpBody = jsonData
+
+        AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default)
+            .responseString { (response) in
+            debugPrint(response)
+                switch response.response?.statusCode {
+                case 200:
+                    self?.navigationController?.popViewController(animated: true)
+                    print("✅POST 성공✅")
+                default:
+                    print("hi error")
+                }
+            }
         })
+//-------------------------------------------------------------------------------------------------------------------------------
         let cancelButton = UIAlertAction(title: "취소", style: .default, handler: nil)
         alert.addAction(registerButton)
         alert.addAction(cancelButton)
@@ -60,14 +100,7 @@ class ViewController: UIViewController {
             textField.placeholder = "할 일을 입력해주세요"
         })
         self.present(alert, animated: true, completion: nil)
-        
-        //button 클릭시 시간을 가져오기
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let nowDetaTime = formatter.string(from: Date())
-        print("지금 시간은 : \(nowDetaTime)")
     }
-    
     //userDefaults의 값 저장하기
     func saveTasks() {
         let date = self.tasks.map {

@@ -10,7 +10,7 @@
 		0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7BE2871651C00B7DCC5 /* userModel.swift */; };
 		0E32DDA528783EA90023BC8B /* mainToDoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */; };
 		0E590E77287835E2001E8478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E590E76287835E2001E8478 /* Task.swift */; };
-		0E89A140286EEBC400F196A7 /* signUpVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A13F286EEBC400F196A7 /* signUpVO.swift */; };
+		0E89A140286EEBC400F196A7 /* httpVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A13F286EEBC400F196A7 /* httpVO.swift */; };
 		0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A141286EEBF800F196A7 /* BaseNC.swift */; };
 		0E89A144286EEC1C00F196A7 /* header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A143286EEC1C00F196A7 /* header.swift */; };
 		0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A145286EEC3500F196A7 /* TokenModel.swift */; };
@@ -32,7 +32,7 @@
 		0E1CA7BE2871651C00B7DCC5 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
 		0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainToDoListVC.swift; sourceTree = "<group>"; };
 		0E590E76287835E2001E8478 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../../Task.swift; sourceTree = "<group>"; };
-		0E89A13F286EEBC400F196A7 /* signUpVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpVO.swift; sourceTree = "<group>"; };
+		0E89A13F286EEBC400F196A7 /* httpVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = httpVO.swift; sourceTree = "<group>"; };
 		0E89A141286EEBF800F196A7 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
 		0E89A143286EEC1C00F196A7 /* header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = header.swift; sourceTree = "<group>"; };
 		0E89A145286EEC3500F196A7 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
@@ -77,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				0E89A143286EEC1C00F196A7 /* header.swift */,
+				0E89A13F286EEBC400F196A7 /* httpVO.swift */,
 				0E89A145286EEC3500F196A7 /* TokenModel.swift */,
 			);
 			path = Header;
@@ -95,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				0E965DA8286EE9CF00AE1CD0 /* signUpVC.swift */,
-				0E89A13F286EEBC400F196A7 /* signUpVO.swift */,
 			);
 			path = signUp;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 				0E590E77287835E2001E8478 /* Task.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
 				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
-				0E89A140286EEBC400F196A7 /* signUpVO.swift in Sources */,
+				0E89A140286EEBC400F196A7 /* httpVO.swift in Sources */,
 				0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */,
 				0E89A148286EEC4C00F196A7 /* api.swift in Sources */,
 				0EF5CF0C286EE5EE0036D9A5 /* loginHomeVC.swift in Sources */,

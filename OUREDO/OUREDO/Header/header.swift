@@ -18,14 +18,14 @@ class KeyChain {
     // Create
     class func create(key: String, token: String) {
         let query: NSDictionary = [
-            kSecClass: kSecClassGenericPassword,
+            kSecClass: kSecClassGenericPassword, // 일반 암호 항목을 나타내는 값입니다
             kSecAttrAccount: key,   // 저장할 Account
             kSecValueData: token.data(using: .utf8, allowLossyConversion: false) as Any   // 저장할 Token
         ]
         SecItemDelete(query)
         // Keychain은 Key값에 중복이 생기면, 저장할 수 없기 때문에 먼저 Delete해줌
-        let status = SecItemAdd(query, nil)
-        assert(status == noErr, "🥵 failed to save Token")
+        let status = SecItemAdd(query, nil) // 추가시켜주는 코드인데 추가 하지 못하면 nil을 전달합니다
+        assert(status == noErr, "🥵 token을 저장하지 못했습니다")
     }
 
     // Read
@@ -38,7 +38,7 @@ class KeyChain {
         ]
 
         var dataTypeRef: AnyObject?
-        let status = SecItemCopyMatching(query, &dataTypeRef)
+        let status = SecItemCopyMatching(query, &dataTypeRef) // 찾고자하는 것을 찾는 코드입니다
 
         if status == errSecSuccess {
             if let retrievedData: Data = dataTypeRef as? Data {
@@ -46,7 +46,7 @@ class KeyChain {
                 return value
             } else { return nil }
         } else {
-            print("🥵 failed to loading, status code = \(status)")
+            print("🥵 실패 상태코드 = \(status)")
             return nil
         }
     }
@@ -57,8 +57,8 @@ class KeyChain {
             kSecClass: kSecClassGenericPassword,
             kSecAttrAccount: key
         ]
-        let status = SecItemDelete(query)
-        assert(status == noErr, "🥵 failed to delete the value, status code = \(status)")
+        let status = SecItemDelete(query) // 삭제하고 싶은 거 삭제하는 명령어
+        assert(status == noErr, "🥵 실패 상태코드 = \(status)")
     }
 }
 

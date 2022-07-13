@@ -49,27 +49,6 @@ class signUp: UIViewController {
         let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
         request.httpBody = jsonData
 
-        /*
-        AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default)
-            .responseString { (response) in
-                print(response.response?.statusCode)
-                //print("-------------------")
-                debugPrint(response)
-                // print("-------------------")
-                
-                switch response.result {
-                case .success:
-//                    print(request.headers)
-                    self.navigationController?.popViewController(animated: true)
-                    // print("✅POST 성공✅")
-                case .failure(let error):
-                    print("hi error")
-                    print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
-                    // print(url)
-                }
-            }*/
-        
-        
         AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default)
             .responseString { (response) in
             debugPrint(response)
@@ -78,12 +57,21 @@ class signUp: UIViewController {
                 case 200:
                     self.navigationController?.popViewController(animated: true)
                     print("✅POST 성공✅")
+//------------------------------------------------------------------------------------------
+                    //userDefaults 값 저장
+                    func saveUser() {
+                        let userDefaults = UserDefaults.standard
+                        userDefaults.set(params, forKey: "signUp")
+                    }
+                    //userDefaults 값 불러오기
+                    func loadUser() {
+                        let check = UserDefaults.standard.string(forKey: "signUp")
+                    }
+//------------------------------------------------------------------------------------------
                 default:
                     print("hi error")
                 }
             }
- 
-        
         }
     @IBAction func signInPressButton(_ sender: UIButton) {
         postsignUp()

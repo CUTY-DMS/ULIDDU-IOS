@@ -41,9 +41,9 @@ class loginVC: UIViewController {
             switch response.result {
             case .success:
                 debugPrint(response)
-                if let data = try? JSONDecoder().decode(TokenModel.self, from: response.data!) {
-                    KeyChain.create(key: Token.accessToken, token: data.access_token)
-                    KeyChain.create(key: Token.refreshToken, token: data.resfresh_token)
+                if let userDate = try? JSONDecoder().decode(TokenModel.self, from: response.data!) {
+                    KeyChain.create(key: Token.accessToken, token: userDate.access_token)
+                    KeyChain.create(key: Token.refreshToken, token: userDate.resfresh_token)
                     print("로그인 성공😁")
                     if let removable = self.view.viewWithTag(102) {
                         removable.removeFromSuperview()
@@ -67,7 +67,6 @@ class loginVC: UIViewController {
             }
         }
     }
-    
     func shakeTextField(textField: UITextField) -> Void{
         UIView.animate(withDuration: 0.2, animations: {
             textField.frame.origin.x -= 10
