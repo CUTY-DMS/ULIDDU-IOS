@@ -257,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g9P-cR-dFy">
-                                <rect key="frame" x="0.0" y="406" width="414" height="407"/>
+                                <rect key="frame" x="0.0" y="539" width="414" height="275"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Ydm-jG-5H3" detailTextLabel="43Y-rP-pui" style="IBUITableViewCellStyleSubtitle" id="BZs-js-x45">
@@ -287,7 +287,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIp-Bb-SVH">
-                                <rect key="frame" x="0.0" y="364" width="46" height="31"/>
+                                <rect key="frame" x="0.0" y="497" width="46" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="square.and.pencil" catalog="system" title=""/>
                                 <connections>
@@ -295,22 +295,30 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhf-7u-GG9">
-                                <rect key="frame" x="370" y="364" width="44" height="31"/>
+                                <rect key="frame" x="370" y="497" width="44" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title=""/>
                                 <connections>
                                     <action selector="tapAddButton:" destination="gFz-N9-46T" eventType="touchUpInside" id="ZuD-cJ-PuN"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-87-Xb0" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="88" width="414" height="334"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Ub-mz-KyN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" constant="318" id="Cb2-7d-1JC"/>
+                            <constraint firstItem="FNg-87-Xb0" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" id="0kz-np-nfj"/>
+                            <constraint firstItem="FNg-87-Xb0" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="6xO-hH-cKq"/>
+                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" constant="451" id="Cb2-7d-1JC"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="mhf-7u-GG9" secondAttribute="bottom" constant="11" id="GLo-zj-8ha"/>
                             <constraint firstItem="mhf-7u-GG9" firstAttribute="trailing" secondItem="8Ub-mz-KyN" secondAttribute="trailing" id="IPX-UZ-u0B"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="LZB-9u-5wT"/>
-                            <constraint firstItem="8Ub-mz-KyN" firstAttribute="bottom" secondItem="g9P-cR-dFy" secondAttribute="bottom" id="dj8-9K-Uxj"/>
+                            <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="FNg-87-Xb0" secondAttribute="bottom" constant="117" id="aaO-bt-brl"/>
+                            <constraint firstItem="FNg-87-Xb0" firstAttribute="trailing" secondItem="8Ub-mz-KyN" secondAttribute="trailing" id="c3C-dY-AhI"/>
+                            <constraint firstItem="8Ub-mz-KyN" firstAttribute="bottom" secondItem="g9P-cR-dFy" secondAttribute="bottom" constant="-1" id="dj8-9K-Uxj"/>
                             <constraint firstItem="YIp-Bb-SVH" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="gmO-TU-h1X"/>
                             <constraint firstItem="8Ub-mz-KyN" firstAttribute="trailing" secondItem="g9P-cR-dFy" secondAttribute="trailing" id="njS-RG-PYA"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="YIp-Bb-SVH" secondAttribute="bottom" constant="11" id="yOW-Po-Ur7"/>
@@ -318,6 +326,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eiI-pE-lDc"/>
                     <connections>
+                        <outlet property="calendarView" destination="FNg-87-Xb0" id="jbN-xM-kAz"/>
                         <outlet property="editButton" destination="YIp-Bb-SVH" id="ssr-IU-CRV"/>
                         <outlet property="tableView" destination="g9P-cR-dFy" id="bmh-aX-XXm"/>
                     </connections>
