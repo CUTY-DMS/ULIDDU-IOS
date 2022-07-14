@@ -303,7 +303,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNg-87-Xb0" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="88" width="414" height="334"/>
+                                <rect key="frame" x="20" y="88" width="374" height="334"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -311,13 +311,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="FNg-87-Xb0" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" id="0kz-np-nfj"/>
-                            <constraint firstItem="FNg-87-Xb0" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="6xO-hH-cKq"/>
+                            <constraint firstItem="FNg-87-Xb0" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" constant="20" id="6xO-hH-cKq"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="8Ub-mz-KyN" secondAttribute="top" constant="451" id="Cb2-7d-1JC"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="mhf-7u-GG9" secondAttribute="bottom" constant="11" id="GLo-zj-8ha"/>
                             <constraint firstItem="mhf-7u-GG9" firstAttribute="trailing" secondItem="8Ub-mz-KyN" secondAttribute="trailing" id="IPX-UZ-u0B"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="LZB-9u-5wT"/>
                             <constraint firstItem="g9P-cR-dFy" firstAttribute="top" secondItem="FNg-87-Xb0" secondAttribute="bottom" constant="117" id="aaO-bt-brl"/>
-                            <constraint firstItem="FNg-87-Xb0" firstAttribute="trailing" secondItem="8Ub-mz-KyN" secondAttribute="trailing" id="c3C-dY-AhI"/>
+                            <constraint firstItem="FNg-87-Xb0" firstAttribute="trailing" secondItem="8Ub-mz-KyN" secondAttribute="trailing" constant="-20" id="c3C-dY-AhI"/>
                             <constraint firstItem="8Ub-mz-KyN" firstAttribute="bottom" secondItem="g9P-cR-dFy" secondAttribute="bottom" constant="-1" id="dj8-9K-Uxj"/>
                             <constraint firstItem="YIp-Bb-SVH" firstAttribute="leading" secondItem="8Ub-mz-KyN" secondAttribute="leading" id="gmO-TU-h1X"/>
                             <constraint firstItem="8Ub-mz-KyN" firstAttribute="trailing" secondItem="g9P-cR-dFy" secondAttribute="trailing" id="njS-RG-PYA"/>

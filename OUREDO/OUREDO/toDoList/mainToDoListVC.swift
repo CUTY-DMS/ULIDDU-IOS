@@ -102,7 +102,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.tableView.setEditing(true, animated: true)
     }
     
-    
     @IBAction func tapAddButton(_ sender: Any) {
         
         let alert = UIAlertController(title: "할 일 등록", message: nil, preferredStyle: .alert)
@@ -198,13 +197,20 @@ extension ViewController : UITableViewDataSource{
         return self.tasks.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        NSLog("선택된 행은 \(indexPath.row) 번째 행입니다")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = self.tasks[indexPath.row]
         cell.textLabel?.text = task.title
         cell.detailTextLabel?.text = task.content
         //checkmark
+//        if task.done{
+//            cell.accessoryType = .checkmark
+//        } else {
+//            cell.accessoryType = .none
+//        }
         if task.done{
-            cell.accessoryType = .checkmark
+            cell.accessoryType = .detailButton
+            
         } else {
             cell.accessoryType = .none
         }
