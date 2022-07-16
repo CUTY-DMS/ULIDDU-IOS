@@ -155,6 +155,10 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                     debugPrint(response)
                     self?.navigationController?.popViewController(animated: true)
                     print("✅add ToDo POST 성공✅")
+                case 201:
+                    debugPrint(response)
+                    self?.navigationController?.popViewController(animated: true)
+                    print("✅add ToDo POST 성공✅")
                 default:
                     print("🤯post 성공하지 못했습니다🤬")
                     debugPrint(response)
