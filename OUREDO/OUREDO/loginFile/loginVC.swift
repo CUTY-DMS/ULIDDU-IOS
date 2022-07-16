@@ -51,9 +51,8 @@ class loginVC: UIViewController {
                         removable.removeFromSuperview()
                         self.performSegue(withIdentifier: "goToSuccessVC", sender: self)
                     }
-                } else { print("ㅗㅗㅗㅗㅗ") }
+                } else { print("이동 성공") }
                 print("🤑POST 성공")
-                
                 
             case .failure(let error):
                 if response.response?.statusCode != 200 {

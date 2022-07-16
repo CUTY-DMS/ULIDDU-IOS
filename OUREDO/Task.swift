@@ -11,4 +11,5 @@ struct Task {
     var title : String
     var content : String
     var done : Bool
+    var ispublic : Bool
 }

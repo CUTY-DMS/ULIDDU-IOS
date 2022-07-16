@@ -11,8 +11,11 @@ import FSCalendar
 
 class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     
-    @IBOutlet var calendarView: FSCalendar!
+    @IBOutlet var textFieldTitle: UITextField!
+    @IBOutlet var textFieldContent: UITextField!
+    
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var editButton: UIButton!
     var doneButton : UIButton?
     var tasks = [Task]() {
@@ -84,7 +87,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         // Month 폰트 설정
         calendarView.appearance.headerTitleFont = UIFont(name: "NotoSansCJKKR-Medium", size: 16)
                 
-                
         // day 폰트 설정
         calendarView.appearance.titleFont = UIFont(name: "Roboto-Regular", size: 14)
 //---------------------calendarView--------------------------
@@ -103,24 +105,25 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     @IBAction func tapAddButton(_ sender: Any) {
-        
         let alert = UIAlertController(title: "할 일 등록", message: nil, preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
-            let task = Task(title: title, content: content, done: false)
+            let task = Task(title: title, content: content, done: false, ispublic: false)
             self?.tasks.append(task)
             self?.tableView.reloadData()
+            
+            let ispublic : Bool = false
             
             //button 클릭시 시간을 가져오기
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             let nowDetaTime = formatter.string(from: Date())
-            print("지금 시간은 : \(nowDetaTime)\n")
+            print("지금 시간은 : \(nowDetaTime)")
             //post코드
 //-----------------------------------------------------------------------------------------------------
             let AT : String? = KeyChain.read(key: Token.accessToken)
-//            let RT : String? = KeyChain.read(key: Token.refreshToken)
+            let RT : String? = KeyChain.read(key: Token.refreshToken)
             let url = "http://43.200.97.218:8080/todo"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
@@ -128,13 +131,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             request.timeoutInterval = 10
             var header = HTTPHeaders()
             header.add(name: "Authorization", value: "Bearer \(AT!)")
+            header.add(name: "X-Refresh-Token", value: RT!)
             
             // POST 로 보낼 정보
         let params = [
             "title": title,
             "content": content,
+            "ispublic" : ispublic,
             "todo-date": nowDetaTime
-                     ] as Dictionary
+            ] as Dictionary
         
             print(title)
             print(content)
@@ -145,13 +150,15 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 
         AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default, headers: header)
             .responseString { (response) in
-            debugPrint(response)
                 switch response.response?.statusCode {
                 case 200:
+                    debugPrint(response)
                     self?.navigationController?.popViewController(animated: true)
                     print("✅add ToDo POST 성공✅")
                 default:
-                    print("hi error")
+                    print("🤯post 성공하지 못했습니다🤬")
+                    debugPrint(response)
+                    debugPrint(params)
                 }
             }
         })
@@ -173,7 +180,8 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
              [
                 "title" : $0.title,
                 "content" : $0.content,
-                "done" : $0.done
+                "done" : $0.done,
+                "ispubic" : $0.ispublic
              ]
         }
         let userDefaults = UserDefaults.standard
@@ -187,35 +195,38 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             guard let title = $0["title"] as? String else { return nil }
             guard let content = $0["content"] as? String else { return nil }
             guard let done = $0["done"] as? Bool else { return nil }
-            return Task(title: title, content: content, done: done)
+            guard let ispublic = $0["ispubic"] as? Bool else { return nil }
+            return Task(title: title, content: content, done: done, ispublic: ispublic)
         }
     }
 }
 
 extension ViewController : UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.tasks.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         NSLog("선택된 행은 \(indexPath.row) 번째 행입니다")
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let task = self.tasks[indexPath.row]
         cell.textLabel?.text = task.title
         cell.detailTextLabel?.text = task.content
-        //checkmark
-//        if task.done{
-//            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
+        
         if task.done{
             cell.accessoryType = .detailButton
-            
+            //이벤트 구현
         } else {
             cell.accessoryType = .none
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goToHelloVC", sender: self)
+    }
+
     //삭제 구현
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         

@@ -68,6 +68,10 @@ class signUp: UIViewController {
 //                        let check = UserDefaults.standard.string(forKey: "signUp")
 //                    }
 //------------------------------------------------------------------------------------------
+                case 204:
+                    self.navigationController?.popViewController(animated: true)
+                    print("😆POST 성공😆")
+                    
                 default:
                     print("hi error")
                 }

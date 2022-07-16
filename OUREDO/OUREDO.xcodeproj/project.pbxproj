@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1B6CE728828F36007EEA96 /* switchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B6CE528828F36007EEA96 /* switchView.swift */; };
+		0E1B6CE828828F36007EEA96 /* switchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E1B6CE628828F36007EEA96 /* switchView.xib */; };
 		0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7BE2871651C00B7DCC5 /* userModel.swift */; };
 		0E32DDA528783EA90023BC8B /* mainToDoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */; };
 		0E590E77287835E2001E8478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E590E76287835E2001E8478 /* Task.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		005D23A4C7641BBA519F501E /* Pods-OUREDO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.debug.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.debug.xcconfig"; sourceTree = "<group>"; };
+		0E1B6CE528828F36007EEA96 /* switchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = switchView.swift; path = toDoList/switchView.swift; sourceTree = "<group>"; };
+		0E1B6CE628828F36007EEA96 /* switchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = switchView.xib; path = toDoList/switchView.xib; sourceTree = "<group>"; };
 		0E1CA7BE2871651C00B7DCC5 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
 		0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainToDoListVC.swift; sourceTree = "<group>"; };
 		0E590E76287835E2001E8478 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../../Task.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
 				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
 				0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */,
+				0E1B6CE528828F36007EEA96 /* switchView.swift */,
+				0E1B6CE628828F36007EEA96 /* switchView.xib */,
 				0EF5CF05286ED2A90036D9A5 /* Info.plist */,
 			);
 			path = OUREDO;
@@ -224,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E1B6CE828828F36007EEA96 /* switchView.xib in Resources */,
 				0EF5CF04286ED2A90036D9A5 /* LaunchScreen.storyboard in Resources */,
 				0EF5CF01286ED2A90036D9A5 /* Assets.xcassets in Resources */,
 				0EF5CEFF286ED2A90036D9A5 /* Main.storyboard in Resources */,
@@ -287,6 +294,7 @@
 				0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */,
 				0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */,
 				0E590E77287835E2001E8478 /* Task.swift in Sources */,
+				0E1B6CE728828F36007EEA96 /* switchView.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
 				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
 				0E89A140286EEBC400F196A7 /* httpVO.swift in Sources */,
