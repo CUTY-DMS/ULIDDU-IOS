@@ -30,4 +30,12 @@ class WriteDiaryViewController: UIViewController{
         self.confirmButton.isEnabled = false
     }
     
+    // textView 선 표시 및 색 지정
+    private func configureContentsTextView() {
+        let borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
+        self.contentsTextView.layer.borderColor = borderColor.cgColor
+        self.contentsTextView.layer.borderWidth = 0.5
+        self.contentsTextView.layer.cornerRadius = 5.0
+    }
+    
 }
