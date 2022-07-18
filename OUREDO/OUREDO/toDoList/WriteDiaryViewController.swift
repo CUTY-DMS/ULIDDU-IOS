@@ -77,4 +77,14 @@ class WriteDiaryViewController: UIViewController{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    @IBAction func tapConfirmButton(_ sender: UIButton) {
+        guard let title = self.titleTextField.text else { return }
+        guard let content = self.contentsTextView.text else { return }
+        guard let date = self.diaryDate else { return }
+        let diary = Diary(title: title, content: content, date: date, isStar: false)
+        self.delegate?.didSelectReigster(diary: diary)
+        //이전 화면 되돌리기
+        self.navigationController?.popViewController(animated: true)
+    }
 }
