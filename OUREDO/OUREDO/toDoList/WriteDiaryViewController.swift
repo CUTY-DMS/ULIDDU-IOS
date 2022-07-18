@@ -78,7 +78,7 @@ class WriteDiaryViewController: UIViewController{
         self.view.endEditing(true)
     }
     
-    @IBAction func tapConfirmButton(_ sender: UIButton) {
+    @IBAction func tapConfirmButton(_ sender: uibu) {
         guard let title = self.titleTextField.text else { return }
         guard let content = self.contentsTextView.text else { return }
         guard let date = self.diaryDate else { return }
@@ -93,3 +93,8 @@ class WriteDiaryViewController: UIViewController{
     }
 }
 
+extension WriteDiaryViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        self.validateInputField()
+    }
+}
