@@ -38,4 +38,12 @@ class WriteDiaryViewController: UIViewController{
         self.contentsTextView.layer.cornerRadius = 5.0
     }
     
+    private func configureDatePicker() {
+        self.datePicker.datePickerMode = .date
+        self.datePicker.preferredDatePickerStyle = .wheels
+        self.datePicker.addTarget(self, action: #selector(datePickerValudeDidChange(_:) ), for: .valueChanged)
+        self.dateTextField.inputView = self.datePicker
+        self.datePicker.locale = Locale(identifier: "ko-KR")
+    }
+    
 }
