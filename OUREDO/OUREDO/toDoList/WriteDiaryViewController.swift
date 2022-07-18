@@ -73,4 +73,8 @@ class WriteDiaryViewController: UIViewController{
         self.dateTextField.sendActions(for: .editingChanged)
     }
 
+    //유저가 화면 터치시 키보드 또는 다른 장치가 내려감
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
