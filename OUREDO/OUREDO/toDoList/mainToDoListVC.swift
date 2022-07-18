@@ -10,13 +10,10 @@ import Alamofire
 import FSCalendar
 
 class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
-    
-    @IBOutlet var textFieldTitle: UITextField!
-    @IBOutlet var textFieldContent: UITextField!
-    
     @IBOutlet var tableView: UITableView!
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var editButton: UIButton!
+    
     var doneButton : UIButton?
     var tasks = [Task]() {
         didSet {
@@ -262,6 +259,7 @@ extension ViewController : UITableViewDelegate{
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
+//----------------------------------------------------
         
 //        // 헤더의 날짜 포맷 설정
 //        calendarView.appearance.headerDateFormat = "YYYY년 MM월"
