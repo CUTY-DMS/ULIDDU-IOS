@@ -87,4 +87,9 @@ class WriteDiaryViewController: UIViewController{
         //이전 화면 되돌리기
         self.navigationController?.popViewController(animated: true)
     }
+    //titleTextField 와 dateTextField 와 contentsTextView가 비어있지 않을 경우만 등록을 할 수 있도록 한다
+    private func validateInputField() {
+        self.confirmButton.isEnabled = !(self.titleTextField.text?.isEmpty ?? true) && !(self.dateTextField.text?.isEmpty ?? true) && !self.contentsTextView.text.isEmpty
+    }
 }
+
