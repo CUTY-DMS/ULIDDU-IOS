@@ -52,6 +52,11 @@ class WriteDiaryViewController: UIViewController{
         self.dateTextField.addTarget(self, action: #selector(dateTextFieldDidChange(_:)), for: .editingChanged)
     }
     
+    //titleTextField 와 dateTextField 와 contentsTextView가 비어있지 않을 경우만 등록을 할 수 있도록 한다
+    private func validateInputField() {
+        self.confirmButton.isEnabled = !(self.titleTextField.text?.isEmpty ?? true) && !(self.dateTextField.text?.isEmpty ?? true) && !self.contentsTextView.text.isEmpty
+    }
+    
     @objc private func titleTextFieldDidChange(_ textField : UITextField){
         self.validateInputField()
     }
@@ -78,7 +83,7 @@ class WriteDiaryViewController: UIViewController{
         self.view.endEditing(true)
     }
     
-    @IBAction func tapConfirmButton(_ sender: uibu) {
+    @IBAction func tapConfirmButton(_ sender: UIButton) {
         guard let title = self.titleTextField.text else { return }
         guard let content = self.contentsTextView.text else { return }
         guard let date = self.diaryDate else { return }
@@ -86,10 +91,6 @@ class WriteDiaryViewController: UIViewController{
         self.delegate?.didSelectReigster(diary: diary)
         //이전 화면 되돌리기
         self.navigationController?.popViewController(animated: true)
-    }
-    //titleTextField 와 dateTextField 와 contentsTextView가 비어있지 않을 경우만 등록을 할 수 있도록 한다
-    private func validateInputField() {
-        self.confirmButton.isEnabled = !(self.titleTextField.text?.isEmpty ?? true) && !(self.dateTextField.text?.isEmpty ?? true) && !self.contentsTextView.text.isEmpty
     }
 }
 

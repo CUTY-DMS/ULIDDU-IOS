@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E0B676928857B8A00F04381 /* WriteDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B676828857B8A00F04381 /* WriteDiaryViewController.swift */; };
 		0E0B676B28857CAF00F04381 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B676A28857CAF00F04381 /* Diary.swift */; };
+		0E0B677028862A3900F04381 /* DleCorrectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0B676F28862A3900F04381 /* DleCorrectionViewController.swift */; };
 		0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7BE2871651C00B7DCC5 /* userModel.swift */; };
 		0E32DDA528783EA90023BC8B /* mainToDoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */; };
 		0E590E77287835E2001E8478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E590E76287835E2001E8478 /* Task.swift */; };
@@ -33,6 +34,7 @@
 		005D23A4C7641BBA519F501E /* Pods-OUREDO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.debug.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.debug.xcconfig"; sourceTree = "<group>"; };
 		0E0B676828857B8A00F04381 /* WriteDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDiaryViewController.swift; sourceTree = "<group>"; };
 		0E0B676A28857CAF00F04381 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		0E0B676F28862A3900F04381 /* DleCorrectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DleCorrectionViewController.swift; path = toDoDetilView/DleCorrectionViewController.swift; sourceTree = "<group>"; };
 		0E1CA7BE2871651C00B7DCC5 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
 		0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainToDoListVC.swift; sourceTree = "<group>"; };
 		0E590E76287835E2001E8478 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../../Task.swift; sourceTree = "<group>"; };
@@ -68,12 +70,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E0B676C2885813600F04381 /* toDoDetilView */ = {
+			isa = PBXGroup;
+			children = (
+				0E0B676828857B8A00F04381 /* WriteDiaryViewController.swift */,
+				0E0B676A28857CAF00F04381 /* Diary.swift */,
+			);
+			path = toDoDetilView;
+			sourceTree = "<group>";
+		};
 		0E19CD3B287488B900746CF2 /* toDoList */ = {
 			isa = PBXGroup;
 			children = (
 				0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */,
-				0E0B676828857B8A00F04381 /* WriteDiaryViewController.swift */,
-				0E0B676A28857CAF00F04381 /* Diary.swift */,
 				0E590E76287835E2001E8478 /* Task.swift */,
 			);
 			path = toDoList;
@@ -145,8 +154,10 @@
 				0E89A14D286EECB800F196A7 /* signUp */,
 				0E89A14B286EEC7C00F196A7 /* Header */,
 				0E89A14C286EECA500F196A7 /* API */,
-				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
+				0E0B676C2885813600F04381 /* toDoDetilView */,
 				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
+				0E0B676F28862A3900F04381 /* DleCorrectionViewController.swift */,
+				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
 				0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */,
 				0EF5CF05286ED2A90036D9A5 /* Info.plist */,
 			);
@@ -285,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E0B677028862A3900F04381 /* DleCorrectionViewController.swift in Sources */,
 				0E965DA9286EE9CF00AE1CD0 /* signUpVC.swift in Sources */,
 				0E89A144286EEC1C00F196A7 /* header.swift in Sources */,
 				0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */,
