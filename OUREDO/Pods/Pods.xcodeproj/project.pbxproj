@@ -660,7 +660,6 @@
 		0BF64B51BE8155BAE7590D2B7971008B /* SideMenuPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SideMenuPresentationController.swift; path = Pod/Classes/SideMenuPresentationController.swift; sourceTree = "<group>"; };
 		0C2C45FF79D05B2B152576288E3D01F9 /* ConstraintMakerRelatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerRelatable.swift; path = Sources/ConstraintMakerRelatable.swift; sourceTree = "<group>"; };
 		0DC73BEDC6E795E8D2E65C756B46FFF6 /* PFHTTPRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PFHTTPRequest.h; path = Parse/Parse/Internal/HTTPRequest/PFHTTPRequest.h; sourceTree = "<group>"; };
-		0E0B676728857B5100F04381 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		0F3F81B4276642DD714E51E171F3D34D /* ParseClientConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ParseClientConfiguration.h; path = Parse/Parse/ParseClientConfiguration.h; sourceTree = "<group>"; };
 		0F9CFBF361EA1339C1D72C8FA9B8B41C /* ConstraintInsetTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintInsetTarget.swift; path = Sources/ConstraintInsetTarget.swift; sourceTree = "<group>"; };
 		0FA2F374DF9D3267EDD468F6E11D78C0 /* BFExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BFExecutor.h; path = Bolts/Common/BFExecutor.h; sourceTree = "<group>"; };
@@ -2022,7 +2021,6 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
-				0E0B676728857B5100F04381 /* Diary.swift */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				2FE445AD883B9ABD3E0241A05A5B79FD /* Frameworks */,
 				9E2090721D6F387CCD45659373EF109F /* Pods */,

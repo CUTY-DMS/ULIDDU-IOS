@@ -63,7 +63,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         calendarView?.appearance.headerMinimumDissolvedAlpha = 0
         
         // 달력의 평일 날짜 색깔
-        calendarView?.appearance.titleDefaultColor = .gray
+        calendarView?.appearance.titleDefaultColor = .black
         func calendarStyle(){
 
         //언어 한국어로 변경
