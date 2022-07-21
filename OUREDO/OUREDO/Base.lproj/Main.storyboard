@@ -317,7 +317,6 @@
         <!--Write DiaryVC-->
         <scene sceneID="MYn-WP-DPz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UAf-gu-uuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Yss-aH-nKh" customClass="WriteDiaryVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="111-f5-zhe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -387,6 +386,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZiY-ZE-o5M"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAf-gu-uuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1386" y="4106"/>
         </scene>
@@ -473,7 +473,7 @@
                         <outlet property="calendarView" destination="FNg-87-Xb0" id="jbN-xM-kAz"/>
                         <outlet property="editButton" destination="YIp-Bb-SVH" id="ssr-IU-CRV"/>
                         <outlet property="tableView" destination="g9P-cR-dFy" id="YBC-am-D5t"/>
-                        <segue destination="il5-ju-3Ku" kind="showDetail" identifier="goToHelloVC" id="F9y-lJ-XsP"/>
+                        <segue destination="il5-ju-3Ku" kind="showDetail" identifier="goTocheckVC" id="F9y-lJ-XsP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQH-dd-G7J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -590,10 +590,10 @@
             </objects>
             <point key="canvasLocation" x="1700" y="4092"/>
         </scene>
-        <!--View Controller-->
+        <!--Check View Controller-->
         <scene sceneID="M61-io-v6X">
             <objects>
-                <viewController id="il5-ju-3Ku" customClass="viewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="il5-ju-3Ku" customClass="checkViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZO-LP-d5E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -689,6 +689,11 @@
                             <constraint firstItem="yUi-zr-LYt" firstAttribute="leading" secondItem="ktS-ML-YZj" secondAttribute="leading" constant="133.5" id="xE4-Hl-Lay"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentsLable" destination="kcc-dg-gHC" id="KPS-d3-Fmd"/>
+                        <outlet property="dateLable" destination="d5f-fk-6yZ" id="zfQ-Cd-I4m"/>
+                        <outlet property="titleLable" destination="jNc-eO-0NY" id="sZ6-Mi-hpF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YS0-Rc-QG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

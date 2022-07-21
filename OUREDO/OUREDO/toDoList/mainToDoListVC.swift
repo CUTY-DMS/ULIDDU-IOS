@@ -226,7 +226,10 @@ extension ViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath){
-        self.performSegue(withIdentifier: "goToHelloVC", sender: self)
+        //indexpath.row 저장
+        //checkVC 로 보냄
+        UserDefaults.standard.set(indexPath.row, forKey: "index")
+        self.performSegue(withIdentifier: "goTocheckVC", sender: self)
     }
 
     //삭제 구현

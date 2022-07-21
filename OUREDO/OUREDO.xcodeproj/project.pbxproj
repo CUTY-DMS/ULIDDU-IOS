@@ -23,6 +23,7 @@
 		0EC3DC402889124C00B7B84D /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3F2889124C00B7B84D /* Diary.swift */; };
 		0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC422889179400B7B84D /* WriteDiaryVC.swift */; };
 		0EC3DC4528891BE000B7B84D /* DiaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC4428891BE000B7B84D /* DiaryDetailVC.swift */; };
+		0EC3DC472889274600B7B84D /* checkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC462889274600B7B84D /* checkVC.swift */; };
 		0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5CEF7286ED2A90036D9A5 /* AppDelegate.swift */; };
 		0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5CEF9286ED2A90036D9A5 /* SceneDelegate.swift */; };
 		0EF5CEFF286ED2A90036D9A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		0EC3DC3F2889124C00B7B84D /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		0EC3DC422889179400B7B84D /* WriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteDiaryVC.swift; path = ../WriteDiaryVC.swift; sourceTree = "<group>"; };
 		0EC3DC4428891BE000B7B84D /* DiaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DiaryDetailVC.swift; path = ../../Pods/DiaryDetailVC.swift; sourceTree = "<group>"; };
+		0EC3DC462889274600B7B84D /* checkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkVC.swift; sourceTree = "<group>"; };
 		0EF5CEF4286ED2A90036D9A5 /* OUREDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OUREDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF5CEF7286ED2A90036D9A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EF5CEF9286ED2A90036D9A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,18 +76,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E0B676C2885813600F04381 /* toDoDetilView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = toDoDetilView;
-			sourceTree = "<group>";
-		};
 		0E19CD3B287488B900746CF2 /* toDoList */ = {
 			isa = PBXGroup;
 			children = (
 				0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */,
 				0E590E76287835E2001E8478 /* Task.swift */,
+				0EC3DC462889274600B7B84D /* checkVC.swift */,
 			);
 			path = toDoList;
 			sourceTree = "<group>";
@@ -168,7 +164,6 @@
 				0E89A14D286EECB800F196A7 /* signUp */,
 				0E89A14B286EEC7C00F196A7 /* Header */,
 				0E89A14C286EECA500F196A7 /* API */,
-				0E0B676C2885813600F04381 /* toDoDetilView */,
 				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
 				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
 				0EC3DC3E288911DD00B7B84D /* collectionVC */,
@@ -321,6 +316,7 @@
 				0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */,
 				0EC3DC3D288911B800B7B84D /* collectionVC.swift in Sources */,
 				0E590E77287835E2001E8478 /* Task.swift in Sources */,
+				0EC3DC472889274600B7B84D /* checkVC.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
 				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
 				0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */,
