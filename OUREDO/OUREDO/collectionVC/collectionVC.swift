@@ -31,24 +31,13 @@ class collectionViewController: UIViewController{
         self.collectionView.dataSource = self
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      if let wireDiaryViewContoller = segue.destination as? WriteDiaryViewController {
-//        wireDiaryViewContoller.delegate = self
-//    }
-//}
-//
-//    private func saveDiaryList() {
-//      let date = self.diaryList.map {
-//        [
-//          "title": $0.title,
-//          "contents": $0.contents,
-//          "date": $0.date,
-//          "isStar": $0.isStar
-//        ]
-//      }
-//      let userDefaults = UserDefaults.standard
-//      userDefaults.set(date, forKey: "diaryList")
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let wireDiaryViewContoller = segue.destination as? WriteDiaryViewController {
+        wireDiaryViewContoller.delegate = self
+    }
+}
+
+
 
     func saveTasks() {
         let date = self.diaryList.map {
@@ -93,6 +82,7 @@ extension collectionViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as? DiaryCell else { return UICollectionViewCell() }
         let diary = self.diaryList[indexPath.row]
+        //오류 = 무조건 현제 날짜만 나옴
         let formatter = DateFormatter()
         formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
         let nowDetaTime = formatter.string(from: Date())
@@ -108,30 +98,26 @@ extension collectionViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
-//extension collectionViewController: UICollectionViewDelegate {
-//  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
-//    let diary = self.diaryList[indexPath.row]
-//    viewContoller.diary = diary
-//    viewContoller.indexPath = indexPath
-//    viewContoller.delegate = self
-//    self.navigationController?.pushViewController(viewContoller, animated: true)
-//  }
-//}
+extension collectionViewController: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailVC else { return }
+    let diary = self.diaryList[indexPath.row]
+    viewContoller.indexPath = indexPath
+    viewContoller.delegate = self
+    UserDefaults.standard.set(indexPath.row, forKey: "index")
+    self.navigationController?.pushViewController(viewContoller, animated: true)
+  }
+}
 
-//extension collectionViewController: WriteDiaryViewDelegate {
-//  func didSelectReigster(diary: Diary) {
-//    self.diaryList.append(diary)
-//    self.diaryList = self.diaryList.sorted(by: {
-//      $0.date.compare($1.date) == .orderedDescending
-//    })
-//    self.collectionView.reloadData()
-//  }
-//}
-//extension collectionViewController: DiaryDetailViewDelegate {
-//    func didSelectDelegate(indexPath: IndexPath) {
-//        self.diaryList.remove(at: indexPath.row)
-//        self.collectionView.deleteItems(at: [indexPath])
-//    }
-//}
+extension collectionViewController: WriteDiaryViewDelegate {
+  func didSelectReigster(diary: Diary) {
+    self.collectionView.reloadData()
+  }
+}
+extension collectionViewController: DiaryDetailViewDelegate {
+    func didSelectDelegate(indexPath: IndexPath) {
+        self.diaryList.remove(at: indexPath.row)
+        self.collectionView.deleteItems(at: [indexPath])
+    }
+}
 

@@ -26,7 +26,6 @@ class checkViewController : UIViewController {
         super.viewDidLoad()
         self.loadDiaryList()
         self.takeLable()
-        print("안녕")
     }
     
     
@@ -53,6 +52,7 @@ class checkViewController : UIViewController {
             guard let ispublic = $0["ispubic"] as? Bool else { return nil }
             return Task(title: title, content: content, done: done, ispublic: ispublic)
         }
+        //UserDefaults.standard.set(indexPath.row, forKey: "index")
         index = userDefaults.integer(forKey: "index")
     }
     private func takeLable() {
