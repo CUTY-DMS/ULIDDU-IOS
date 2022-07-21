@@ -57,17 +57,6 @@ class signUp: UIViewController {
                 case 200:
                     self.navigationController?.popViewController(animated: true)
                     print("✅POST 성공✅")
-//------------------------------------------------------------------------------------------
-                    //userDefaults 값 저장
-//                    func saveUser() {
-//                        let userDefaults = UserDefaults.standard
-//                        userDefaults.set(params, forKey: "signUp")
-//                    }
-//                    //userDefaults 값 불러오기
-//                    func loadUser() {
-//                        let check = UserDefaults.standard.string(forKey: "signUp")
-//                    }
-//------------------------------------------------------------------------------------------
                 case 204:
                     self.navigationController?.popViewController(animated: true)
                     print("😆POST 성공😆")

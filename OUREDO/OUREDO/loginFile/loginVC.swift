@@ -19,8 +19,8 @@ class loginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(KeyChain.read(key: Token.accessToken)!)
-        print(KeyChain.read(key: Token.refreshToken)!)
+        print(KeyChain.read(key: Token.accessToken))
+        print(KeyChain.read(key: Token.refreshToken))
     }
     func postLogin() {
         let url = "http://43.200.97.218:8080/login"

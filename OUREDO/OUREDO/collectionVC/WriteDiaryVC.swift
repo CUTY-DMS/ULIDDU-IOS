@@ -2,9 +2,8 @@
 //  WriteDiaryViewController.swift
 //  OUREDO
 //
-//  Created by 박준하 on 2022/07/18.
+//  Created by 박준하 on 2022/07/21.
 //
-
 
 import UIKit
 
