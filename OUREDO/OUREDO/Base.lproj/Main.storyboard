@@ -536,18 +536,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="89" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정 완료"/>
-                                        <connections>
-                                            <action selector="tapEditButton:" destination="P7W-Le-HBN" eventType="touchUpInside" id="tFs-6m-Nhp"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anm-xl-4Xv">
                                         <rect key="frame" x="125" y="0.0" width="89" height="31"/>
                                         <color key="tintColor" red="1" green="0.3751004771" blue="0.57235281810000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="취소"/>
-                                        <connections>
-                                            <action selector="tapDeleteButton:" destination="P7W-Le-HBN" eventType="touchUpInside" id="FBk-Sa-tZd"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -579,11 +573,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fDm-yO-Xrj"/>
-                    <connections>
-                        <outlet property="contentsTextView" destination="nR2-Wb-GjQ" id="7Zs-Ek-r5Q"/>
-                        <outlet property="dateLable" destination="nJp-Zm-s5p" id="fhb-4S-UFv"/>
-                        <outlet property="titleLable" destination="IOd-kM-O5R" id="gfN-Ne-Ia0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2H5-kl-Yto" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="dd4-ha-0xH" userLabel="Exit" sceneMemberID="exit"/>
@@ -656,7 +645,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정"/>
                                         <connections>
-                                            <segue destination="P7W-Le-HBN" kind="show" id="geg-cF-atA"/>
+                                            <segue destination="P7W-Le-HBN" kind="show" id="SVJ-8O-gEB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7D-c9-m5i">
