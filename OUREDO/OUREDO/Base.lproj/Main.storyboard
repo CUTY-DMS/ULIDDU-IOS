@@ -253,7 +253,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="TBt-e9-ucI" customClass="DiaryCell" customModule="OUREDO" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiaryCell" id="TBt-e9-ucI" customClass="DiaryCell" customModule="OUREDO" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="z8Q-Gl-YqG">
@@ -284,6 +284,10 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="180" height="200"/>
+                                        <connections>
+                                            <outlet property="dateLable" destination="5Cs-NK-5M1" id="GG3-qj-l8S"/>
+                                            <outlet property="titleLable" destination="V2h-K9-cic" id="GXF-et-RQP"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -308,7 +312,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U4A-Pt-SFm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2507" y="3333"/>
+            <point key="canvasLocation" x="-1386" y="3333"/>
         </scene>
         <!--Write DiaryVC-->
         <scene sceneID="MYn-WP-DPz">
@@ -382,14 +386,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZiY-ZE-o5M"/>
-                    <connections>
-                        <outlet property="contentsTextView" destination="fG9-LD-ciP" id="eMH-1j-yOS"/>
-                        <outlet property="dateTextField" destination="frn-RD-yMM" id="IKn-x6-LR0"/>
-                        <outlet property="titleTextField" destination="1vQ-Rb-XAw" id="6AK-Nj-cOM"/>
-                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-2507" y="4106"/>
+            <point key="canvasLocation" x="-1386" y="4106"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QTT-yu-PQS">
@@ -838,7 +837,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jTx-l6-B6g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2506" y="2551"/>
+            <point key="canvasLocation" x="-1386" y="2551"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="R4f-Hj-u9Z">

@@ -10,12 +10,11 @@ import UIKit
 
 class collectionViewController: UIViewController{
 
-
     @IBOutlet var collectionView: UICollectionView!
     
-    private var diaryList = [Diary]() {
+    private var diaryList = [Task]() {
         didSet {
-            self.saveDiaryList()
+            self.saveTasks()
         }
     }
     
@@ -32,39 +31,52 @@ class collectionViewController: UIViewController{
         self.collectionView.dataSource = self
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let wireDiaryViewContoller = segue.destination as? WriteDiaryViewController {
-        wireDiaryViewContoller.delegate = self
-    }
-}
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      if let wireDiaryViewContoller = segue.destination as? WriteDiaryViewController {
+//        wireDiaryViewContoller.delegate = self
+//    }
+//}
+//
+//    private func saveDiaryList() {
+//      let date = self.diaryList.map {
+//        [
+//          "title": $0.title,
+//          "contents": $0.contents,
+//          "date": $0.date,
+//          "isStar": $0.isStar
+//        ]
+//      }
+//      let userDefaults = UserDefaults.standard
+//      userDefaults.set(date, forKey: "diaryList")
+//    }
 
-    private func saveDiaryList() {
-      let date = self.diaryList.map {
-        [
-          "title": $0.title,
-          "contents": $0.contents,
-          "date": $0.date,
-          "isStar": $0.isStar
-        ]
-      }
-      let userDefaults = UserDefaults.standard
-      userDefaults.set(date, forKey: "diaryList")
+    func saveTasks() {
+        let date = self.diaryList.map {
+             [
+                "title" : $0.title,
+                "content" : $0.content,
+                "done" : $0.done,
+                "ispubic" : $0.ispublic
+             ]
+        }
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(date, forKey: "tasks")
     }
-
+    
     private func loadDiaryList() {
       let userDefaults = UserDefaults.standard
-      guard let data = userDefaults.object(forKey: "diaryList") as? [[String: Any]] else { return }
+      guard let data = userDefaults.object(forKey: "tasks") as? [[String: Any]] else { return }
       self.diaryList = data.compactMap {
-        guard let title = $0["title"] as? String else { return nil }
-        guard let contents = $0["contents"] as? String else { return nil }
-        guard let date = $0["date"] as? Date else { return nil }
-        guard let isStar = $0["isStar"] as? Bool else { return nil }
-        return Diary(title: title, contents: contents, date: date, isStar: isStar)
+          guard let title = $0["title"] as? String else { return nil }
+          guard let content = $0["content"] as? String else { return nil }
+          guard let done = $0["done"] as? Bool else { return nil }
+          guard let ispublic = $0["ispubic"] as? Bool else { return nil }
+          return Task(title: title, content: content, done: done, ispublic: ispublic)
       }
-      self.diaryList = self.diaryList.sorted(by: {
-        $0.date.compare($1.date) == .orderedDescending
-      })
-    }
+//      self.diaryList = self.diaryList.sorted(by: {
+//        $0.date.compare($1.date) == .orderedDescending
+//      })
+  }
     private func dateToString(date: Date) -> String {
       let formatter = DateFormatter()
       formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
@@ -81,8 +93,11 @@ extension collectionViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as? DiaryCell else { return UICollectionViewCell() }
         let diary = self.diaryList[indexPath.row]
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
+        let nowDetaTime = formatter.string(from: Date())
         cell.titleLable.text = diary.title
-        cell.dateLable.text = self.dateToString(date: diary.date)
+        cell.dateLable.text = nowDetaTime
         return cell
     }
 }
@@ -92,10 +107,10 @@ extension collectionViewController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: (UIScreen.main.bounds.width / 2) - 20, height: 200)
   }
 }
-//
+
 //extension collectionViewController: UICollectionViewDelegate {
 //  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailVC") as? DiaryDetailVC else { return }
+//    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailViewController else { return }
 //    let diary = self.diaryList[indexPath.row]
 //    viewContoller.diary = diary
 //    viewContoller.indexPath = indexPath
@@ -104,12 +119,19 @@ extension collectionViewController: UICollectionViewDelegateFlowLayout {
 //  }
 //}
 
-extension collectionViewController: WriteDiaryViewDelegate {
-  func didSelectReigster(diary: Diary) {
-    self.diaryList.append(diary)
-    self.diaryList = self.diaryList.sorted(by: {
-      $0.date.compare($1.date) == .orderedDescending
-    })
-    self.collectionView.reloadData()
-  }
-}
+//extension collectionViewController: WriteDiaryViewDelegate {
+//  func didSelectReigster(diary: Diary) {
+//    self.diaryList.append(diary)
+//    self.diaryList = self.diaryList.sorted(by: {
+//      $0.date.compare($1.date) == .orderedDescending
+//    })
+//    self.collectionView.reloadData()
+//  }
+//}
+//extension collectionViewController: DiaryDetailViewDelegate {
+//    func didSelectDelegate(indexPath: IndexPath) {
+//        self.diaryList.remove(at: indexPath.row)
+//        self.collectionView.deleteItems(at: [indexPath])
+//    }
+//}
+
