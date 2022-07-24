@@ -89,8 +89,6 @@ class DiaryDetailVC: UIViewController {
     }
         
     @IBAction func tapDeleteButton(_ sender: UIButton) {
-        guard let indexPath = self.indexPath else { return }
-        self.delegate?.didSelectDelegate(indexPath: indexPath)
         self.navigationController?.popViewController(animated: true)
     }
 }

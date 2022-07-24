@@ -55,6 +55,7 @@ class loginVC: UIViewController {
                 print("🤑POST 성공")
                 
             case .failure(let error):
+                debugPrint(response)
                 if response.response?.statusCode != 200 {
                     print("로그인 실패")
                     let loginFailLabel = UILabel(frame: CGRect(x: 95, y: 479, width: 279, height: 45))
