@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DiaryCell: UICollectionViewCell {
+class ToDoCell: UICollectionViewCell {
 
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var dateLable: UILabel!

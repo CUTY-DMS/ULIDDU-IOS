@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Diary {
+struct ShareTitle {
     var title: String
     var contents: String
     var date: Date

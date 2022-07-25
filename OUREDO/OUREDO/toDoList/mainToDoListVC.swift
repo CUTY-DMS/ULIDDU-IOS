@@ -122,7 +122,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 //-----------------------------------------------------------------------------------------------------
             let AT : String? = KeyChain.read(key: Token.accessToken)
             let RT : String? = KeyChain.read(key: Token.refreshToken)
-            let url = "http://43.200.97.218:8080/todo"
+            let url = "http://44.209.75.36:8080/todo"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -12,7 +12,7 @@ class collectionViewController: UIViewController{
 
     @IBOutlet var collectionView: UICollectionView!
     
-    private var diaryList = [Task]() {
+    private var taskList = [Task]() {
         didSet {
             self.saveTasks()
         }
@@ -40,7 +40,7 @@ class collectionViewController: UIViewController{
 
 
     func saveTasks() {
-        let date = self.diaryList.map {
+        let date = self.taskList.map {
              [
                 "title" : $0.title,
                 "content" : $0.content,
@@ -55,7 +55,7 @@ class collectionViewController: UIViewController{
     private func loadDiaryList() {
       let userDefaults = UserDefaults.standard
       guard let data = userDefaults.object(forKey: "tasks") as? [[String: Any]] else { return }
-      self.diaryList = data.compactMap {
+      self.taskList = data.compactMap {
           guard let title = $0["title"] as? String else { return nil }
           guard let content = $0["content"] as? String else { return nil }
           guard let done = $0["done"] as? Bool else { return nil }
@@ -77,11 +77,11 @@ class collectionViewController: UIViewController{
 extension collectionViewController: UICollectionViewDataSource{
     //collection뷰 위치에 표시할 셀을 표시하는 메소드
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.diaryList.count
+        return self.taskList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as? DiaryCell else { return UICollectionViewCell() }
-        let diary = self.diaryList[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as? ToDoCell else { return UICollectionViewCell() }
+        let diary = self.taskList[indexPath.row]
         //오류 = 무조건 현제 날짜만 나옴
         let formatter = DateFormatter()
         formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
@@ -100,8 +100,8 @@ extension collectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension collectionViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? DiaryDetailVC else { return }
-    let diary = self.diaryList[indexPath.row]
+    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? CollectionDetailVC else { return }
+    let diary = self.taskList[indexPath.row]
     viewContoller.indexPath = indexPath
     viewContoller.delegate = self
     UserDefaults.standard.set(indexPath.row, forKey: "index")
@@ -110,13 +110,13 @@ extension collectionViewController: UICollectionViewDelegate {
 }
 
 extension collectionViewController: WriteDiaryViewDelegate {
-  func didSelectReigster(diary: Diary) {
+  func didSelectReigster(diary: ShareTitle) {
     self.collectionView.reloadData()
   }
 }
-extension collectionViewController: DiaryDetailViewDelegate {
+extension collectionViewController: CollectionDetailViewDelegate {
     func didSelectDelegate(indexPath: IndexPath) {
-        self.diaryList.remove(at: indexPath.row)
+        self.taskList.remove(at: indexPath.row)
         self.collectionView.deleteItems(at: [indexPath])
     }
 }

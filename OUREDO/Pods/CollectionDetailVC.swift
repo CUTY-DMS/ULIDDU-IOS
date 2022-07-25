@@ -7,24 +7,24 @@
 
 import UIKit
 
-protocol DiaryDetailViewDelegate: AnyObject {
+protocol CollectionDetailViewDelegate: AnyObject {
     func didSelectDelegate(indexPath: IndexPath)
 }
 
-class DiaryDetailVC: UIViewController {
+class CollectionDetailVC: UIViewController {
 
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var contentsTextView: UITextView!
     @IBOutlet var dateLable: UILabel!
-    weak var delegate: DiaryDetailViewDelegate?
+    weak var delegate: CollectionDetailViewDelegate?
     
-    private var diaryList = [Task]() {
+    private var taskList = [Task]() {
         didSet {
             self.saveTasks()
         }
     }
         
-    var diary: Diary?
+    var shareTitle: ShareTitle?
     var indexPath: IndexPath?
         
     override func viewDidLoad() {
@@ -35,10 +35,10 @@ class DiaryDetailVC: UIViewController {
     }
         
     private func configureView() {
-        guard let diary = self.diary else { return }
-        self.titleLable.text = diary.title
-        self.contentsTextView.text = diary.contents
-        self.dateLable.text = self.dateToString(date: diary.date)
+        guard let shareDetail = self.shareTitle else { return }
+        self.titleLable.text = shareDetail.title
+        self.contentsTextView.text = shareDetail.contents
+        self.dateLable.text = self.dateToString(date: shareDetail.date)
         }
                                                     
     private func dateToString(date: Date) -> String {
@@ -50,7 +50,7 @@ class DiaryDetailVC: UIViewController {
     
     //userDefaults의 값 저장하기
     func saveTasks() {
-        let date = self.diaryList.map {
+        let date = self.taskList.map {
              [
                 "title" : $0.title,
                 "content" : $0.content,
@@ -65,7 +65,7 @@ class DiaryDetailVC: UIViewController {
     private func loadDiaryList() {
         let userDefaults = UserDefaults.standard
         guard let data = userDefaults.object(forKey: "tasks") as? [[String: Any]] else { return }
-        self.diaryList = data.compactMap {
+        self.taskList = data.compactMap {
             guard let title = $0["title"] as? String else { return nil }
             guard let content = $0["content"] as? String else { return nil }
             guard let done = $0["done"] as? Bool else { return nil }
@@ -78,8 +78,8 @@ class DiaryDetailVC: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
         let nowDetaTime = formatter.string(from: Date())
-        titleLable.text = diaryList[index].title
-        contentsTextView.text = diaryList[index].content
+        titleLable.text = taskList[index].title
+        contentsTextView.text = taskList[index].content
         dateLable.text = nowDetaTime
     }
     
