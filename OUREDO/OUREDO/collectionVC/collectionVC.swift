@@ -22,6 +22,7 @@ class collectionViewController: UIViewController{
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        print("collectionVC")
     }
     
     private func configureCollectionView() {
@@ -36,8 +37,6 @@ class collectionViewController: UIViewController{
         wireDiaryViewContoller.delegate = self
     }
 }
-
-
 
     func saveTasks() {
         let date = self.taskList.map {
@@ -101,7 +100,7 @@ extension collectionViewController: UICollectionViewDelegateFlowLayout {
 extension collectionViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "CollectionDetailVC") as? CollectionDetailVC else { return }
-    let diary = self.taskList[indexPath.row]
+//    let diary = self.taskList[indexPath.row]
     viewContoller.indexPath = indexPath
     viewContoller.delegate = self
     UserDefaults.standard.set(indexPath.row, forKey: "index")

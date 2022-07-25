@@ -1,22 +1,22 @@
 //
-//  DiaryDetailVC.swift
-//  Pods
+//  testCollectionDetailVC.swift
+//  OUREDO
 //
-//  Created by 박준하 on 2022/07/21.
+//  Created by 박준하 on 2022/07/25.
 //
 
 import UIKit
 
-protocol CollectionDetailViewDelegate: AnyObject {
+protocol collectionDetailViewDelegate: AnyObject {
     func didSelectDelegate(indexPath: IndexPath)
 }
 
-class CollectionDetailVC: UIViewController {
+class testCollectionDetailVC: UIViewController {
 
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var contentsTextView: UITextView!
     @IBOutlet var dateLable: UILabel!
-    weak var delegate: CollectionDetailViewDelegate?
+    weak var delegate: collectionDetailViewDelegate?
     
     private var taskList = [Task]() {
         didSet {
@@ -32,7 +32,6 @@ class CollectionDetailVC: UIViewController {
         self.configureView()
         self.loadDiaryList()
         self.takeLable()
-        print("CollectionDetailVC")
     }
         
     private func configureView() {
@@ -80,8 +79,20 @@ class CollectionDetailVC: UIViewController {
         formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
         let nowDetaTime = formatter.string(from: Date())
         titleLable.text = taskList[index].title
-        contentsTextView!.text = taskList[index].content
+        contentsTextView?.text = taskList[index].content
         dateLable.text = nowDetaTime
+    }
+    
+    @IBAction func tapEditButton(_ sender: UIButton) {
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "WriteDiaryViewController") as? WriteDiaryViewController else { return }
+        guard let indexPath = indexPath else { return }
+        guard let diary = shareTitle else { return }
+        viewController.toDoEditorMode = .edit(indexPath, diary)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+        
+    @IBAction func tapDeleteButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

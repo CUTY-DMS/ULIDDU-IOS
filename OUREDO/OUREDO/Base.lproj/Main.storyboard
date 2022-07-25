@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z4N-TN-MsX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P4g-0X-2YO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -347,6 +347,7 @@
         <!--Write DiaryVC-->
         <scene sceneID="MYn-WP-DPz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAf-gu-uuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="WriteDiaryVC" id="Yss-aH-nKh" customClass="WriteDiaryVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="111-f5-zhe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -416,7 +417,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZiY-ZE-o5M"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UAf-gu-uuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-820" y="4106"/>
         </scene>
@@ -529,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aR9-AL-TQm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-822" y="4827"/>
+            <point key="canvasLocation" x="-1667" y="4112"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="QTT-yu-PQS">
@@ -621,12 +621,12 @@
             </objects>
             <point key="canvasLocation" x="306" y="3333"/>
         </scene>
-        <!--View Controller-->
+        <!--Write Diary View Controller-->
         <scene sceneID="4Zg-aa-jXU">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="P7W-Le-HBN" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteDiaryViewController" id="P7W-Le-HBN" customClass="WriteDiaryViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XRA-hY-Xx8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gle-v9-Z8c">
@@ -714,6 +714,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fDm-yO-Xrj"/>
+                    <connections>
+                        <outlet property="contentsTextView" destination="nR2-Wb-GjQ" id="rfW-fE-UtI"/>
+                        <outlet property="dateTextField" destination="nJp-Zm-s5p" id="ecO-0A-PTr"/>
+                        <outlet property="titleTextField" destination="IOd-kM-O5R" id="40g-px-N8I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2H5-kl-Yto" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="dd4-ha-0xH" userLabel="Exit" sceneMemberID="exit"/>
@@ -786,7 +791,9 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정"/>
                                         <connections>
-                                            <segue destination="P7W-Le-HBN" kind="show" id="nNR-HN-utU"/>
+                                            <action selector="tapConfirmButton:" destination="6px-Ag-bQv" eventType="touchUpInside" id="88F-Ls-ZPv"/>
+                                            <action selector="tapEditButton:" destination="il5-ju-3Ku" eventType="touchUpInside" id="Yae-d1-6GW"/>
+                                            <segue destination="P7W-Le-HBN" kind="show" id="Aor-Xn-9e8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7D-c9-m5i">
@@ -794,6 +801,9 @@
                                         <color key="tintColor" red="1" green="0.3751004771" blue="0.57235281810000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="삭제"/>
+                                        <connections>
+                                            <action selector="tapDeleteButton:" destination="il5-ju-3Ku" eventType="touchUpInside" id="EVC-wT-1xp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -820,12 +830,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentsLable" destination="kcc-dg-gHC" id="KPS-d3-Fmd"/>
+                        <outlet property="contentsTextView" destination="kcc-dg-gHC" id="KPS-d3-Fmd"/>
                         <outlet property="dateLable" destination="d5f-fk-6yZ" id="zfQ-Cd-I4m"/>
                         <outlet property="titleLable" destination="jNc-eO-0NY" id="sZ6-Mi-hpF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YS0-Rc-QG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6px-Ag-bQv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="306" y="4092"/>
         </scene>

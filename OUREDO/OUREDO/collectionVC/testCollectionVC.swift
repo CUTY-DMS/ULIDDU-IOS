@@ -1,22 +1,22 @@
 //
-//  DiaryDetailVC.swift
-//  Pods
+//  testCollectionVC.swift
+//  OUREDO
 //
-//  Created by 박준하 on 2022/07/21.
+//  Created by 박준하 on 2022/07/25.
 //
 
 import UIKit
 
-protocol CollectionDetailViewDelegate: AnyObject {
-    func didSelectDelegate(indexPath: IndexPath)
+protocol collectionDetailViewDelegate2: AnyObject {
+    func didSelectDelegate2(indexPath: IndexPath)
 }
 
-class CollectionDetailVC: UIViewController {
+class testCollectionDetailVC: UIViewController {
 
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var contentsTextView: UITextView!
     @IBOutlet var dateLable: UILabel!
-    weak var delegate: CollectionDetailViewDelegate?
+    weak var delegate: collectionDetailViewDelegate2?
     
     private var taskList = [Task]() {
         didSet {
@@ -32,7 +32,7 @@ class CollectionDetailVC: UIViewController {
         self.configureView()
         self.loadDiaryList()
         self.takeLable()
-        print("CollectionDetailVC")
+        print("textCollecionVC 클릭")
     }
         
     private func configureView() {
@@ -80,7 +80,7 @@ class CollectionDetailVC: UIViewController {
         formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
         let nowDetaTime = formatter.string(from: Date())
         titleLable.text = taskList[index].title
-        contentsTextView!.text = taskList[index].content
+        contentsTextView?.text = taskList[index].content
         dateLable.text = nowDetaTime
     }
 }
