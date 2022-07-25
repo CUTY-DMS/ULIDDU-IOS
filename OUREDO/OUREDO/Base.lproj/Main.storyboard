@@ -347,7 +347,7 @@
         <!--Write DiaryVC-->
         <scene sceneID="MYn-WP-DPz">
             <objects>
-                <viewController storyboardIdentifier="WriteDiaryViewController" id="Yss-aH-nKh" customClass="WriteDiaryVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteDiaryVC" id="Yss-aH-nKh" customClass="WriteDiaryVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="111-f5-zhe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +423,7 @@
         <!--Collection DetailVC-->
         <scene sceneID="yBF-cX-Ea8">
             <objects>
-                <viewController storyboardIdentifier="DiaryDetailViewController" id="iQb-3R-qmx" customClass="CollectionDetailVC" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionDetailVC" id="iQb-3R-qmx" customClass="CollectionDetailVC" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NUx-rt-iMu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

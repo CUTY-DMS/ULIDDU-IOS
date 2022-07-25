@@ -80,7 +80,7 @@ extension collectionViewController: UICollectionViewDataSource{
         return self.taskList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiaryCell", for: indexPath) as? ToDoCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ToDoCell", for: indexPath) as? ToDoCell else { return UICollectionViewCell() }
         let diary = self.taskList[indexPath.row]
         //오류 = 무조건 현제 날짜만 나옴
         let formatter = DateFormatter()
@@ -100,7 +100,7 @@ extension collectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension collectionViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "DiaryDetailViewController") as? CollectionDetailVC else { return }
+    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "CollectionDetailVC") as? CollectionDetailVC else { return }
     let diary = self.taskList[indexPath.row]
     viewContoller.indexPath = indexPath
     viewContoller.delegate = self
