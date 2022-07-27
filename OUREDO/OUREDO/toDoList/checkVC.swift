@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class checkViewController : UIViewController {
     
     
@@ -14,21 +15,21 @@ class checkViewController : UIViewController {
     @IBOutlet var contentsTextView: UITextView!
     @IBOutlet var dateLable: UILabel!
     
-    var shareTitle: ShareTitle?
-    var indexPath: IndexPath?
-    var index: Int = 0
-    
     private var diaryList = [Task]() {
         didSet {
             self.saveTasks()
         }
     }
     
+    var shareTitle: ShareTitle?
+    var indexPath: IndexPath?
+    var index: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureView()
         self.loadDiaryList()
         self.takeLable()
-        self.configureView()
         print("checkVC")
     }
     
@@ -84,8 +85,8 @@ class checkViewController : UIViewController {
     
     @IBAction func tapEditButton(_ sender: UIButton) {
         guard let viewController = self.storyboard?.instantiateViewController(identifier: "WriteDiaryViewController") as? WriteDiaryViewController else { return }
-        guard let indexPath = indexPath else { return }
-        guard let diary = shareTitle else { return }
+        guard let indexPath = self.indexPath else { return }
+        guard let diary = self.shareTitle else { return }
         viewController.toDoEditorMode = .edit(indexPath, diary)
         self.navigationController?.pushViewController(viewController, animated: true)
     }

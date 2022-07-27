@@ -26,9 +26,11 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         super.viewDidLoad()
         // Do any additional setup after loading the view.)
 //        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
+//        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
         self.tableView?.dataSource = self
         self.loadTasks()
         self.tableView?.delegate = self
+        self.doneButtonTap()
 //---------------------calendarView--------------------------
         calendarView?.scope = .month
         
@@ -87,6 +89,9 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                 
         // day 폰트 설정
         calendarView?.appearance.titleFont = UIFont(name: "Roboto-Regular", size: 14)
+            
+        calendarView?.appearance.eventDefaultColor = UIColor.green
+        calendarView?.appearance.eventSelectionColor = UIColor.green
 //---------------------calendarView--------------------------
     }
 }
@@ -100,6 +105,19 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         guard !self.tasks.isEmpty else { return }
         self.editButton = self.doneButton
         self.tableView.setEditing(true, animated: true)
+        //editButton이 다시 원래로 돌아오지 않음
+        
+    }
+    
+    func editBtnLayout(isOn : Bool){
+        switch isOn {
+        case true:
+            guard !self.tasks.isEmpty else { return }
+            self.editButton = self.doneButton
+            self.tableView.setEditing(true, animated: true)
+        case false:
+            doneButtonTap()
+        }
     }
     
     @IBAction func tapAddButton(_ sender: Any) {
@@ -107,11 +125,11 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
-            let task = Task(title: title, content: content, done: false, ispublic: false)
+            let task = Task(title: title, content: content, done: false, ispublic: true)
             self?.tasks.append(task)
             self?.tableView.reloadData()
             
-            let ispublic : Bool = false
+            let ispublic : Bool = true
             
             //button 클릭시 시간을 가져오기
             let formatter = DateFormatter()
