@@ -8,9 +8,11 @@
 
 import UIKit
 
-class collectionViewController: UIViewController{
+class collectionViewController: UIViewController, UISearchResultsUpdating{
 
     @IBOutlet var collectionView: UICollectionView!
+    
+    let searchController = UISearchController()
     
     private var taskList = [Task]() {
         didSet {
@@ -23,6 +25,14 @@ class collectionViewController: UIViewController{
         self.configureCollectionView()
         self.loadDiaryList()
         print("collectionVC")
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        
+        print(text)
     }
     
     private func configureCollectionView() {

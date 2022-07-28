@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol checkViewDelegate: AnyObject {
+    func didSelectDelegate(indexPath: IndexPath)
+}
 
 class checkViewController : UIViewController {
     
@@ -14,7 +17,8 @@ class checkViewController : UIViewController {
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var contentsTextView: UITextView!
     @IBOutlet var dateLable: UILabel!
-    
+    weak var delegate: checkViewDelegate?
+
     private var diaryList = [Task]() {
         didSet {
             self.saveTasks()
@@ -84,14 +88,11 @@ class checkViewController : UIViewController {
     }
     
     @IBAction func tapEditButton(_ sender: UIButton) {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: "WriteDiaryViewController") as? WriteDiaryViewController else { return }
+        guard let viewController = self.storyboard?.instantiateViewController(identifier: "checkViewController") as? WriteDiaryViewController else { return }
         guard let indexPath = self.indexPath else { return }
         guard let diary = self.shareTitle else { return }
         viewController.toDoEditorMode = .edit(indexPath, diary)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func tapDeleteButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
 }

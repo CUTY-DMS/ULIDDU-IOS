@@ -91,5 +91,10 @@ class userCollectionDetailVC: UIViewController {
         viewController.toDoEditorMode = .edit(indexPath, diary)
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    @IBAction func delButton(_ sender: Any) {
+        guard let indexPath = indexPath else { return }
+        self.delegate?.didSelectDelegate(indexPath: indexPath)
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 

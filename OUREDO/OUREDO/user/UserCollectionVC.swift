@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Alamofire
 
 class userCollectionViewController: UIViewController{
 
+    @IBOutlet var userName: UILabel!
     @IBOutlet var userCollectionView: UICollectionView!
     
     private var taskList = [Task]() {
@@ -16,6 +18,7 @@ class userCollectionViewController: UIViewController{
             self.saveTasks()
         }
     }
+    var result: [resultsArr] = []
     
     var shareTitle: ShareTitle?
     var indexPath: IndexPath?
@@ -25,9 +28,35 @@ class userCollectionViewController: UIViewController{
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        self.getUserList()
         print("userCollectionVC")
     }
+    //오류올유롱ㄹ
+    private func getUserList() {
+        let url = "http://44.209.75.36:8080/user"
+        var request = URLRequest(url: URL(string: url)!)
+        request.method = .get
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        var header = HTTPHeaders()
+        let AT : String? = KeyChain.read(key: Token.accessToken)
+//        header.add(name: "Authorization", value: "Bearer \(AT!)")
+//        header.remove(name: "Authorization")
+        header.update(name: "Authorization", value: "Bearer \(AT!)")
+       
+        AF.request(request).response { (response) in switch response.result {
+                case .success:
+                    debugPrint(response)
     
+                    if let data = try? JSONDecoder().decode([resultsArr].self, from: response.data!){
+                        DispatchQueue.main.async {
+                            self.result = data
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
     private func configureCollectionView() {
         self.userCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         self.userCollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -122,4 +151,3 @@ extension userCollectionViewController: userCollectionDetailViewDelegate {
         self.userCollectionView.deleteItems(at: [indexPath])
     }
 }
-

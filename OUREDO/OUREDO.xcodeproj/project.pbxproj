@@ -35,6 +35,7 @@
 		0EF5CF01286ED2A90036D9A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */; };
 		0EF5CF04286ED2A90036D9A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */; };
 		0EF5CF0C286EE5EE0036D9A5 /* loginHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5CF0B286EE5EE0036D9A5 /* loginHomeVC.swift */; };
+		0EFA5626289282E6006FB2E7 /* friendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA5625289282E6006FB2E7 /* friendsModel.swift */; };
 		7F21F9BF20704179F78B2E06 /* Pods_OUREDO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7C89BFEC61CA211CB5612D /* Pods_OUREDO.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		0EF5CF03286ED2A90036D9A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EF5CF05286ED2A90036D9A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EF5CF0B286EE5EE0036D9A5 /* loginHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginHomeVC.swift; sourceTree = "<group>"; };
+		0EFA5625289282E6006FB2E7 /* friendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsModel.swift; sourceTree = "<group>"; };
 		CB8D9F462B056EA429C097A8 /* Pods-OUREDO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.release.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.release.xcconfig"; sourceTree = "<group>"; };
 		DF7C89BFEC61CA211CB5612D /* Pods_OUREDO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OUREDO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */,
+				0EFA5625289282E6006FB2E7 /* friendsModel.swift */,
 				0E042FF928924279000E34D8 /* userCollectionDetailVC.swift */,
 				0E042FF3289239FA000E34D8 /* userWriteDiaryVC.swift */,
 				0E042FEE2892354F000E34D8 /* UserToDoCell.swift */,
@@ -101,9 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */,
+				0EC3DC462889274600B7B84D /* checkVC.swift */,
 				0E042FEC28915C01000E34D8 /* TestViewController.swift */,
 				0E590E76287835E2001E8478 /* Task.swift */,
-				0EC3DC462889274600B7B84D /* checkVC.swift */,
 			);
 			path = toDoList;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
 				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
 				0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */,
+				0EFA5626289282E6006FB2E7 /* friendsModel.swift in Sources */,
 				0E89A140286EEBC400F196A7 /* httpVO.swift in Sources */,
 				0E042FF4289239FA000E34D8 /* userWriteDiaryVC.swift in Sources */,
 				0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */,

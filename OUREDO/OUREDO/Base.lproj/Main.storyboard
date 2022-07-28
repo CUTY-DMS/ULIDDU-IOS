@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P4g-0X-2YO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z4N-TN-MsX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -269,12 +269,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="85z-7B-cNO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="h6h-vd-fOe">
-                                <rect key="frame" x="0.0" y="154" width="414" height="659"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cn3-Nf-dAy">
                                     <size key="itemSize" width="180" height="200"/>
@@ -325,13 +321,10 @@
                         <viewLayoutGuide key="safeArea" id="vvU-q0-yET"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="85z-7B-cNO" firstAttribute="leading" secondItem="vvU-q0-yET" secondAttribute="leading" id="COX-tl-vga"/>
-                            <constraint firstItem="85z-7B-cNO" firstAttribute="trailing" secondItem="vvU-q0-yET" secondAttribute="trailing" id="YsB-cO-YbT"/>
                             <constraint firstItem="h6h-vd-fOe" firstAttribute="leading" secondItem="vvU-q0-yET" secondAttribute="leading" id="aiu-YJ-mKU"/>
-                            <constraint firstItem="h6h-vd-fOe" firstAttribute="top" secondItem="85z-7B-cNO" secondAttribute="bottom" constant="15" id="cgV-Nf-LWE"/>
-                            <constraint firstItem="85z-7B-cNO" firstAttribute="top" secondItem="vvU-q0-yET" secondAttribute="top" id="e8r-u7-RXD"/>
                             <constraint firstItem="vvU-q0-yET" firstAttribute="bottom" secondItem="h6h-vd-fOe" secondAttribute="bottom" id="rvh-ZC-ndX"/>
                             <constraint firstItem="h6h-vd-fOe" firstAttribute="trailing" secondItem="vvU-q0-yET" secondAttribute="trailing" id="wD3-Sa-gcO"/>
+                            <constraint firstItem="h6h-vd-fOe" firstAttribute="top" secondItem="vvU-q0-yET" secondAttribute="top" constant="20" id="we0-lF-7FB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Bon-45-MA9"/>
@@ -347,7 +340,6 @@
         <!--Write DiaryVC-->
         <scene sceneID="MYn-WP-DPz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UAf-gu-uuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="WriteDiaryVC" id="Yss-aH-nKh" customClass="WriteDiaryVC" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="111-f5-zhe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -417,6 +409,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZiY-ZE-o5M"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UAf-gu-uuA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-820" y="4106"/>
         </scene>
@@ -752,7 +745,7 @@
         <!--Check View Controller-->
         <scene sceneID="M61-io-v6X">
             <objects>
-                <viewController id="il5-ju-3Ku" customClass="checkViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="checkViewController" id="il5-ju-3Ku" customClass="checkViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VZO-LP-d5E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -811,22 +804,13 @@
                                 <rect key="frame" x="133.5" y="493" width="147" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-hJ-oMI">
-                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정"/>
                                         <connections>
                                             <action selector="tapConfirmButton:" destination="6px-Ag-bQv" eventType="touchUpInside" id="88F-Ls-ZPv"/>
                                             <action selector="tapEditButton:" destination="il5-ju-3Ku" eventType="touchUpInside" id="Yae-d1-6GW"/>
                                             <segue destination="P7W-Le-HBN" kind="show" id="Aor-Xn-9e8"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7D-c9-m5i">
-                                        <rect key="frame" x="98.5" y="0.0" width="48.5" height="31"/>
-                                        <color key="tintColor" red="1" green="0.3751004771" blue="0.57235281810000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="삭제"/>
-                                        <connections>
-                                            <action selector="tapDeleteButton:" destination="il5-ju-3Ku" eventType="touchUpInside" id="EVC-wT-1xp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1018,7 +1002,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JDE-Hq-qXc">
-                                <rect key="frame" x="0.0" y="387" width="414" height="426"/>
+                                <rect key="frame" x="0.0" y="389" width="414" height="424"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="e2d-9p-g60">
                                     <size key="itemSize" width="180" height="200"/>
@@ -1065,25 +1049,66 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhb-3I-AG0">
+                                <rect key="frame" x="0.0" y="371" width="414" height="10"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="5Qg-LL-tyF"/>
+                                    <constraint firstAttribute="height" constant="10" id="Of2-ft-9lE"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu3-Ag-9qx">
+                                <rect key="frame" x="150" y="237" width="64" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa5-kb-eqf">
+                                <rect key="frame" x="150" y="275" width="115" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="상세보기"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Nt-RJ-kiZ">
+                                <rect key="frame" x="20" y="206" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="BDh-JT-OGZ"/>
+                                    <constraint firstAttribute="width" constant="100" id="UXG-ND-Fa9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ST6-IC-6DE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ST6-IC-6DE" firstAttribute="trailing" secondItem="gu3-Ag-9qx" secondAttribute="trailing" constant="200" id="2Rv-cb-fvn"/>
+                            <constraint firstItem="Qhb-3I-AG0" firstAttribute="leading" secondItem="ST6-IC-6DE" secondAttribute="leading" id="3fc-wf-C6L"/>
                             <constraint firstItem="JDE-Hq-qXc" firstAttribute="bottom" secondItem="ST6-IC-6DE" secondAttribute="bottom" id="CZt-ol-ils"/>
+                            <constraint firstItem="wa5-kb-eqf" firstAttribute="leading" secondItem="9Nt-RJ-kiZ" secondAttribute="trailing" constant="30" id="I8S-28-cmg"/>
+                            <constraint firstItem="ST6-IC-6DE" firstAttribute="trailing" secondItem="Qhb-3I-AG0" secondAttribute="trailing" id="Kgy-b5-zYC"/>
+                            <constraint firstItem="9Nt-RJ-kiZ" firstAttribute="leading" secondItem="ST6-IC-6DE" secondAttribute="leading" constant="20" id="LaP-0m-Ltv"/>
                             <constraint firstItem="JDE-Hq-qXc" firstAttribute="trailing" secondItem="ST6-IC-6DE" secondAttribute="trailing" id="Ncu-TF-k6r"/>
+                            <constraint firstItem="9Nt-RJ-kiZ" firstAttribute="top" secondItem="ST6-IC-6DE" secondAttribute="top" constant="118" id="OLf-hq-PXE"/>
                             <constraint firstItem="JDE-Hq-qXc" firstAttribute="leading" secondItem="ST6-IC-6DE" secondAttribute="leading" id="XSg-hO-2Cs"/>
-                            <constraint firstItem="JDE-Hq-qXc" firstAttribute="top" secondItem="ST6-IC-6DE" secondAttribute="top" constant="299" id="tkE-d8-hhf"/>
+                            <constraint firstItem="Qhb-3I-AG0" firstAttribute="top" secondItem="ST6-IC-6DE" secondAttribute="top" constant="283" id="avO-4H-lqb"/>
+                            <constraint firstItem="Qhb-3I-AG0" firstAttribute="top" secondItem="wa5-kb-eqf" secondAttribute="bottom" constant="65" id="bEn-Lv-SWa"/>
+                            <constraint firstItem="ST6-IC-6DE" firstAttribute="trailing" secondItem="wa5-kb-eqf" secondAttribute="trailing" constant="149" id="gOH-lP-GYh"/>
+                            <constraint firstItem="wa5-kb-eqf" firstAttribute="top" secondItem="gu3-Ag-9qx" secondAttribute="bottom" constant="8" symbolic="YES" id="qvI-yi-3O5"/>
+                            <constraint firstItem="JDE-Hq-qXc" firstAttribute="top" secondItem="ST6-IC-6DE" secondAttribute="top" constant="301" id="tkE-d8-hhf"/>
+                            <constraint firstItem="gu3-Ag-9qx" firstAttribute="leading" secondItem="9Nt-RJ-kiZ" secondAttribute="trailing" constant="30" id="vWR-MB-tDC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0ku-Vy-UBF"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="0ku-Vy-UBF"/>
                     <connections>
                         <outlet property="userCollectionView" destination="JDE-Hq-qXc" id="Bzh-Ba-nIp"/>
+                        <outlet property="userName" destination="gu3-Ag-9qx" id="x3p-fg-ojM"/>
                         <segue destination="KUB-vb-Lnv" kind="show" id="HRp-yb-1cS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmq-cE-Jyv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3163.7681159420295" y="3332.8125"/>
+            <point key="canvasLocation" x="2407" y="3333"/>
         </scene>
         <!--User Collection DetailVC-->
         <scene sceneID="NM7-pE-IhK">
@@ -1162,6 +1187,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="삭제"/>
                                         <connections>
+                                            <action selector="delButton:" destination="oR2-gz-qPD" eventType="touchUpInside" id="eQX-DG-UzC"/>
                                             <action selector="tapDeleteButton:" destination="il5-ju-3Ku" eventType="touchUpInside" id="ZQ7-IN-gU2"/>
                                         </connections>
                                     </button>
@@ -1198,7 +1224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRF-T1-FOU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4096" y="4140"/>
+            <point key="canvasLocation" x="3333" y="4092"/>
         </scene>
         <!--Uesr Write Diary View Controller-->
         <scene sceneID="23n-Ds-akt">
@@ -1256,6 +1282,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="84" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="수정 완료"/>
+                                        <connections>
+                                            <action selector="tapConfirmButton:" destination="KUB-vb-Lnv" eventType="touchUpInside" id="b4p-hv-eXb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxk-uH-KMR">
                                         <rect key="frame" x="120" y="0.0" width="84" height="31"/>
@@ -1316,7 +1345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1H6-KV-aZ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3164" y="4140"/>
+            <point key="canvasLocation" x="2406" y="4092"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eWM-81-ate">
@@ -1336,7 +1365,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bwx-MB-R44" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3164" y="2551"/>
+            <point key="canvasLocation" x="2407" y="2551"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
