@@ -1,16 +1,15 @@
 //
-//  collectionViewController.swift
+//  UserCollectionVC.swift
 //  OUREDO
 //
-//  Created by 박준하 on 2022/07/21.
+//  Created by 박준하 on 2022/07/28.
 //
-
 
 import UIKit
 
-class collectionViewController: UIViewController{
+class userCollectionViewController: UIViewController{
 
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var userCollectionView: UICollectionView!
     
     private var taskList = [Task]() {
         didSet {
@@ -18,23 +17,27 @@ class collectionViewController: UIViewController{
         }
     }
     
+    var shareTitle: ShareTitle?
+    var indexPath: IndexPath?
+    var index: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
-        print("collectionVC")
+        print("userCollectionVC")
     }
     
     private func configureCollectionView() {
-        self.collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        self.collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+        self.userCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        self.userCollectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        self.userCollectionView.delegate = self
+        self.userCollectionView.dataSource = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let WriteDiaryViewController = segue.destination as? WriteDiaryViewController {
-          WriteDiaryViewController.delegate = self
+      if let uesrWriteDiaryViewController = segue.destination as? uesrWriteDiaryViewController {
+          uesrWriteDiaryViewController.delegate = self
     }
 }
 
@@ -73,33 +76,33 @@ class collectionViewController: UIViewController{
     }
 }
 
-extension collectionViewController: UICollectionViewDataSource{
+extension userCollectionViewController: UICollectionViewDataSource{
     //collection뷰 위치에 표시할 셀을 표시하는 메소드
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.taskList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ToDoCell", for: indexPath) as? ToDoCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserToDoCell", for: indexPath) as? UserToDoCell else { return UICollectionViewCell() }
         let diary = self.taskList[indexPath.row]
         //오류 = 무조건 현제 날짜만 나옴
         let formatter = DateFormatter()
         formatter.dateFormat = "yy년 MM월 dd일(EEEEE)"
         let nowDetaTime = formatter.string(from: Date())
-        cell.titleLable.text = diary.title
-        cell.dateLable.text = nowDetaTime
+        cell.userTitleLable.text = diary.title
+        cell.userDateLable.text = nowDetaTime
         return cell
     }
 }
 
-extension collectionViewController: UICollectionViewDelegateFlowLayout {
+extension userCollectionViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: (UIScreen.main.bounds.width / 2) - 20, height: 200)
   }
 }
 
-extension collectionViewController: UICollectionViewDelegate {
+extension userCollectionViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "CollectionDetailVC") as? CollectionDetailVC else { return }
+    guard let viewContoller = self.storyboard?.instantiateViewController(identifier: "userCollectionDetailVC") as? userCollectionDetailVC else { return }
 //    let diary = self.taskList[indexPath.row]
     viewContoller.indexPath = indexPath
     viewContoller.delegate = self
@@ -108,15 +111,15 @@ extension collectionViewController: UICollectionViewDelegate {
   }
 }
 
-extension collectionViewController: WriteDiaryViewDelegate {
+extension userCollectionViewController: userWriteDiaryViewDelegate {
   func didSelectReigster(diary: ShareTitle) {
-    self.collectionView.reloadData()
+    self.userCollectionView.reloadData()
   }
 }
-extension collectionViewController: CollectionDetailViewDelegate {
+extension userCollectionViewController: userCollectionDetailViewDelegate {
     func didSelectDelegate(indexPath: IndexPath) {
         self.taskList.remove(at: indexPath.row)
-        self.collectionView.deleteItems(at: [indexPath])
+        self.userCollectionView.deleteItems(at: [indexPath])
     }
 }
 

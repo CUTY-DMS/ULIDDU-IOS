@@ -1,8 +1,8 @@
 //
-//  WriteDiaryViewController.swift
+//  userWriteDiaryVC.swift
 //  OUREDO
 //
-//  Created by 박준하 on 2022/07/21.
+//  Created by 박준하 on 2022/07/28.
 //
 
 import UIKit
@@ -12,19 +12,19 @@ enum ToDoEditorMode1{
     case edit(IndexPath, ShareTitle)
 }
 
-protocol WriteDiaryViewDelegate: AnyObject {
+protocol userWriteDiaryViewDelegate: AnyObject {
     func didSelectReigster(diary: ShareTitle)
 }
 
-class WriteDiaryViewController: UIViewController {
-
-    @IBOutlet var mainTitleTextField: UITextField!
-    @IBOutlet var mainContentsTextView: UITextView!
-    @IBOutlet var mainDateTextField: UITextField!
+class userWriteDiaryViewController: UIViewController {
+    
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var contentsTextView: UITextView!
+    @IBOutlet var dateTextField: UITextField!
     //    confirmButton
     private let datePicker = UIDatePicker()
     private var diaryDate: Date?
-    weak var delegate: WriteDiaryViewDelegate?
+    weak var delegate: userWriteDiaryViewDelegate?
     var toDoEditorMode : ToDoEditorMode1 = .new
     
     override func viewDidLoad() {
@@ -40,9 +40,9 @@ class WriteDiaryViewController: UIViewController {
     private func configureEditMode() {
         switch self.toDoEditorMode {
         case let .edit(_, shareTitle):
-            self.mainTitleTextField.text = shareTitle.title
-            self.mainContentsTextView.text = shareTitle.contents
-            self.mainDateTextField.text = self.dateToString(date: shareTitle.date)
+            self.titleTextField.text = shareTitle.title
+            self.contentsTextView.text = shareTitle.contents
+            self.dateTextField.text = self.dateToString(date: shareTitle.date)
             self.diaryDate = shareTitle.date
             
         default:
@@ -60,9 +60,9 @@ class WriteDiaryViewController: UIViewController {
     // textView 선 표시 및 색 지정
     private func configureContentsTextView() {
         let borderColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1.0)
-        self.mainContentsTextView?.layer.borderColor = borderColor.cgColor
-        self.mainContentsTextView?.layer.borderWidth = 0.5
-        self.mainContentsTextView?.layer.cornerRadius = 5.0
+        self.contentsTextView?.layer.borderColor = borderColor.cgColor
+        self.contentsTextView?.layer.borderWidth = 0.5
+        self.contentsTextView?.layer.cornerRadius = 5.0
     }
     
     private func configureDatePicker() {
@@ -70,13 +70,13 @@ class WriteDiaryViewController: UIViewController {
       self.datePicker.preferredDatePickerStyle = .wheels
       self.datePicker.addTarget(self, action: #selector(datePickerValudeDidChange(_:)), for: .valueChanged)
       self.datePicker.locale = Locale(identifier: "ko-KR")
-      self.mainDateTextField?.inputView = self.datePicker
+      self.dateTextField?.inputView = self.datePicker
     }
     
     private func configureInputField() {
-      self.mainContentsTextView?.delegate = self
-      self.mainTitleTextField?.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
-      self.mainDateTextField?.addTarget(self, action: #selector(dateTextFieldDidChange(_:)), for: .editingChanged)
+      self.contentsTextView?.delegate = self
+      self.titleTextField?.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
+      self.dateTextField?.addTarget(self, action: #selector(dateTextFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc private func titleTextFieldDidChange(_ textField: UITextField) {
@@ -96,8 +96,8 @@ class WriteDiaryViewController: UIViewController {
         //한국어 설정
         formmatter.locale = Locale(identifier: "ko_KR")
         self.diaryDate = datePicker.date
-        self.mainDateTextField?.text = formmatter.string(from: datePicker.date)
-        self.mainDateTextField?.sendActions(for: .editingChanged)
+        self.dateTextField?.text = formmatter.string(from: datePicker.date)
+        self.dateTextField?.sendActions(for: .editingChanged)
     }
 
     //유저가 화면 터치시 키보드 또는 다른 장치가 내려감
@@ -106,8 +106,8 @@ class WriteDiaryViewController: UIViewController {
     }
     
     @IBAction func tapConfirmButton(_ sender: Any) {
-        guard let title = self.mainTitleTextField?.text else { return }
-        guard let content = self.mainContentsTextView?.text else { return }
+        guard let title = self.titleTextField?.text else { return }
+        guard let content = self.contentsTextView?.text else { return }
         guard let date = self.diaryDate else { return }
         let diary = ShareTitle(title: title, contents: content, date: date)
         self.delegate?.didSelectReigster(diary: diary)
@@ -121,7 +121,7 @@ class WriteDiaryViewController: UIViewController {
 //    }
 }
 
-extension WriteDiaryViewController: UITextViewDelegate {
+extension userWriteDiaryViewController: UITextViewDelegate {
   func textViewDidChange(_ textView: UITextView) {
 //    self.validateInputField()
   }

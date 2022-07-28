@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import FSCalendar
 
-class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
+class ViewController: UIViewController,FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance{
     @IBOutlet var tableView: UITableView!
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var editButton: UIButton!
@@ -21,7 +21,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             self.saveTasks()
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.)
@@ -31,6 +30,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         self.loadTasks()
         self.tableView?.delegate = self
         self.doneButtonTap()
+        self.calendarView.delegate = self
 //---------------------calendarView--------------------------
         calendarView?.scope = .month
         
@@ -50,7 +50,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         calendarView?.appearance.headerTitleColor = .black
 
         //날짜 여러개 설정
-        calendarView?.allowsMultipleSelection = true
+        calendarView?.allowsMultipleSelection = false
         
         // 헤더의 폰트 정렬 설정
         // .center & .left & .justified & .natural & .right
@@ -89,9 +89,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
                 
         // day 폰트 설정
         calendarView?.appearance.titleFont = UIFont(name: "Roboto-Regular", size: 14)
-            
-        calendarView?.appearance.eventDefaultColor = UIColor.green
-        calendarView?.appearance.eventSelectionColor = UIColor.green
 //---------------------calendarView--------------------------
     }
 }
@@ -119,22 +116,36 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             doneButtonTap()
         }
     }
+    //----------------------------
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        guard let modalPresentView = self.storyboard?.instantiateViewController(identifier: "TestViewController") as? TestViewController else { return }
+        
+        // 날짜를 원하는 형식으로 저장하기 위한 방법입니다.
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        modalPresentView.date = dateFormatter.string(from: date)
+
+        self.present(modalPresentView, animated: true, completion: nil)
+    }
+    //----------------------------
+
     
     @IBAction func tapAddButton(_ sender: Any) {
         let alert = UIAlertController(title: "할 일 등록", message: nil, preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
-            let task = Task(title: title, content: content, done: false, ispublic: true)
+            let task = Task(title: title, content: content, done: false, ispublic: false)
             self?.tasks.append(task)
             self?.tableView.reloadData()
             
-            let ispublic : Bool = true
+            let ispublic : Bool = false
             
             //button 클릭시 시간을 가져오기
             let formatter = DateFormatter()
+            let date = Date()
             formatter.dateFormat = "yyyy-MM-dd"
-            let nowDetaTime = formatter.string(from: Date())
+            let nowDetaTime = formatter.string(from: date)
             print("지금 시간은 : \(nowDetaTime)")
             //post코드
 //-----------------------------------------------------------------------------------------------------

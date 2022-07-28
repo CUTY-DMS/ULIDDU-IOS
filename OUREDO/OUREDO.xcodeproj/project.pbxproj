@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E042FED28915C01000E34D8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FEC28915C01000E34D8 /* TestViewController.swift */; };
+		0E042FEF2892354F000E34D8 /* UserToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FEE2892354F000E34D8 /* UserToDoCell.swift */; };
+		0E042FF1289235D2000E34D8 /* UserCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */; };
+		0E042FF4289239FA000E34D8 /* userWriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF3289239FA000E34D8 /* userWriteDiaryVC.swift */; };
+		0E042FFA28924279000E34D8 /* userCollectionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF928924279000E34D8 /* userCollectionDetailVC.swift */; };
 		0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1CA7BE2871651C00B7DCC5 /* userModel.swift */; };
 		0E32DDA528783EA90023BC8B /* mainToDoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */; };
 		0E590E77287835E2001E8478 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E590E76287835E2001E8478 /* Task.swift */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		005D23A4C7641BBA519F501E /* Pods-OUREDO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.debug.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.debug.xcconfig"; sourceTree = "<group>"; };
+		0E042FEC28915C01000E34D8 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		0E042FEE2892354F000E34D8 /* UserToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToDoCell.swift; sourceTree = "<group>"; };
+		0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionVC.swift; sourceTree = "<group>"; };
+		0E042FF3289239FA000E34D8 /* userWriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userWriteDiaryVC.swift; sourceTree = "<group>"; };
+		0E042FF928924279000E34D8 /* userCollectionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userCollectionDetailVC.swift; sourceTree = "<group>"; };
 		0E1CA7BE2871651C00B7DCC5 /* userModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userModel.swift; sourceTree = "<group>"; };
 		0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainToDoListVC.swift; sourceTree = "<group>"; };
 		0E590E76287835E2001E8478 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../../Task.swift; sourceTree = "<group>"; };
@@ -76,10 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E042FF22892387B000E34D8 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */,
+				0E042FF928924279000E34D8 /* userCollectionDetailVC.swift */,
+				0E042FF3289239FA000E34D8 /* userWriteDiaryVC.swift */,
+				0E042FEE2892354F000E34D8 /* UserToDoCell.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
 		0E19CD3B287488B900746CF2 /* toDoList */ = {
 			isa = PBXGroup;
 			children = (
 				0E32DDA428783EA90023BC8B /* mainToDoListVC.swift */,
+				0E042FEC28915C01000E34D8 /* TestViewController.swift */,
 				0E590E76287835E2001E8478 /* Task.swift */,
 				0EC3DC462889274600B7B84D /* checkVC.swift */,
 			);
@@ -164,10 +186,11 @@
 				0E89A14D286EECB800F196A7 /* signUp */,
 				0E89A14B286EEC7C00F196A7 /* Header */,
 				0E89A14C286EECA500F196A7 /* API */,
-				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
-				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
 				0EC3DC3E288911DD00B7B84D /* collectionVC */,
+				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
+				0E042FF22892387B000E34D8 /* user */,
 				0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */,
+				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
 				0EF5CF05286ED2A90036D9A5 /* Info.plist */,
 			);
 			path = OUREDO;
@@ -310,17 +333,22 @@
 				0EC3DC4528891BE000B7B84D /* CollectionDetailVC.swift in Sources */,
 				0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */,
 				0E32DDA528783EA90023BC8B /* mainToDoListVC.swift in Sources */,
+				0E042FED28915C01000E34D8 /* TestViewController.swift in Sources */,
 				0EC3DC402889124C00B7B84D /* ShareTitle.swift in Sources */,
 				0E965DA6286EE7E100AE1CD0 /* loginVC.swift in Sources */,
+				0E042FEF2892354F000E34D8 /* UserToDoCell.swift in Sources */,
 				0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */,
 				0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */,
 				0EC3DC3D288911B800B7B84D /* collectionVC.swift in Sources */,
+				0E042FF1289235D2000E34D8 /* UserCollectionVC.swift in Sources */,
 				0E590E77287835E2001E8478 /* Task.swift in Sources */,
 				0EC3DC472889274600B7B84D /* checkVC.swift in Sources */,
+				0E042FFA28924279000E34D8 /* userCollectionDetailVC.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
 				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
 				0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */,
 				0E89A140286EEBC400F196A7 /* httpVO.swift in Sources */,
+				0E042FF4289239FA000E34D8 /* userWriteDiaryVC.swift in Sources */,
 				0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */,
 				0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */,
 				0E89A148286EEC4C00F196A7 /* api.swift in Sources */,
