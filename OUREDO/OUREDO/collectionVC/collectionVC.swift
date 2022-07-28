@@ -13,17 +13,27 @@ class collectionViewController: UIViewController, UISearchResultsUpdating{
     @IBOutlet var collectionView: UICollectionView!
     
     let searchController = UISearchController()
-    
+    let refresh = UIRefreshControl()
+
     private var taskList = [Task]() {
         didSet {
             self.saveTasks()
         }
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        collectionView.flashScrollIndicators()
+//    }
+//
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCollectionView()
         self.loadDiaryList()
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.initRefresh()
         print("collectionVC")
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
@@ -130,3 +140,27 @@ extension collectionViewController: CollectionDetailViewDelegate {
     }
 }
 
+//새로 고침
+extension collectionViewController {
+    
+    func initRefresh() {
+        refresh.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)
+        refresh.backgroundColor = UIColor.clear
+        self.collectionView.refreshControl = refresh
+    }
+ 
+    @objc func refreshTable(refresh: UIRefreshControl) {
+        print("refreshTable")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.collectionView.reloadData()
+            refresh.endRefreshing()
+        }
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y < -0.1) {
+            self.refreshTable(refresh: self.refresh)
+        }
+    }
+ 
+}
