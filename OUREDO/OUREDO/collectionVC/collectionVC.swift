@@ -20,13 +20,6 @@ class collectionViewController: UIViewController, UISearchResultsUpdating{
             self.saveTasks()
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        collectionView.flashScrollIndicators()
-//    }
-//
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCollectionView()

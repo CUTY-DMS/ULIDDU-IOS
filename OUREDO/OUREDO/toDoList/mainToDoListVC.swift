@@ -22,9 +22,6 @@ class ViewController: UIViewController,FSCalendarDelegate, FSCalendarDataSource,
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.)
-//        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
-//        self.doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTap))
         self.tableView?.dataSource = self
         self.loadTasks()
         self.tableView?.delegate = self
@@ -289,23 +286,3 @@ extension ViewController : UITableViewDelegate{
         self.tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
-//----------------------------------------------------
-        
-//        // 헤더의 날짜 포맷 설정
-//        calendarView.appearance.headerDateFormat = "YYYY년 MM월"
-//
-//        // 헤더의 폰트 색상 설정
-//        calendarView.appearance.headerTitleColor = UIColor.link
-//
-//        // 헤더의 폰트 정렬 설정
-//        // .center & .left & .justified & .natural & .right
-//        calendarView.appearance.headerTitleAlignment = .left
-//
-//        // 헤더 높이 설정
-//        calendarView.headerHeight = 45
-//
-//        // 헤더 양 옆(전달 & 다음 달) 글씨 투명도
-//        calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-
-
-//-------------------------------------------------------------------------------------------

@@ -32,7 +32,6 @@ class uesrWriteDiaryViewController: UIViewController {
         self.configureContentsTextView()
         self.configureDatePicker()
         self.configureInputField()
-//        self.confirmButton.isEnabled = false
         self.configureEditMode()
         print("userWritDiaryVC")
     }
@@ -115,10 +114,6 @@ class uesrWriteDiaryViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         print("수정 완료")
     }
-    //titleTextField 와 dateTextField 와 contentsTextView가 비어있지 않을 경우만 등록을 할 수 있도록 한다
-//    private func validateInputField() {
-//      self.confirmButton.isEnabled = !(self.titleTextField.text?.isEmpty ?? true) && !(self.dateTextField.text?.isEmpty ?? true) && !self.contentsTextView.text.isEmpty
-//    }
 }
 
 extension uesrWriteDiaryViewController: UITextViewDelegate {

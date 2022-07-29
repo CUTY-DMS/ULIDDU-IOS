@@ -40,99 +40,44 @@ class loginVC: UIViewController {
         
         
         AF.request(request).responseString() { (response) in
-            switch response.result {
-            case .success:
+            switch response.response?.statusCode {
+                
+            case 200:
                 debugPrint(response)
                 if let userDate = try? JSONDecoder().decode(TokenModel.self, from: response.data!) {
                     KeyChain.create(key: Token.accessToken, token: userDate.access_token)
                     KeyChain.create(key: Token.refreshToken, token: userDate.resfresh_token)
+                }
                     print("로그인 성공😁")
-                    if let removable = self.view.viewWithTag(102) {
-                        removable.removeFromSuperview()
-                        self.performSegue(withIdentifier: "goToSuccessVC", sender: self)
-                    }
-                } else { print("이동 성공") }
-                print("🤑POST 성공")
+                    guard let login = self.storyboard?.instantiateViewController(identifier: "goToSuccessVC") else { return }
+                    login.modalPresentationStyle = .fullScreen
+
+                    self.present(login, animated: true, completion: nil)
                 
-            case .failure(let error):
+            default:
                 debugPrint(response)
                 if response.response?.statusCode != 200 {
                     print("로그인 실패")
-                    let loginFailLabel = UILabel(frame: CGRect(x: 95, y: 479, width: 279, height: 45))
-                    loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-                    loginFailLabel.textColor = UIColor.red
-                    loginFailLabel.tag = 102
-                    self.view.addSubview(loginFailLabel)
+                    let AlertMassge = UIAlertController(title: "경고", message: "로그인 실패", preferredStyle: UIAlertController.Style.alert)
+                    let ActionMassge = UIAlertAction(title: "다시 작성해주세요", style: UIAlertAction.Style.default, handler: nil)
                     
+                    AlertMassge.addAction(ActionMassge)
+                    self.present(AlertMassge, animated: true, completion: nil)
                 }
-                print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
             }
-        }
-    }
-    func shakeTextField(textField: UITextField) -> Void{
-        UIView.animate(withDuration: 0.2, animations: {
-            textField.frame.origin.x -= 10
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.2, animations: {
-                textField.frame.origin.x += 20
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.2, animations: {
-                    textField.frame.origin.x -= 10
-                })
-            })
-        })
-    }
-    @objc func didEndOnExit(_ sender: UITextField) {
-        if userId.isFirstResponder {
-            userPassword.becomeFirstResponder()
         }
     }
     
     @IBAction func LoginButton(_ sender: Any) {
-        
-//        guard let ID = userId.text, !ID.isEmpty else { return }
-//        guard let password = userPassword.text, !password.isEmpty else { return }
-//
+
         if(userId.text == "" && userPassword.text == "") {
             let checkAgainAction = UIAlertController(title: "입력을 안했네요 ^^", message: "다시 확인해주세요", preferredStyle: .alert)
             checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
             self.present(checkAgainAction, animated: true, completion: nil)
-//        } else if userModel.isValidId(validUserId: ID) == false {
-//            shakeTextField(textField: userId)
-//            let IDLabel = UILabel(frame: CGRect(x: 115, y: 293, width: 279, height: 45))
-//            IDLabel.text = "id 형식을 확인해 주세요"
-//            IDLabel.textColor = UIColor.red
-//            IDLabel.tag = 100
-//            self.view.addSubview(IDLabel)
-//        } else if userModel.isValidPassword(validPassword: password) == false {
-//            shakeTextField(textField: userPassword)
-//            let passwordLabel = UILabel(frame: CGRect(x: 90, y: 363, width: 279, height: 45))
-//            passwordLabel.text = "비밀번호 형식을 확인해 주세요"
-//            passwordLabel.textColor = UIColor.red
-//            passwordLabel.tag = 101
-//            self.view.addSubview(passwordLabel)
+
         } else {
             print("---------")
             postLogin()
         }
     }
 }
-////로그인 정보가 맞을때만 작동하는 거 만들기
-//------------------------------------------------------
-
-//        if(userName.text != "" && password.text != ""){
-//            let checkAgainAction = UIAlertController(title: "gmail과 password를 확인해주세요", message: "다시 확인해주세요", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };
-//        if(userName.text != "") {
-//            let checkAgainAction = UIAlertController(title: "gmail를 확인해주세요", message: "gamil가 틀렸습니다.", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };if(password.text != "") {
-//            let checkAgainAction = UIAlertController(title: "비밀번호를 확인해주세요", message: "비밀번호를 다시 입력해주세요.", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };
-//    }
-// -----------------------------------------------------

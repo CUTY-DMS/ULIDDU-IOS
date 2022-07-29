@@ -74,23 +74,5 @@ class signUp: UIViewController {
         print("Password : \(userPasssword.text!)")
         print("Age : \(userAge.text!)")
         print("------------------------------")
-//        if(userName.text == "") {
-//            let checkAgainAction = UIAlertController(title: "아이디를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };if(userAge.text == "") {
-//            let checkAgainAction = UIAlertController(title: "email를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };if(userId.text == "") {
-//            let checkAgainAction = UIAlertController(title: "전송된 코드를 입력해주세요.", message: "다시 입력해주세요.", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };if(userPasssword.text == "") {
-//            let checkAgainAction = UIAlertController(title: "패스워드를 확인해주세요", message: "다시 입력해주세요.", preferredStyle: .alert)
-//            checkAgainAction.addAction(UIAlertAction(title: "Okay", style: .default))
-//            self.present(checkAgainAction, animated: true, completion: nil)
-//        };
-//  보류
     }
 }

@@ -30,7 +30,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="LoginButton:" destination="Ziq-N6-PIn" eventType="touchUpInside" id="u8e-O9-RWN"/>
-                                    <segue destination="P4g-0X-2YO" kind="show" identifier="goToSuccessVC" id="g2d-hR-cj1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPR-Z4-oQK">
@@ -857,7 +856,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="qwr-la-3yz">
             <objects>
-                <tabBarController id="P4g-0X-2YO" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="goToSuccessVC" id="P4g-0X-2YO" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="38r-7g-hor"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Nx-uz-tiA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
