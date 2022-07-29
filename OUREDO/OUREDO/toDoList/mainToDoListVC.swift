@@ -14,7 +14,6 @@ class ViewController: UIViewController,FSCalendarDelegate, FSCalendarDataSource,
     @IBOutlet var calendarView: FSCalendar!
     @IBOutlet var editButton: UIButton!
     
-    
     var doneButton : UIButton?
     var tasks = [Task]() {
         didSet {
@@ -128,8 +127,6 @@ class ViewController: UIViewController,FSCalendarDelegate, FSCalendarDataSource,
         self.present(modalPresentView, animated: true, completion: nil)
     }
     //----------------------------
-
-    
     @IBAction func tapAddButton(_ sender: Any) {
         let alert = UIAlertController(title: "할 일 등록", message: nil, preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in

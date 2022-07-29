@@ -36,6 +36,8 @@
 		0EF5CF04286ED2A90036D9A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */; };
 		0EF5CF0C286EE5EE0036D9A5 /* loginHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5CF0B286EE5EE0036D9A5 /* loginHomeVC.swift */; };
 		0EFA5626289282E6006FB2E7 /* friendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA5625289282E6006FB2E7 /* friendsModel.swift */; };
+		0EFA562928938651006FB2E7 /* userDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA562828938651006FB2E7 /* userDetailVC.swift */; };
+		0EFA562D2893C353006FB2E7 /* toDoIdDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA562C2893C353006FB2E7 /* toDoIdDetailVO.swift */; };
 		7F21F9BF20704179F78B2E06 /* Pods_OUREDO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7C89BFEC61CA211CB5612D /* Pods_OUREDO.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		0EF5CF05286ED2A90036D9A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EF5CF0B286EE5EE0036D9A5 /* loginHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginHomeVC.swift; sourceTree = "<group>"; };
 		0EFA5625289282E6006FB2E7 /* friendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendsModel.swift; sourceTree = "<group>"; };
+		0EFA562828938651006FB2E7 /* userDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userDetailVC.swift; sourceTree = "<group>"; };
+		0EFA562C2893C353006FB2E7 /* toDoIdDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toDoIdDetailVO.swift; sourceTree = "<group>"; };
 		CB8D9F462B056EA429C097A8 /* Pods-OUREDO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.release.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.release.xcconfig"; sourceTree = "<group>"; };
 		DF7C89BFEC61CA211CB5612D /* Pods_OUREDO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OUREDO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,6 +160,7 @@
 				0EC3DC3F2889124C00B7B84D /* ShareTitle.swift */,
 				0EC3DC3A2889117700B7B84D /* ToDoCell.swift */,
 				0EC3DC4428891BE000B7B84D /* CollectionDetailVC.swift */,
+				0EFA562C2893C353006FB2E7 /* toDoIdDetailVO.swift */,
 				0EC3DC422889179400B7B84D /* WriteDiaryVC.swift */,
 			);
 			path = collectionVC;
@@ -191,6 +196,7 @@
 				0E89A14C286EECA500F196A7 /* API */,
 				0EC3DC3E288911DD00B7B84D /* collectionVC */,
 				0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */,
+				0EFA562828938651006FB2E7 /* userDetailVC.swift */,
 				0E042FF22892387B000E34D8 /* user */,
 				0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */,
 				0EF5CF00286ED2A90036D9A5 /* Assets.xcassets */,
@@ -341,6 +347,7 @@
 				0E965DA6286EE7E100AE1CD0 /* loginVC.swift in Sources */,
 				0E042FEF2892354F000E34D8 /* UserToDoCell.swift in Sources */,
 				0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */,
+				0EFA562928938651006FB2E7 /* userDetailVC.swift in Sources */,
 				0E89A142286EEBF800F196A7 /* BaseNC.swift in Sources */,
 				0EC3DC3D288911B800B7B84D /* collectionVC.swift in Sources */,
 				0E042FF1289235D2000E34D8 /* UserCollectionVC.swift in Sources */,
@@ -348,6 +355,7 @@
 				0EC3DC472889274600B7B84D /* checkVC.swift in Sources */,
 				0E042FFA28924279000E34D8 /* userCollectionDetailVC.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
+				0EFA562D2893C353006FB2E7 /* toDoIdDetailVO.swift in Sources */,
 				0E1CA7BF2871651C00B7DCC5 /* userModel.swift in Sources */,
 				0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */,
 				0EFA5626289282E6006FB2E7 /* friendsModel.swift in Sources */,

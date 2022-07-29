@@ -20,36 +20,52 @@ class userCollectionViewController: UIViewController{
     }
     var result: [resultsArr] = []
     
+    struct resultsArr: Codable {
+        
+        let name: String
+        let userId: String
+        let age: String
+        
+    }
+
+    
+    let name: String = ""
+    let userId: String = ""
+    let age: String = ""
+    
     var shareTitle: ShareTitle?
     var indexPath: IndexPath?
     var index: Int = 0
+    let refresh = UIRefreshControl()
     
-    override func viewDidLoad() {
+override func viewDidLoad() {
         super.viewDidLoad()
+    self.userCollectionView.dataSource = self
+    self.userCollectionView.delegate = self
+    self.initRefresh()
         self.configureCollectionView()
         self.loadDiaryList()
         self.getUserList()
         print("userCollectionVC")
     }
-    //오류올유롱ㄹ
+    //창이 뜨지 않음
     private func getUserList() {
         let url = "http://44.209.75.36:8080/user"
+        let AT : String? = KeyChain.read(key: Token.accessToken)
         var request = URLRequest(url: URL(string: url)!)
         request.method = .get
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        var header = HTTPHeaders()
-        let AT : String? = KeyChain.read(key: Token.accessToken)
-//        header.add(name: "Authorization", value: "Bearer \(AT!)")
-//        header.remove(name: "Authorization")
-        header.update(name: "Authorization", value: "Bearer \(AT!)")
+        request.headers.update(name: "Authorization", value: "Bearer \(AT!)")
+
        
         AF.request(request).response { (response) in switch response.result {
-                case .success:
+                case .success(_):
                     debugPrint(response)
-    
+                    print("여기까지 성공 ❤️")
                     if let data = try? JSONDecoder().decode([resultsArr].self, from: response.data!){
                         DispatchQueue.main.async {
                             self.result = data
+                            print(data)
                         }
                     }
                 case .failure(let error):
@@ -150,4 +166,28 @@ extension userCollectionViewController: userCollectionDetailViewDelegate {
         self.taskList.remove(at: indexPath.row)
         self.userCollectionView.deleteItems(at: [indexPath])
     }
+}
+//새로 고침
+extension userCollectionViewController {
+    
+    func initRefresh() {
+        refresh.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)
+        refresh.backgroundColor = UIColor.clear
+        self.userCollectionView.refreshControl = refresh
+    }
+ 
+    @objc func refreshTable(refresh: UIRefreshControl) {
+        print("refreshTable")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.userCollectionView.reloadData()
+            refresh.endRefreshing()
+        }
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y < -0.1) {
+            self.refreshTable(refresh: self.refresh)
+        }
+    }
+ 
 }

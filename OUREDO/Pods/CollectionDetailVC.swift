@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 protocol CollectionDetailViewDelegate: AnyObject {
     func didSelectDelegate(indexPath: IndexPath)
@@ -16,6 +17,9 @@ class CollectionDetailVC: UIViewController {
     @IBOutlet var titleLable: UILabel!
     @IBOutlet var contentsTextView: UITextView!
     @IBOutlet var dateLable: UILabel!
+    @IBOutlet var writerLable: UIButton!
+    @IBOutlet var nameLable: UILabel!
+    @IBOutlet var likeCountLable: UILabel!
     weak var delegate: CollectionDetailViewDelegate?
     
     private var taskList = [Task]() {
@@ -23,6 +27,7 @@ class CollectionDetailVC: UIViewController {
             self.saveTasks()
         }
     }
+    var result : [ToDoDetail] = []
         
     var shareTitle: ShareTitle?
     var indexPath: IndexPath?
@@ -33,7 +38,34 @@ class CollectionDetailVC: UIViewController {
         self.loadDiaryList()
         self.takeLable()
         print("CollectionDetailVC")
+//        getUserList()
     }
+    
+    //창이 뜨지 않음
+//    private func getUserList() {
+//        let url = "http://44.209.75.36:8080/todo/{id}"
+//        let AT : String? = KeyChain.read(key: Token.accessToken)
+//        var request = URLRequest(url: URL(string: url)!)
+//        request.method = .get
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.headers.update(name: "Authorization", value: "Bearer \(AT!)")
+//
+//
+//        AF.request(request).response { (response) in switch response.result {
+//                case .success(_):
+//                    debugPrint(response)
+//                    print("여기까지 성공 ❤️")
+//                    if let data = try? JSONDecoder().decode([ToDoDetail].self, from: response.data!){
+//                        DispatchQueue.main.async {
+//                            self.result = data
+//                            print(data)
+//                        }
+//                    }
+//                case .failure(let error):
+//                    print(error)
+//                }
+//        }
+//    }
         
     private func configureView() {
         guard let shareDetail = self.shareTitle else { return }

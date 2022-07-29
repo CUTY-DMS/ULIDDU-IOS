@@ -34,6 +34,7 @@ class collectionViewController: UIViewController, UISearchResultsUpdating{
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.initRefresh()
+
         print("collectionVC")
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
@@ -139,7 +140,6 @@ extension collectionViewController: CollectionDetailViewDelegate {
         self.collectionView.deleteItems(at: [indexPath])
     }
 }
-
 //새로 고침
 extension collectionViewController {
     
@@ -147,6 +147,7 @@ extension collectionViewController {
         refresh.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)
         refresh.backgroundColor = UIColor.clear
         self.collectionView.refreshControl = refresh
+        self.collectionView.reloadData()
     }
  
     @objc func refreshTable(refresh: UIRefreshControl) {
@@ -160,6 +161,7 @@ extension collectionViewController {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y < -0.1) {
             self.refreshTable(refresh: self.refresh)
+            self.collectionView.reloadData()
         }
     }
  
