@@ -41,7 +41,7 @@ class CollectionDetailVC: UIViewController {
 //        getUserList()
     }
     
-    //창이 뜨지 않음
+//    창이 뜨지 않음
 //    private func getUserList() {
 //        let url = "http://44.209.75.36:8080/todo/{id}"
 //        let AT : String? = KeyChain.read(key: Token.accessToken)
