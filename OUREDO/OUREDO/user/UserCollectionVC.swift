@@ -22,12 +22,12 @@ class userCollectionViewController: UIViewController{
     
     struct resultsArr: Codable {
         
-        let name: String
-        let userId: String
-        let age: String
+        var title : String
+        var content : String
+        var done : Bool
+        var ispublic : Bool
         
     }
-
     
     let name: String = ""
     let userId: String = ""
@@ -48,17 +48,31 @@ override func viewDidLoad() {
         self.getUserList()
         print("userCollectionVC")
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadDiaryList()
+    }
     //창이 뜨지 않음
     private func getUserList() {
-        let url = "http://44.209.75.36:8080/user"
+        
+        let formatter = DateFormatter()
+        let date = Date()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let nowDetaTime = formatter.string(from: date)
+        print("지금 시간은 : \(nowDetaTime)")
+        
+        let url = "http://44.209.75.36:8080/todo/list"
         let AT : String? = KeyChain.read(key: Token.accessToken)
+        let body: Parameters = [
+            "todo-year-month" : nowDetaTime
+        ]
         var request = URLRequest(url: URL(string: url)!)
-        request.method = .get
+        request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.headers.update(name: "Authorization", value: "Bearer \(AT!)")
+        var header = HTTPHeaders()
+        header.update(name: "Authorization", value: "Bearer \(AT!)")
 
-       
-        AF.request(request).response { (response) in switch response.result {
+        AF.request(url, method: .get, parameters: body, headers: header).response { (response) in switch response.result {
                 case .success(_):
                     debugPrint(response)
                     print("여기까지 성공 ❤️")
@@ -109,9 +123,6 @@ override func viewDidLoad() {
           guard let ispublic = $0["ispubic"] as? Bool else { return nil }
           return Task(title: title, content: content, done: done, ispublic: ispublic)
       }
-//      self.diaryList = self.diaryList.sorted(by: {
-//        $0.date.compare($1.date) == .orderedDescending
-//      })
   }
     private func dateToString(date: Date) -> String {
       let formatter = DateFormatter()

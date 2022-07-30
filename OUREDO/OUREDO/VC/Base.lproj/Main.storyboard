@@ -143,13 +143,13 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <color key="highlightedColor" systemColor="labelColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="passWord" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KiB-AB-60A">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KiB-AB-60A">
                                 <rect key="frame" x="40" y="467" width="334" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="sfa-9M-DTl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="age" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vPg-oH-Jo1">
                                 <rect key="frame" x="40" y="555" width="334" height="40"/>
@@ -1001,7 +1001,7 @@
         <!--User Collection View Controller-->
         <scene sceneID="R4f-Hj-u9Z">
             <objects>
-                <viewController id="wxr-eA-SWB" customClass="userCollectionViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userDetailViewController" id="wxr-eA-SWB" customClass="userCollectionViewController" customModule="OUREDO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OVV-hX-AeP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1264,18 +1264,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="m6z-eg-FiH">
                                 <rect key="frame" x="133.5" y="576" width="147" height="31"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DDP-ZL-nHH">
-                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="수정"/>
-                                        <connections>
-                                            <action selector="tapConfirmButton:" destination="6px-Ag-bQv" eventType="touchUpInside" id="cLx-cy-jm8"/>
-                                            <action selector="tapEditButton:" destination="il5-ju-3Ku" eventType="touchUpInside" id="6Sa-9e-ohx"/>
-                                            <action selector="tapEditButton:" destination="oR2-gz-qPD" eventType="touchUpInside" id="u53-q2-LAZ"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4d-Xy-DN8">
-                                        <rect key="frame" x="98.5" y="0.0" width="48.5" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="147" height="31"/>
                                         <color key="tintColor" red="1" green="0.3751004771" blue="0.57235281810000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="삭제"/>

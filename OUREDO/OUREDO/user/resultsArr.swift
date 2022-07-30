@@ -5,11 +5,7 @@
 //  Created by 박준하 on 2022/07/28.
 //
 
-struct friendsModel: Codable {
-    
-    let results: [resultsArr]
-    
-}
+import Foundation
 
 struct resultsArr: Codable {
     
