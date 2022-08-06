@@ -1,6 +1,0 @@
-framework module Pods_OUREDO {
-  umbrella header "Pods-OUREDO-umbrella.h"
-
-  export *
-  module * { export * }
-}
