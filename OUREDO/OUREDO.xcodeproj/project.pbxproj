@@ -40,13 +40,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E042FF22892387B000E34D8 /* user */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = user;
-			sourceTree = "<group>";
-		};
 		0EA4700D2895281100FAC835 /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,7 +73,6 @@
 		0EF5CEF6286ED2A90036D9A5 /* OUREDO */ = {
 			isa = PBXGroup;
 			children = (
-				0E042FF22892387B000E34D8 /* user */,
 				0EA4700D2895281100FAC835 /* VC */,
 				0EF5CF05286ED2A90036D9A5 /* Info.plist */,
 			);
