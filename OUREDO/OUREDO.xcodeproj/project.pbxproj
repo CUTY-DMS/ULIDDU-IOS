@@ -11,9 +11,6 @@
 		0E042FF1289235D2000E34D8 /* UserCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */; };
 		0E042FF4289239FA000E34D8 /* UserWriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF3289239FA000E34D8 /* UserWriteDiaryVC.swift */; };
 		0E042FFA28924279000E34D8 /* UserCollectionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF928924279000E34D8 /* UserCollectionDetailVC.swift */; };
-		0E89A140286EEBC400F196A7 /* HttpVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A13F286EEBC400F196A7 /* HttpVO.swift */; };
-		0E89A144286EEC1C00F196A7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A143286EEC1C00F196A7 /* Header.swift */; };
-		0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A145286EEC3500F196A7 /* TokenModel.swift */; };
 		0E89A148286EEC4C00F196A7 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A147286EEC4C00F196A7 /* Api.swift */; };
 		0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A149286EEC5F00F196A7 /* APIProvider.swift */; };
 		0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3A2889117700B7B84D /* ToDoCell.swift */; };
@@ -38,9 +35,6 @@
 		0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionVC.swift; sourceTree = "<group>"; };
 		0E042FF3289239FA000E34D8 /* UserWriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWriteDiaryVC.swift; sourceTree = "<group>"; };
 		0E042FF928924279000E34D8 /* UserCollectionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionDetailVC.swift; sourceTree = "<group>"; };
-		0E89A13F286EEBC400F196A7 /* HttpVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpVO.swift; sourceTree = "<group>"; };
-		0E89A143286EEC1C00F196A7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		0E89A145286EEC3500F196A7 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		0E89A147286EEC4C00F196A7 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		0E89A149286EEC5F00F196A7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		0EC3DC3A2889117700B7B84D /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
@@ -85,16 +79,6 @@
 				0E042FEE2892354F000E34D8 /* UserToDoCell.swift */,
 			);
 			path = user;
-			sourceTree = "<group>";
-		};
-		0E89A14B286EEC7C00F196A7 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				0E89A143286EEC1C00F196A7 /* Header.swift */,
-				0E89A13F286EEBC400F196A7 /* HttpVO.swift */,
-				0E89A145286EEC3500F196A7 /* TokenModel.swift */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		0E89A14C286EECA500F196A7 /* API */ = {
@@ -152,7 +136,6 @@
 		0EF5CEF6286ED2A90036D9A5 /* OUREDO */ = {
 			isa = PBXGroup;
 			children = (
-				0E89A14B286EEC7C00F196A7 /* Header */,
 				0E89A14C286EECA500F196A7 /* API */,
 				0EC3DC3E288911DD00B7B84D /* collectionVC */,
 				0E042FF22892387B000E34D8 /* user */,
@@ -294,9 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E89A144286EEC1C00F196A7 /* Header.swift in Sources */,
 				0EC3DC4528891BE000B7B84D /* CollectionDetailVC.swift in Sources */,
-				0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */,
 				0EC3DC402889124C00B7B84D /* ShareTitle.swift in Sources */,
 				0E042FEF2892354F000E34D8 /* UserToDoCell.swift in Sources */,
 				0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */,
@@ -308,7 +289,6 @@
 				0EFA562D2893C353006FB2E7 /* ToDoIdDetailVO.swift in Sources */,
 				0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */,
 				0EFA5626289282E6006FB2E7 /* resultsArr.swift in Sources */,
-				0E89A140286EEBC400F196A7 /* HttpVO.swift in Sources */,
 				0E042FF4289239FA000E34D8 /* UserWriteDiaryVC.swift in Sources */,
 				0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */,
 				0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */,
