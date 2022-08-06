@@ -11,11 +11,6 @@
 		0E042FF1289235D2000E34D8 /* UserCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */; };
 		0E042FF4289239FA000E34D8 /* UserWriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF3289239FA000E34D8 /* UserWriteDiaryVC.swift */; };
 		0E042FFA28924279000E34D8 /* UserCollectionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E042FF928924279000E34D8 /* UserCollectionDetailVC.swift */; };
-		0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3A2889117700B7B84D /* ToDoCell.swift */; };
-		0EC3DC3D288911B800B7B84D /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3C288911B800B7B84D /* CollectionVC.swift */; };
-		0EC3DC402889124C00B7B84D /* ShareTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3F2889124C00B7B84D /* ShareTitle.swift */; };
-		0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC422889179400B7B84D /* WriteDiaryVC.swift */; };
-		0EC3DC4528891BE000B7B84D /* CollectionDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC4428891BE000B7B84D /* CollectionDetailVC.swift */; };
 		0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5CEF7286ED2A90036D9A5 /* AppDelegate.swift */; };
 		0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF5CEF9286ED2A90036D9A5 /* SceneDelegate.swift */; };
 		0EF5CEFF286ED2A90036D9A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5CEFD286ED2A90036D9A5 /* Main.storyboard */; };
@@ -23,7 +18,6 @@
 		0EF5CF04286ED2A90036D9A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EF5CF02286ED2A90036D9A5 /* LaunchScreen.storyboard */; };
 		0EFA5626289282E6006FB2E7 /* resultsArr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA5625289282E6006FB2E7 /* resultsArr.swift */; };
 		0EFA562928938651006FB2E7 /* UserDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA562828938651006FB2E7 /* UserDetailVC.swift */; };
-		0EFA562D2893C353006FB2E7 /* ToDoIdDetailVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA562C2893C353006FB2E7 /* ToDoIdDetailVO.swift */; };
 		7F21F9BF20704179F78B2E06 /* Pods_OUREDO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7C89BFEC61CA211CB5612D /* Pods_OUREDO.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,11 +27,6 @@
 		0E042FF0289235D2000E34D8 /* UserCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionVC.swift; sourceTree = "<group>"; };
 		0E042FF3289239FA000E34D8 /* UserWriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWriteDiaryVC.swift; sourceTree = "<group>"; };
 		0E042FF928924279000E34D8 /* UserCollectionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionDetailVC.swift; sourceTree = "<group>"; };
-		0EC3DC3A2889117700B7B84D /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
-		0EC3DC3C288911B800B7B84D /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
-		0EC3DC3F2889124C00B7B84D /* ShareTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTitle.swift; sourceTree = "<group>"; };
-		0EC3DC422889179400B7B84D /* WriteDiaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WriteDiaryVC.swift; path = ../WriteDiaryVC.swift; sourceTree = "<group>"; };
-		0EC3DC4428891BE000B7B84D /* CollectionDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionDetailVC.swift; path = ../../Pods/CollectionDetailVC.swift; sourceTree = "<group>"; };
 		0EF5CEF4286ED2A90036D9A5 /* OUREDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OUREDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EF5CEF7286ED2A90036D9A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EF5CEF9286ED2A90036D9A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,7 +36,6 @@
 		0EF5CF05286ED2A90036D9A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EFA5625289282E6006FB2E7 /* resultsArr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resultsArr.swift; sourceTree = "<group>"; };
 		0EFA562828938651006FB2E7 /* UserDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailVC.swift; sourceTree = "<group>"; };
-		0EFA562C2893C353006FB2E7 /* ToDoIdDetailVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoIdDetailVO.swift; sourceTree = "<group>"; };
 		CB8D9F462B056EA429C097A8 /* Pods-OUREDO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OUREDO.release.xcconfig"; path = "Target Support Files/Pods-OUREDO/Pods-OUREDO.release.xcconfig"; sourceTree = "<group>"; };
 		DF7C89BFEC61CA211CB5612D /* Pods_OUREDO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OUREDO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,12 +80,6 @@
 		0EC3DC3E288911DD00B7B84D /* collectionVC */ = {
 			isa = PBXGroup;
 			children = (
-				0EC3DC3C288911B800B7B84D /* CollectionVC.swift */,
-				0EC3DC3F2889124C00B7B84D /* ShareTitle.swift */,
-				0EC3DC3A2889117700B7B84D /* ToDoCell.swift */,
-				0EC3DC4428891BE000B7B84D /* CollectionDetailVC.swift */,
-				0EFA562C2893C353006FB2E7 /* ToDoIdDetailVO.swift */,
-				0EC3DC422889179400B7B84D /* WriteDiaryVC.swift */,
 			);
 			path = collectionVC;
 			sourceTree = "<group>";
@@ -263,19 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC3DC4528891BE000B7B84D /* CollectionDetailVC.swift in Sources */,
-				0EC3DC402889124C00B7B84D /* ShareTitle.swift in Sources */,
 				0E042FEF2892354F000E34D8 /* UserToDoCell.swift in Sources */,
 				0EFA562928938651006FB2E7 /* UserDetailVC.swift in Sources */,
-				0EC3DC3D288911B800B7B84D /* CollectionVC.swift in Sources */,
 				0E042FF1289235D2000E34D8 /* UserCollectionVC.swift in Sources */,
 				0E042FFA28924279000E34D8 /* UserCollectionDetailVC.swift in Sources */,
 				0EF5CEF8286ED2A90036D9A5 /* AppDelegate.swift in Sources */,
-				0EFA562D2893C353006FB2E7 /* ToDoIdDetailVO.swift in Sources */,
-				0EC3DC432889179400B7B84D /* WriteDiaryVC.swift in Sources */,
 				0EFA5626289282E6006FB2E7 /* resultsArr.swift in Sources */,
 				0E042FF4289239FA000E34D8 /* UserWriteDiaryVC.swift in Sources */,
-				0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */,
 				0EF5CEFA286ED2A90036D9A5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
