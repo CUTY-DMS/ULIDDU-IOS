@@ -16,7 +16,6 @@
 		0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A145286EEC3500F196A7 /* TokenModel.swift */; };
 		0E89A148286EEC4C00F196A7 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A147286EEC4C00F196A7 /* Api.swift */; };
 		0E89A14A286EEC5F00F196A7 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E89A149286EEC5F00F196A7 /* APIProvider.swift */; };
-		0E965DA9286EE9CF00AE1CD0 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E965DA8286EE9CF00AE1CD0 /* SignUpVC.swift */; };
 		0EC3DC3B2889117700B7B84D /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3A2889117700B7B84D /* ToDoCell.swift */; };
 		0EC3DC3D288911B800B7B84D /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3C288911B800B7B84D /* CollectionVC.swift */; };
 		0EC3DC402889124C00B7B84D /* ShareTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC3DC3F2889124C00B7B84D /* ShareTitle.swift */; };
@@ -44,7 +43,6 @@
 		0E89A145286EEC3500F196A7 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		0E89A147286EEC4C00F196A7 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		0E89A149286EEC5F00F196A7 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
-		0E965DA8286EE9CF00AE1CD0 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		0EC3DC3A2889117700B7B84D /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		0EC3DC3C288911B800B7B84D /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		0EC3DC3F2889124C00B7B84D /* ShareTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTitle.swift; sourceTree = "<group>"; };
@@ -108,14 +106,6 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		0E89A14D286EECB800F196A7 /* signUp */ = {
-			isa = PBXGroup;
-			children = (
-				0E965DA8286EE9CF00AE1CD0 /* SignUpVC.swift */,
-			);
-			path = signUp;
-			sourceTree = "<group>";
-		};
 		0EA4700D2895281100FAC835 /* VC */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +152,6 @@
 		0EF5CEF6286ED2A90036D9A5 /* OUREDO */ = {
 			isa = PBXGroup;
 			children = (
-				0E89A14D286EECB800F196A7 /* signUp */,
 				0E89A14B286EEC7C00F196A7 /* Header */,
 				0E89A14C286EECA500F196A7 /* API */,
 				0EC3DC3E288911DD00B7B84D /* collectionVC */,
@@ -305,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E965DA9286EE9CF00AE1CD0 /* SignUpVC.swift in Sources */,
 				0E89A144286EEC1C00F196A7 /* Header.swift in Sources */,
 				0EC3DC4528891BE000B7B84D /* CollectionDetailVC.swift in Sources */,
 				0E89A146286EEC3500F196A7 /* TokenModel.swift in Sources */,
