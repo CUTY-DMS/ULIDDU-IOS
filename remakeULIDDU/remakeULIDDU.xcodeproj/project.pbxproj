@@ -7,22 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E33385928A5E5BD00437E0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E33385828A5E5BD00437E0C /* MainViewController.swift */; };
 		0E792FBE289E0EAB008E3209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E792FBD289E0EAB008E3209 /* AppDelegate.swift */; };
 		0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */; };
 		0E792FC7289E0EAC008E3209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E792FC6289E0EAC008E3209 /* Assets.xcassets */; };
 		0E792FCA289E0EAC008E3209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E792FC8289E0EAC008E3209 /* LaunchScreen.storyboard */; };
+		0ED5068228A605FB00D73CFD /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED5068128A605FB00D73CFD /* MainTabBarController.swift */; };
+		0ED5068428A6068700D73CFD /* PublicFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */; };
+		0ED5068628A606E700D73CFD /* MainHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED5068528A606E700D73CFD /* MainHomeViewController.swift */; };
+		0ED5068828A6070400D73CFD /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED5068728A6070400D73CFD /* UserViewController.swift */; };
 		1A0DDEABB0FF8104A167410E /* Pods_remakeULIDDU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A25C12F76FA4ACEA66DB2 /* Pods_remakeULIDDU.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E33385828A5E5BD00437E0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0E792FBA289E0EAB008E3209 /* remakeULIDDU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = remakeULIDDU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E792FBD289E0EAB008E3209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0E792FC6289E0EAC008E3209 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E792FC9289E0EAC008E3209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E792FCB289E0EAC008E3209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0ED5068128A605FB00D73CFD /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicFeedViewController.swift; sourceTree = "<group>"; };
+		0ED5068528A606E700D73CFD /* MainHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeViewController.swift; sourceTree = "<group>"; };
+		0ED5068728A6070400D73CFD /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		4C3A25C12F76FA4ACEA66DB2 /* Pods_remakeULIDDU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_remakeULIDDU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1A348369854C67BA011660 /* Pods-remakeULIDDU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-remakeULIDDU.debug.xcconfig"; path = "Target Support Files/Pods-remakeULIDDU/Pods-remakeULIDDU.debug.xcconfig"; sourceTree = "<group>"; };
 		803BB65F43D5ADAF73593C35 /* Pods-remakeULIDDU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-remakeULIDDU.release.xcconfig"; path = "Target Support Files/Pods-remakeULIDDU/Pods-remakeULIDDU.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,8 +77,11 @@
 			isa = PBXGroup;
 			children = (
 				0E792FBD289E0EAB008E3209 /* AppDelegate.swift */,
-				0E33385828A5E5BD00437E0C /* MainViewController.swift */,
 				0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */,
+				0ED5068128A605FB00D73CFD /* MainTabBarController.swift */,
+				0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */,
+				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
+				0ED5068728A6070400D73CFD /* UserViewController.swift */,
 				0E792FC6289E0EAC008E3209 /* Assets.xcassets */,
 				0E792FC8289E0EAC008E3209 /* LaunchScreen.storyboard */,
 				0E792FCB289E0EAC008E3209 /* Info.plist */,
@@ -203,8 +212,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E792FBE289E0EAB008E3209 /* AppDelegate.swift in Sources */,
+				0ED5068828A6070400D73CFD /* UserViewController.swift in Sources */,
+				0ED5068628A606E700D73CFD /* MainHomeViewController.swift in Sources */,
 				0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */,
-				0E33385928A5E5BD00437E0C /* MainViewController.swift in Sources */,
+				0ED5068228A605FB00D73CFD /* MainTabBarController.swift in Sources */,
+				0ED5068428A6068700D73CFD /* PublicFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
