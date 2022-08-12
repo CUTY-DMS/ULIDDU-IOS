@@ -17,14 +17,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = scene as? UIWindowScene else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let mainTC = MainTabBarController()
+//        let mainTC = MainTabBarController()
+        let FirstView = FirstViewController()
         
         
-        window?.rootViewController = mainTC
+        window?.rootViewController = FirstView
         
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
     }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        window?.rootViewController = UINavigationController(rootViewController: MainLoginViewController())
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+
+        return true
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
