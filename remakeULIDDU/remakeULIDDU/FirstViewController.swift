@@ -40,8 +40,11 @@ class FirstViewController : UIViewController {
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .black
         loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         view.addSubview(loginButton)
+        
+        loginButton.layer.cornerRadius = 15
         
         loginButton.snp.makeConstraints{
             $0.height.equalTo(55)
@@ -66,6 +69,11 @@ class FirstViewController : UIViewController {
         signUpButton.backgroundColor = .black
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(signUpButton)
+        
+        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        signUpButton.layer.cornerRadius = 15
+
         
         signUpButton.snp.makeConstraints{
             $0.height.equalTo(55)
