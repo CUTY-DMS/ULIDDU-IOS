@@ -6,6 +6,8 @@ target 'remakeULIDDU' do
   use_frameworks!
 
 	pod 'SnapKit', '~> 5.6.0'
+	pod 'Alamofire'
+
 
   # Pods for remakeULIDDU
 

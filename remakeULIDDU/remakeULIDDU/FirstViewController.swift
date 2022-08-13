@@ -59,7 +59,12 @@ class FirstViewController : UIViewController {
         }
     
     @objc func LoginButtonAction(sender: UIButton!){
-        print("로그인버튼 실행됨 😃")
+        let goToLoginVC = MainLoginViewController()
+        goToLoginVC.modalPresentationStyle = .fullScreen
+        //반만 나오는 이동
+//        goToLoginVC.modalPresentationStyle = .automatic
+        self.present(goToLoginVC, animated: true, completion: nil)
+        print("MainLoginViewController 이동 성공 😃")
     }
     
     func configureSignUpButton() {

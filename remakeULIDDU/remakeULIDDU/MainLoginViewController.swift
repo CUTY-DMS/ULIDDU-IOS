@@ -11,37 +11,109 @@ import SnapKit
 class MainLoginViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let textView = UITextView()
-        view.addSubview(textView)
-        
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        textView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        
-        configureTestButton()
+        view.backgroundColor = .white
+
+        configureLoginButton()
+        configureSignUpButton()
+        loginViewLine()
+        signUpViewLine()
+        loginText()
     }
     
-    func configureTestButton() {
-        let testButton = UIButton()
-        testButton.setTitle("로그인!", for: .normal)
-        testButton.backgroundColor = .red
-        testButton.translatesAutoresizingMaskIntoConstraints = false
+    func loginViewLine() {
+        let loginLine = UIView()
+        view.addSubview(loginLine)
+        loginLine.backgroundColor = .black
+        loginLine.snp.makeConstraints{
+            $0.height.equalTo(2)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-500)
+            $0.leading.equalTo(45)
+        }
+    }
+    
+    func loginText() {
+        let loginLabel = UILabel()
+        loginLabel.textColor = .black
+        loginLabel.text = "Login"
+        view.addSubview(loginLabel)
         
-        view.addSubview(testButton)
+        loginLabel.font = UIFont.boldSystemFont(ofSize: 35)
         
-        let safeArea = view.safeAreaLayoutGuide
+        loginLabel.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(200)
+            $0.trailing.equalTo(-100)
+            $0.bottom.equalTo(-700)
+            $0.leading.equalTo(170)
+            
+        }
+    }
+    
+    func signUpViewLine() {
+        let signUpLine = UIView()
+        view.addSubview(signUpLine)
+        signUpLine.backgroundColor = .black
+        signUpLine.snp.makeConstraints{
+            $0.height.equalTo(2)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-420)
+            $0.leading.equalTo(45)
+        }
+    }
+    
+    func configureLoginButton() {
+        let loginButton = UIButton()
+        loginButton.setTitle("Sign in", for: .normal)
+        loginButton.backgroundColor = .black
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
         
-        testButton.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20).isActive = true
+        view.addSubview(loginButton)
         
-        testButton.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -20).isActive = true
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         
-        testButton.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20).isActive = true
+        loginButton.snp.makeConstraints{
+            $0.height.equalTo(55)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-230)
+            $0.leading.equalTo(45)
+        }
         
-        testButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginbuttonAction), for: .touchUpInside)
         
         }
-    @objc func buttonAction(sender: UIButton!){
-        print("버튼 실행됨")
+    @objc func loginbuttonAction(sender: UIButton!){
+        print(" 로그인 버튼 실행됨")
+    }
+    
+    func configureSignUpButton() {
+        
+        let signUpButton = UIButton()
+        signUpButton.setTitle("Sign Up", for: .normal)
+        signUpButton.setTitleColor(.black, for: .normal)
+        signUpButton.backgroundColor = .white
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        
+        view.addSubview(signUpButton)
+        
+        signUpButton.snp.makeConstraints{
+            $0.height.equalTo(55)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-170)
+            $0.leading.equalTo(45)
+        }
+        
+        signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
+        
+        }
+    @objc func signUpButtonAction(sender: UIButton!){
+        print(" 회원가입 버튼 실행됨")
     }
 
 }
