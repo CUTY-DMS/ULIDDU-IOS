@@ -18,6 +18,38 @@ class MainLoginViewController : UIViewController {
         loginViewLine()
         signUpViewLine()
         loginText()
+        idTextField()
+        passworldField()
+    }
+    
+    func idTextField() {
+        let idField = UITextField()
+        idField.borderStyle = .none
+        view.addSubview(idField)
+        idField.attributedPlaceholder = NSAttributedString(string: "Id", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        idField.textColor = .black
+        idField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-500)
+            $0.leading.equalTo(45)
+        }
+    }
+    
+    func passworldField() {
+        let passworldField = UITextField()
+        passworldField.borderStyle = .none
+        passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passworldField.textColor = .black
+        view.addSubview(passworldField)
+        passworldField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-420)
+            $0.leading.equalTo(45)
+        }
     }
     
     func loginViewLine() {
