@@ -43,6 +43,19 @@ class MainLoginViewController : UIViewController {
         }
     }
     
+    func signUpViewLine() {
+        let signUpLine = UIView()
+        view.addSubview(signUpLine)
+        signUpLine.backgroundColor = .black
+        signUpLine.snp.makeConstraints{
+            $0.height.equalTo(2)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-420)
+            $0.leading.equalTo(45)
+        }
+    }
+    
     func loginText() {
         let loginLabel = UILabel()
         loginLabel.textColor = .black
@@ -58,19 +71,6 @@ class MainLoginViewController : UIViewController {
             $0.bottom.equalTo(-700)
             $0.leading.equalTo(170)
             
-        }
-    }
-    
-    func signUpViewLine() {
-        let signUpLine = UIView()
-        view.addSubview(signUpLine)
-        signUpLine.backgroundColor = .black
-        signUpLine.snp.makeConstraints{
-            $0.height.equalTo(2)
-            $0.width.equalTo(325)
-            $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-420)
-            $0.leading.equalTo(45)
         }
     }
     
@@ -151,7 +151,7 @@ class MainLoginViewController : UIViewController {
         }
     @objc func signUpButtonAction(sender: UIButton!){
         print(" 회원가입 버튼 실행됨")
-        let goToMainTabBarVC = MainTabBarController()
+        let goToMainTabBarVC = MainSignUpViewController()
         goToMainTabBarVC.modalPresentationStyle = .fullScreen
         self.present(goToMainTabBarVC, animated: true, completion: nil)
     }

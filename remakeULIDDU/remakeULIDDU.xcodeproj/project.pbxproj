@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E34201A28A72B4500A0933E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201928A72B4500A0933E /* Header.swift */; };
 		0E34201C28A72BEB00A0933E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201B28A72BEB00A0933E /* TokenModel.swift */; };
+		0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201D28A7678300A0933E /* MainSignUpViewController.swift */; };
 		0E792FBE289E0EAB008E3209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E792FBD289E0EAB008E3209 /* AppDelegate.swift */; };
 		0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */; };
 		0E792FC7289E0EAC008E3209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E792FC6289E0EAC008E3209 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0E34201928A72B4500A0933E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0E34201B28A72BEB00A0933E /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		0E34201D28A7678300A0933E /* MainSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignUpViewController.swift; sourceTree = "<group>"; };
 		0E792FBA289E0EAB008E3209 /* remakeULIDDU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = remakeULIDDU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E792FBD289E0EAB008E3209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0ED5068128A605FB00D73CFD /* MainTabBarController.swift */,
 				0ED5068B28A6839C00D73CFD /* FirstViewController.swift */,
 				0ED5068928A6166200D73CFD /* MainLoginViewController.swift */,
+				0E34201D28A7678300A0933E /* MainSignUpViewController.swift */,
 				0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */,
 				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
 				0ED5068728A6070400D73CFD /* UserViewController.swift */,
@@ -231,6 +234,7 @@
 				0ED5068C28A6839C00D73CFD /* FirstViewController.swift in Sources */,
 				0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */,
 				0ED5068228A605FB00D73CFD /* MainTabBarController.swift in Sources */,
+				0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */,
 				0ED5068A28A6166200D73CFD /* MainLoginViewController.swift in Sources */,
 				0ED5068428A6068700D73CFD /* PublicFeedViewController.swift in Sources */,
 			);

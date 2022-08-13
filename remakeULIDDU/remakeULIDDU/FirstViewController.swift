@@ -92,6 +92,9 @@ class FirstViewController : UIViewController {
     }
     
     @objc func SignUpButtonAction(sender: UIButton!){
+        let goToMainTabBarVC = MainSignUpViewController()
+        goToMainTabBarVC.modalPresentationStyle = .fullScreen
+        self.present(goToMainTabBarVC, animated: true, completion: nil)
         print("회원가입 번튼 실행됨 🤣")
     }
     
