@@ -65,6 +65,55 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		0E34201F28A798EC00A0933E /* MianView */ = {
+			isa = PBXGroup;
+			children = (
+				0ED5068128A605FB00D73CFD /* MainTabBarController.swift */,
+				0E34202128A7994F00A0933E /* tapBars */,
+			);
+			path = MianView;
+			sourceTree = "<group>";
+		};
+		0E34202028A7992300A0933E /* startView */ = {
+			isa = PBXGroup;
+			children = (
+				0ED5068B28A6839C00D73CFD /* FirstViewController.swift */,
+				0ED5068928A6166200D73CFD /* MainLoginViewController.swift */,
+				0E34201D28A7678300A0933E /* MainSignUpViewController.swift */,
+			);
+			path = startView;
+			sourceTree = "<group>";
+		};
+		0E34202128A7994F00A0933E /* tapBars */ = {
+			isa = PBXGroup;
+			children = (
+				0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */,
+				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
+				0ED5068728A6070400D73CFD /* UserViewController.swift */,
+			);
+			path = tapBars;
+			sourceTree = "<group>";
+		};
+		0E34202228A7997100A0933E /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				0E34201928A72B4500A0933E /* Header.swift */,
+				0E34201B28A72BEB00A0933E /* TokenModel.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		0E34202328A7999800A0933E /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				0E792FBD289E0EAB008E3209 /* AppDelegate.swift */,
+				0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */,
+				0E792FC6289E0EAC008E3209 /* Assets.xcassets */,
+				0E792FC8289E0EAC008E3209 /* LaunchScreen.storyboard */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
 		0E792FB1289E0EAB008E3209 = {
 			isa = PBXGroup;
 			children = (
@@ -86,19 +135,10 @@
 		0E792FBC289E0EAB008E3209 /* remakeULIDDU */ = {
 			isa = PBXGroup;
 			children = (
-				0E792FBD289E0EAB008E3209 /* AppDelegate.swift */,
-				0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */,
-				0ED5068128A605FB00D73CFD /* MainTabBarController.swift */,
-				0ED5068B28A6839C00D73CFD /* FirstViewController.swift */,
-				0ED5068928A6166200D73CFD /* MainLoginViewController.swift */,
-				0E34201D28A7678300A0933E /* MainSignUpViewController.swift */,
-				0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */,
-				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
-				0ED5068728A6070400D73CFD /* UserViewController.swift */,
-				0E34201928A72B4500A0933E /* Header.swift */,
-				0E34201B28A72BEB00A0933E /* TokenModel.swift */,
-				0E792FC6289E0EAC008E3209 /* Assets.xcassets */,
-				0E792FC8289E0EAC008E3209 /* LaunchScreen.storyboard */,
+				0E34202028A7992300A0933E /* startView */,
+				0E34201F28A798EC00A0933E /* MianView */,
+				0E34202228A7997100A0933E /* Headers */,
+				0E34202328A7999800A0933E /* VC */,
 				0E792FCB289E0EAC008E3209 /* Info.plist */,
 			);
 			path = remakeULIDDU;
