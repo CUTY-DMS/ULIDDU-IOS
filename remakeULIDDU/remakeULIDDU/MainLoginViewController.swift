@@ -7,10 +7,19 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class MainLoginViewController : UIViewController {
+    
+    let idField = UITextField()
+    let passworldField = UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print(KeyChain.read(key: Token.accessToken))
+//        print(KeyChain.read(key: Token.refreshToken))
+        
         view.backgroundColor = .white
 
         configureLoginButton()
@@ -18,38 +27,7 @@ class MainLoginViewController : UIViewController {
         loginViewLine()
         signUpViewLine()
         loginText()
-        idTextField()
-        passworldField()
-    }
-    
-    func idTextField() {
-        let idField = UITextField()
-        idField.borderStyle = .none
-        view.addSubview(idField)
-        idField.attributedPlaceholder = NSAttributedString(string: "Id", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        idField.textColor = .black
-        idField.snp.makeConstraints{
-            $0.height.equalTo(40)
-            $0.width.equalTo(325)
-            $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-500)
-            $0.leading.equalTo(45)
-        }
-    }
-    
-    func passworldField() {
-        let passworldField = UITextField()
-        passworldField.borderStyle = .none
-        passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
-        passworldField.textColor = .black
-        view.addSubview(passworldField)
-        passworldField.snp.makeConstraints{
-            $0.height.equalTo(40)
-            $0.width.equalTo(325)
-            $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-420)
-            $0.leading.equalTo(45)
-        }
+        loginAndSignUpTextField()
     }
     
     func loginViewLine() {
@@ -96,6 +74,32 @@ class MainLoginViewController : UIViewController {
         }
     }
     
+    func loginAndSignUpTextField() {
+        
+        idField.borderStyle = .none
+        view.addSubview(idField)
+        idField.attributedPlaceholder = NSAttributedString(string: "Id", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        idField.textColor = .black
+        idField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-500)
+            $0.leading.equalTo(45)
+        }
+        passworldField.borderStyle = .none
+        passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passworldField.textColor = .black
+        view.addSubview(passworldField)
+        passworldField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-420)
+            $0.leading.equalTo(45)
+        }
+    }
+    
     func configureLoginButton() {
         let loginButton = UIButton()
         loginButton.setTitle("Sign in", for: .normal)
@@ -119,6 +123,7 @@ class MainLoginViewController : UIViewController {
         }
     @objc func loginbuttonAction(sender: UIButton!){
         print(" 로그인 버튼 실행됨")
+        postLogin()
     }
     
     func configureSignUpButton() {
@@ -146,8 +151,58 @@ class MainLoginViewController : UIViewController {
         }
     @objc func signUpButtonAction(sender: UIButton!){
         print(" 회원가입 버튼 실행됨")
+        let goToMainTabBarVC = MainTabBarController()
+        goToMainTabBarVC.modalPresentationStyle = .fullScreen
+        self.present(goToMainTabBarVC, animated: true, completion: nil)
+    }
+    
+    
+    func postLogin() {
+        
+        let url = "http://44.209.75.36:8080/login"
+        var request = URLRequest(url: URL(string: url)!)
+        
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        //post로 보낼 정보
+        let params = ["user-id":idField.text!,
+                      "password":passworldField.text!]
+        
+        do {
+            try request.httpBody = JSONSerialization.data(withJSONObject: params, options: [])
+        } catch {
+            print("http Body Error")
+        }
+        
+        AF.request(request).responseString() { (response) in
+            switch response.response?.statusCode {
+                
+            case 200:
+                debugPrint(response)
+                if let userDate = try? JSONDecoder().decode(TokenModel.self, from: response.data!) {
+                    KeyChain.create(key: Token.accessToken, token: userDate.access_token)
+                    KeyChain.create(key: Token.refreshToken, token: userDate.resfresh_token)
+                }
+                    print("로그인 성공😁")
+                    let goToMainTabBarVC = MainTabBarController()
+                    goToMainTabBarVC.modalPresentationStyle = .fullScreen
+                    self.present(goToMainTabBarVC, animated: true, completion: nil)
+            default:
+                debugPrint(response)
+                if response.response?.statusCode != 200 {
+                    print("로그인 실패")
+                    let AlertMassge = UIAlertController(title: "경고", message: "로그인 실패", preferredStyle: UIAlertController.Style.alert)
+                    let ActionMassge = UIAlertAction(title: "다시 작성해주세요", style: UIAlertAction.Style.default, handler: nil)
+                    
+                    AlertMassge.addAction(ActionMassge)
+                    self.present(AlertMassge, animated: true, completion: nil)
+            }
+        }
+
     }
 
+}
 }
 
 
