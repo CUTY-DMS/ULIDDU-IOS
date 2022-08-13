@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainSignUpViewController : UIViewController {
     
@@ -23,6 +24,7 @@ class MainSignUpViewController : UIViewController {
         passworldViewLine()
         ageViewLine()
         NameAndIdAndPassAndAgeTextField()
+        configureSignUpButton()
     }
     
     func signUpText() {
@@ -146,6 +148,83 @@ class MainSignUpViewController : UIViewController {
         }
     }
     
+    func configureSignUpButton() {
+        let loginButton = UIButton()
+        loginButton.setTitle("Sign in", for: .normal)
+        loginButton.backgroundColor = .black
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(loginButton)
+        
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        loginButton.snp.makeConstraints{
+            $0.height.equalTo(55)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.bottom.equalTo(-200)
+            $0.leading.equalTo(45)
+        }
+        
+        loginButton.addTarget(self, action: #selector(loginbuttonAction), for: .touchUpInside)
+        
+        }
+    
+    @objc func loginbuttonAction(sender: UIButton!){
+        postsignUp()
+        print("------------------------------")
+        print("Name : \(NameField.text!)")
+        print("Id : \(idFidld.text!)")
+        print("Password : \(passworldField.text!)")
+        print("Age : \(ageField.text!)")
+        print("------------------------------")
+
+    }
+    
+    func postsignUp() {
+            let url = "http://44.209.75.36:8080/register"
+            var request = URLRequest(url: URL(string: url)!)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.timeoutInterval = 10
+            // POST 로 보낼 정보
+        print(url)
+        let params = [
+            "name": NameField.text!,
+            "age":ageField.text!,
+            "user-id":idFidld.text!,
+            "password":passworldField.text!
+                     ] as Dictionary
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
+        request.httpBody = jsonData
+
+        AF.request(url,method: .post,parameters: params, encoding: JSONEncoding.default)
+            .responseString { (response) in
+            debugPrint(response)
+                
+                switch response.response?.statusCode {
+                case 200:
+                    print("✅POST 성공✅")
+                    let goToMainTabBarVC = MainTabBarController()
+                    goToMainTabBarVC.modalPresentationStyle = .fullScreen
+                    self.present(goToMainTabBarVC, animated: true, completion: nil)
+                case 204:
+                    print("😆POST 성공😆")
+                    let goToMainTabBarVC = FirstViewController()
+                    goToMainTabBarVC.modalPresentationStyle = .fullScreen
+                    self.present(goToMainTabBarVC, animated: true, completion: nil)
+                    
+                default:
+                    print("hi error 🚫")
+                    let AlertMassge = UIAlertController(title: "경고", message: "비밀번호는 8글자 이상 해주세요", preferredStyle: UIAlertController.Style.alert)
+                    let ActionMassge = UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: nil)
+                    
+                    AlertMassge.addAction(ActionMassge)
+                    self.present(AlertMassge, animated: true, completion: nil)
+                }
+            }
+        }
     
 
 }

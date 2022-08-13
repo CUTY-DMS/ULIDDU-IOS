@@ -122,6 +122,7 @@ class MainLoginViewController : UIViewController {
         loginButton.addTarget(self, action: #selector(loginbuttonAction), for: .touchUpInside)
         
         }
+    
     @objc func loginbuttonAction(sender: UIButton!){
         print(" 로그인 버튼 실행됨")
         postLogin()
