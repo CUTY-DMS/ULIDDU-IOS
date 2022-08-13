@@ -9,6 +9,11 @@ import UIKit
 
 class MainSignUpViewController : UIViewController {
     
+    let NameField = UITextField()
+    let idFidld = UITextField()
+    let passworldField = UITextField()
+    let ageField = UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -17,6 +22,7 @@ class MainSignUpViewController : UIViewController {
         idViewLine()
         passworldViewLine()
         ageViewLine()
+        NameAndIdAndPassAndAgeTextField()
     }
     
     func signUpText() {
@@ -45,7 +51,7 @@ class MainSignUpViewController : UIViewController {
             $0.height.equalTo(2)
             $0.width.equalTo(325)
             $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-550)
+            $0.top.equalTo(330)
             $0.leading.equalTo(45)
         }
     }
@@ -58,7 +64,7 @@ class MainSignUpViewController : UIViewController {
             $0.height.equalTo(2)
             $0.width.equalTo(325)
             $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-500)
+            $0.top.equalTo(400)
             $0.leading.equalTo(45)
         }
     }
@@ -71,7 +77,7 @@ class MainSignUpViewController : UIViewController {
             $0.height.equalTo(2)
             $0.width.equalTo(325)
             $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-440)
+            $0.top.equalTo(470)
             $0.leading.equalTo(45)
         }
     }
@@ -84,10 +90,63 @@ class MainSignUpViewController : UIViewController {
             $0.height.equalTo(2)
             $0.width.equalTo(325)
             $0.trailing.equalTo(-45)
-            $0.bottom.equalTo(-380)
+            $0.top.equalTo(540)
             $0.leading.equalTo(45)
         }
     }
+    
+    func NameAndIdAndPassAndAgeTextField() {
+        
+        NameField.borderStyle = .none
+        view.addSubview(NameField)
+        NameField.attributedPlaceholder = NSAttributedString(string: "Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        NameField.textColor = .black
+        NameField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.top.equalTo(295)
+            $0.leading.equalTo(45)
+        }
+        
+        idFidld.borderStyle = .none
+        view.addSubview(idFidld)
+        idFidld.attributedPlaceholder = NSAttributedString(string: "Id", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        idFidld.textColor = .black
+        idFidld.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.top.equalTo(365)
+            $0.leading.equalTo(45)
+        }
+        
+        passworldField.borderStyle = .none
+        passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passworldField.textColor = .black
+        view.addSubview(passworldField)
+        passworldField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.top.equalTo(435)
+            $0.leading.equalTo(45)
+        }
+        
+        ageField.borderStyle = .none
+        view.addSubview(ageField)
+        ageField.attributedPlaceholder = NSAttributedString(string: "Age", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        ageField.textColor = .black
+        ageField.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(-45)
+            $0.top.equalTo(505)
+            $0.leading.equalTo(45)
+        }
+    }
+    
+    
 
 }
 

@@ -87,6 +87,7 @@ class MainLoginViewController : UIViewController {
             $0.bottom.equalTo(-500)
             $0.leading.equalTo(45)
         }
+        
         passworldField.borderStyle = .none
         passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passworldField.textColor = .black
