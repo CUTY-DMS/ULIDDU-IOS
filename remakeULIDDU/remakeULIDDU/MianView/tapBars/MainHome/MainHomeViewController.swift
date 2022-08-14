@@ -10,11 +10,12 @@ import SwiftUI
 import SnapKit
 import Alamofire
 
-class MainHomeViewController : UITableViewController {
+class MainHomeViewController : UIViewController {
     
     var homeList = [Task]()
     var addButton = UIButton()
 
+    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,13 @@ class MainHomeViewController : UITableViewController {
         //UINavigationBar 설정
         title = "임시 설정"
         navigationController?.navigationBar.prefersLargeTitles = true
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
         tableviewSize()
         addButtonImage()
     }
     func tableviewSize() {
         //UITableView 설정
-        let tableView = UITableView()
         view.addSubview(tableView)
         tableView.backgroundColor = .red
         
@@ -140,12 +142,13 @@ class MainHomeViewController : UITableViewController {
 }
 
 //UITableView, DataSource, Delegate
-extension MainHomeViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.homeList.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
         let mainList = homeList[indexPath.row]
         cell.configure(whih: mainList)
@@ -153,16 +156,16 @@ extension MainHomeViewController {
         cell.detailTextLabel?.text = mainList.content
         return cell
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedHomeList = homeList[indexPath.row]
         let detailViewController = HomeDetilViewController()
         detailViewController.task = selectedHomeList
         self.show(detailViewController, sender: nil)
     }
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         var homeLists = self.homeList
         let task = homeLists[sourceIndexPath.row]
         homeLists.remove(at: sourceIndexPath.row)
