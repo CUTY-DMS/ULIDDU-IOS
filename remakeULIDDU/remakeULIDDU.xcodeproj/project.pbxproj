@@ -71,6 +71,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		0E19473228A8F1C300C4DA41 /* MainHome */ = {
+			isa = PBXGroup;
+			children = (
+				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
+				0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */,
+				0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */,
+				0E19472E28A8E5E000C4DA41 /* Task.swift */,
+			);
+			path = MainHome;
+			sourceTree = "<group>";
+		};
 		0E34201F28A798EC00A0933E /* MianView */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */,
-				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
-				0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */,
+				0E19473228A8F1C300C4DA41 /* MainHome */,
 				0ED5068728A6070400D73CFD /* UserViewController.swift */,
 			);
 			path = tapBars;
@@ -147,8 +157,6 @@
 				0E34202228A7997100A0933E /* Headers */,
 				0E34202328A7999800A0933E /* VC */,
 				0E792FCB289E0EAC008E3209 /* Info.plist */,
-				0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */,
-				0E19472E28A8E5E000C4DA41 /* Task.swift */,
 			);
 			path = remakeULIDDU;
 			sourceTree = "<group>";
