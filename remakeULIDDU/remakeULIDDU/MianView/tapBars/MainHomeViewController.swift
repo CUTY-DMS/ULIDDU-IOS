@@ -9,62 +9,41 @@ import UIKit
 import SwiftUI
 import SnapKit
 
-class MainHomeViewController : UIViewController {
-        
-    let testArr = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "c", "d"]
-    let table = UITableView()
+class MainHomeViewController : UITableViewController {
+    
+    var homeList = [Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        table.delegate = self
-        table.dataSource = self
         
-        attribute()
-        layout()
-    }
-    
-    func attribute() {
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    func layout() {
-        view.addSubview(table)
-        table.snp.makeConstraints {
-            $0.trailing.leading.bottom.equalTo(0)
-            $0.top.equalTo(500)
-        }
+        //UINavigationBar 설정
+        title = "임시 설정"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //UITableView 설정
+        tableView.register(HomeListCell.self, forCellReuseIdentifier: "HomeListCell")
+        tableView.rowHeight = 150
+        
+        
     }
 }
 
-extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArr.count
+//UITableView, DataSource, Delegate
+extension MainHomeViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return homeList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
         
-        cell.textLabel?.text = testArr[indexPath.row]
-        
+        let mainList = homeList[indexPath.row]
+        cell.configure(whih: mainList)
         return cell
     }
-}
-
-
-struct TableViewRepresentable: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> MainHomeViewController {
-        return MainHomeViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: MainHomeViewController, context: Context) { }
-    
-    typealias UIViewControllerType = MainHomeViewController
-    
-}
-
-@available(iOS 13.0.0, *)
-struct ViewPreview: PreviewProvider {
-    static var previews: some View {
-        TableViewRepresentable()
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedHomeList = homeList[indexPath.row]
+        
     }
 }
+
