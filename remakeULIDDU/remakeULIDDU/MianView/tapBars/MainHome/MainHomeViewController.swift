@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import SnapKit
 import Alamofire
+import FSCalendar
 
 class MainHomeViewController : UIViewController {
     
@@ -17,8 +18,11 @@ class MainHomeViewController : UIViewController {
 
     let tableView = UITableView()
     
+    fileprivate weak var calendar: FSCalendar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         //UINavigationBar 설정
         title = "임시 설정"
@@ -27,11 +31,29 @@ class MainHomeViewController : UIViewController {
         self.tableView.delegate = self
         tableviewSize()
         addButtonImage()
+        calendarVeiwSet()
+    }
+    
+    func calendarVeiwSet() {
+        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
+        calendar.dataSource = self
+        calendar.delegate = self
+        view.addSubview(calendar)
+        self.calendar = calendar
+        
+        calendar.snp.makeConstraints {
+            $0.height.equalTo(355)
+            $0.width.equalTo(375)
+            $0.top.equalTo(90)
+            $0.trailing.equalTo(0)
+            $0.leading.equalTo(0)
+        }
+        
     }
     func tableviewSize() {
         //UITableView 설정
         view.addSubview(tableView)
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .white
         
         tableView.register(HomeListCell.self, forCellReuseIdentifier: "HomeListCell")
 
@@ -48,7 +70,7 @@ class MainHomeViewController : UIViewController {
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addButton.contentMode = .scaleToFill
 
-        addButton.backgroundColor = .blue
+        addButton.backgroundColor = .white
         addButton.tintColor = .black
         addButton.snp.makeConstraints {
             $0.height.equalTo(40)
@@ -173,6 +195,10 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         self.homeList = homeLists
     }
     
+}
+
+extension MainHomeViewController : FSCalendarDelegate, FSCalendarDataSource {
+
 }
 
 import SwiftUI
