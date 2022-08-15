@@ -27,13 +27,13 @@ class HomeListCell: UITableViewCell {
         
         contentLable.font = .systemFont(ofSize: 14, weight: .light)
         contentLable.textColor = .gray
-        contentLable.numberOfLines = 0
+        contentLable.numberOfLines = 1
         
         ULIDDUImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.top.bottom.equalToSuperview().inset(20)
-            $0.width.equalTo(80)
-            $0.height.equalTo(120)
+            $0.width.equalTo(50)
+            $0.height.equalTo(50)
         }
         
         titleLable.snp.makeConstraints {
@@ -47,9 +47,9 @@ class HomeListCell: UITableViewCell {
         }
     }
     func configure(whih task : Task) {
-        let imageURL = URL(string: task.image ?? "")
+        let imageURL = URL(string: task.image)
         ULIDDUImageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "ULIDDL-Logo"))
-        titleLable.text = task.title ?? "제목을 받을 수 없음"
+        titleLable.text = task.title
         contentLable.text = task.content
         
         accessoryType = .disclosureIndicator

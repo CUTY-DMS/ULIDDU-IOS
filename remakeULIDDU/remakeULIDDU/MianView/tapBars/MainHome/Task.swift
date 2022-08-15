@@ -8,7 +8,7 @@
 import UIKit
 
 struct Task {
-    var image : String
+    var image : String = ""
     var title : String
     var content : String
     var done : Bool

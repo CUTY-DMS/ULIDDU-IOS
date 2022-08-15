@@ -174,8 +174,9 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
         let mainList = homeList[indexPath.row]
         cell.configure(whih: mainList)
-        cell.textLabel?.text = mainList.title
-        cell.detailTextLabel?.text = mainList.content
+        //configure에서 설정
+//        cell.textLabel?.text = mainList.title
+//        cell.detailTextLabel?.text = mainList.content
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

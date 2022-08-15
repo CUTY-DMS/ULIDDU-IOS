@@ -19,6 +19,7 @@ class HomeDetilViewController : UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "HomeDetailListCell")
         tableView.rowHeight = UITableView.automaticDimension
         
+        //디테일뷰의 이미지 크기
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
         let headerView = UIImageView(frame: frame)
         let imageURL = URL(string: task?.image ?? "ULIDDL-Logo")
