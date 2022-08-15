@@ -263,6 +263,7 @@ class MainHomeViewController : UIViewController {
                     print("-------------------------------")
                     print("에 러 :: ", err.localizedDescription)
                     print("====================================")
+                    debugPrint(response)
                     print("")
                     break
                 }
