@@ -15,8 +15,11 @@ class MainHomeViewController : UIViewController {
     
     var homeList = [Task]()
     var addButton = UIButton()
-
+    var correctionButton = UIButton()
     let tableView = UITableView()
+    
+    @objc var doneButton : UIButton!
+
     
     fileprivate weak var calendar: FSCalendar!
     
@@ -32,6 +35,11 @@ class MainHomeViewController : UIViewController {
         tableviewSize()
         addButtonImage()
         calendarVeiwSet()
+        correctionButtonSet()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        doneButtonTop()
     }
     
     func calendarVeiwSet() {
@@ -49,7 +57,12 @@ class MainHomeViewController : UIViewController {
             $0.leading.equalTo(0)
         }
         
+        //calendatView 설정
+        
+        
     }
+    
+    
     func tableviewSize() {
         //UITableView 설정
         view.addSubview(tableView)
@@ -64,7 +77,41 @@ class MainHomeViewController : UIViewController {
             $0.top.equalTo(515)
             $0.leading.equalTo(0)
         }
+
     }
+    
+    func correctionButtonSet() {
+        view.addSubview(correctionButton)
+        correctionButton.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
+        correctionButton.contentMode = .scaleToFill
+        
+        correctionButton.backgroundColor = .white
+        correctionButton.tintColor = .black
+        correctionButton.snp.makeConstraints {
+            $0.height.equalTo(40)
+            $0.width.equalTo(40)
+            $0.top.equalTo(475)
+            $0.leading.equalTo(0)
+        }
+        correctionButton.addTarget(self, action: #selector(correctionbuttonAction), for: .touchUpInside)
+//        correctionButton.addTarget(self, action: #selector(correctionbuttonActionBack), for: .touchUpOutside)
+    }
+//
+//    @objc func correctionbuttonActionBack(sender: UIButton!){
+//        doneButtonTop()
+//    }
+//
+    @objc func correctionbuttonAction(sender: UIButton!){
+        print("버튼 클릭 ✅")
+        guard !self.homeList.isEmpty else { return }
+        self.tableView.setEditing(true, animated: true)
+    }
+    
+    @objc func doneButtonTop() {
+        self.doneButton = self.correctionButton
+        self.tableView.setEditing(false, animated: true)
+    }
+
     func addButtonImage() {
         view.addSubview(addButton)
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -184,6 +231,17 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         let detailViewController = HomeDetilViewController()
         detailViewController.task = selectedHomeList
         self.show(detailViewController, sender: nil)
+    }
+    
+    //삭제 구현
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        self.homeList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        if self.homeList.isEmpty {
+            self.doneButtonTop()
+        }
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
