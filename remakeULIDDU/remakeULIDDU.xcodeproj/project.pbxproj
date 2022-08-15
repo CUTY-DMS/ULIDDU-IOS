@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E09B1D728AA2CAB00B6A6A5 /* GetMyToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */; };
 		0E19472D28A8E2C000C4DA41 /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */; };
 		0E19472F28A8E5E000C4DA41 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19472E28A8E5E000C4DA41 /* Task.swift */; };
 		0E19473128A8E90500C4DA41 /* HomeDetilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyToDo.swift; sourceTree = "<group>"; };
 		0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
 		0E19472E28A8E5E000C4DA41 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetilViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */,
 				0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */,
 				0E19472E28A8E5E000C4DA41 /* Task.swift */,
+				0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */,
 			);
 			path = MainHome;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */,
 				0E19472F28A8E5E000C4DA41 /* Task.swift in Sources */,
 				0ED5068228A605FB00D73CFD /* MainTabBarController.swift in Sources */,
+				0E09B1D728AA2CAB00B6A6A5 /* GetMyToDo.swift in Sources */,
 				0E19473128A8E90500C4DA41 /* HomeDetilViewController.swift in Sources */,
 				0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */,
 				0ED5068A28A6166200D73CFD /* MainLoginViewController.swift in Sources */,

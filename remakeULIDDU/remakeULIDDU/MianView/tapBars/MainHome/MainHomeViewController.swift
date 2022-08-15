@@ -36,6 +36,7 @@ class MainHomeViewController : UIViewController {
         addButtonImage()
         calendarVeiwSet()
         correctionButtonSet()
+        getMyToDoList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -208,6 +209,65 @@ class MainHomeViewController : UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    private func getMyToDoList() {
+        
+        let url = "http://44.209.75.36:8080/todo/list"
+        let AT : String? = KeyChain.read(key: Token.accessToken)
+        let header : HTTPHeaders = [
+            "Authorization" : "Bearer \(AT!)"
+        ]
+        
+        let formatter = DateFormatter()
+        let date = Date()
+        formatter.dateFormat = "yyyy-MM"
+        let nowDetaTime = formatter.string(from: date)
+        print("지금 시간은 : \(nowDetaTime)")
+        
+        let queryString = [
+            "todo-year-month": nowDetaTime
+        ]as Dictionary
+        
+        print("")
+        print("====================================")
+        print("-------------------------------")
+        print("주 소 :: ", url)
+        print("-------------------------------")
+        print("데이터 :: ", queryString.description)
+        print("====================================")
+        print("")
+        
+        AF.request(url, method: .get, parameters: queryString, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let res):
+                    do {
+                        print("")
+                        print("-------------------------------")
+                        print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                        print("-------------------------------")
+                        print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+                        print("====================================")
+                        print("")
+                        }
+                catch (let err){
+                    print("")
+                    print("-------------------------------")
+                    print("catch :: ", err.localizedDescription)
+                    print("====================================")
+                    print("")
+                        }
+                case .failure(let err):
+                    print("")
+                    print("-------------------------------")
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("에 러 :: ", err.localizedDescription)
+                    print("====================================")
+                    print("")
+                    break
+                }
+            }
+    }
 }
 
 //UITableView, DataSource, Delegate
@@ -279,4 +339,3 @@ struct MainHomeViewPreview: PreviewProvider {
         MainHomeViewControllerRepresentable()
     }
 }
-
