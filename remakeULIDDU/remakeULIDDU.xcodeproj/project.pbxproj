@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0E09B1D728AA2CAB00B6A6A5 /* GetMyToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */; };
+		0E09B1D928AA997500B6A6A5 /* UserToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09B1D828AA997500B6A6A5 /* UserToDoCell.swift */; };
+		0E09B1DB28AB6A5C00B6A6A5 /* UserName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09B1DA28AB6A5C00B6A6A5 /* UserName.swift */; };
 		0E19472D28A8E2C000C4DA41 /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */; };
-		0E19472F28A8E5E000C4DA41 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19472E28A8E5E000C4DA41 /* Task.swift */; };
 		0E19473128A8E90500C4DA41 /* HomeDetilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */; };
 		0E34201A28A72B4500A0933E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201928A72B4500A0933E /* Header.swift */; };
 		0E34201C28A72BEB00A0933E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201B28A72BEB00A0933E /* TokenModel.swift */; };
@@ -29,8 +30,9 @@
 
 /* Begin PBXFileReference section */
 		0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyToDo.swift; sourceTree = "<group>"; };
+		0E09B1D828AA997500B6A6A5 /* UserToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToDoCell.swift; sourceTree = "<group>"; };
+		0E09B1DA28AB6A5C00B6A6A5 /* UserName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserName.swift; sourceTree = "<group>"; };
 		0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
-		0E19472E28A8E5E000C4DA41 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetilViewController.swift; sourceTree = "<group>"; };
 		0E34201928A72B4500A0933E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0E34201B28A72BEB00A0933E /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
 				0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */,
 				0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */,
-				0E19472E28A8E5E000C4DA41 /* Task.swift */,
+				0E09B1D828AA997500B6A6A5 /* UserToDoCell.swift */,
 				0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */,
 			);
 			path = MainHome;
@@ -110,6 +112,7 @@
 				0ED5068328A6068700D73CFD /* PublicFeedViewController.swift */,
 				0E19473228A8F1C300C4DA41 /* MainHome */,
 				0ED5068728A6070400D73CFD /* UserViewController.swift */,
+				0E09B1DA28AB6A5C00B6A6A5 /* UserName.swift */,
 			);
 			path = tapBars;
 			sourceTree = "<group>";
@@ -288,13 +291,14 @@
 			files = (
 				0E792FBE289E0EAB008E3209 /* AppDelegate.swift in Sources */,
 				0E34201A28A72B4500A0933E /* Header.swift in Sources */,
+				0E09B1D928AA997500B6A6A5 /* UserToDoCell.swift in Sources */,
 				0ED5068828A6070400D73CFD /* UserViewController.swift in Sources */,
 				0E34201C28A72BEB00A0933E /* TokenModel.swift in Sources */,
 				0E19472D28A8E2C000C4DA41 /* HomeListCell.swift in Sources */,
 				0ED5068628A606E700D73CFD /* MainHomeViewController.swift in Sources */,
 				0ED5068C28A6839C00D73CFD /* FirstViewController.swift in Sources */,
 				0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */,
-				0E19472F28A8E5E000C4DA41 /* Task.swift in Sources */,
+				0E09B1DB28AB6A5C00B6A6A5 /* UserName.swift in Sources */,
 				0ED5068228A605FB00D73CFD /* MainTabBarController.swift in Sources */,
 				0E09B1D728AA2CAB00B6A6A5 /* GetMyToDo.swift in Sources */,
 				0E19473128A8E90500C4DA41 /* HomeDetilViewController.swift in Sources */,

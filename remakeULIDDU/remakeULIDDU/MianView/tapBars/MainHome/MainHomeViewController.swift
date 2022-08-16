@@ -13,10 +13,10 @@ import FSCalendar
 
 class MainHomeViewController : UIViewController {
     
-    var homeList = [Task]()
     var addButton = UIButton()
     var correctionButton = UIButton()
     let tableView = UITableView()
+    var getMyTodo = GetMyToDO()
     
     @objc var doneButton : UIButton!
 
@@ -36,11 +36,11 @@ class MainHomeViewController : UIViewController {
         addButtonImage()
         calendarVeiwSet()
         correctionButtonSet()
-        getMyToDoList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         doneButtonTop()
+        getMyToDoList()
     }
     
     func calendarVeiwSet() {
@@ -104,7 +104,7 @@ class MainHomeViewController : UIViewController {
 //
     @objc func correctionbuttonAction(sender: UIButton!){
         print("버튼 클릭 ✅")
-        guard !self.homeList.isEmpty else { return }
+        guard !self.getMyTodo.task.isEmpty else { return }
         self.tableView.setEditing(true, animated: true)
     }
     
@@ -139,7 +139,7 @@ class MainHomeViewController : UIViewController {
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
             let task = Task(image: "ULIDDL-Logo", title: title, content: content, done: false, ispublic: false)
-            self?.homeList.append(task)
+            self?.getMyTodo.task.append(task)
             self?.tableView.reloadData()
             
             let ispublic : Bool = false
@@ -211,42 +211,40 @@ class MainHomeViewController : UIViewController {
     
     private func getMyToDoList() {
         
-        let url = "http://44.209.75.36:8080/todo/list"
+        let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
         let header : HTTPHeaders = [
             "Authorization" : "Bearer \(AT!)"
         ]
         
-        let formatter = DateFormatter()
-        let date = Date()
-        formatter.dateFormat = "yyyy-MM"
-        let nowDetaTime = formatter.string(from: date)
-        print("지금 시간은 : \(nowDetaTime)")
-        
-        let queryString = [
-            "todo-year-month": nowDetaTime
-        ]as Dictionary
-        
         print("")
         print("====================================")
         print("-------------------------------")
         print("주 소 :: ", url)
-        print("-------------------------------")
-        print("데이터 :: ", queryString.description)
         print("====================================")
         print("")
         
-        AF.request(url, method: .get, parameters: queryString, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
             .responseData { response in
                 switch response.result {
                 case .success(let res):
                     do {
+                        
+                        if let data = try? JSONDecoder().decode(GetMyToDO.self, from: response.data!) {
+                            
+                            DispatchQueue.main.async {
+                                print(data)
+                                self.getMyTodo = data
+                            }
+                        }
                         print("")
                         print("-------------------------------")
                         print("응답 코드 :: ", response.response?.statusCode ?? 0)
                         print("-------------------------------")
                         print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
                         print("====================================")
+                        debugPrint(response)
+                        print("-------------------------------")
                         print("")
                         }
                 catch (let err){
@@ -255,7 +253,7 @@ class MainHomeViewController : UIViewController {
                     print("catch :: ", err.localizedDescription)
                     print("====================================")
                     print("")
-                        }
+                }
                 case .failure(let err):
                     print("")
                     print("-------------------------------")
@@ -275,20 +273,22 @@ class MainHomeViewController : UIViewController {
 extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.homeList.count
+        return self.getMyTodo.task.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
-        let mainList = homeList[indexPath.row]
+        let mainList = getMyTodo.task[indexPath.row]
         cell.configure(whih: mainList)
+        cell.titleLable.text = "\(getMyTodo.task[indexPath.row].title)"
+        cell.contentLable.text = "\(getMyTodo.task[indexPath.row].content)"
         //configure에서 설정
 //        cell.textLabel?.text = mainList.title
 //        cell.detailTextLabel?.text = mainList.content
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedHomeList = homeList[indexPath.row]
+        let selectedHomeList = getMyTodo.task[indexPath.row]
         let detailViewController = HomeDetilViewController()
         detailViewController.task = selectedHomeList
         self.show(detailViewController, sender: nil)
@@ -297,10 +297,10 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     //삭제 구현
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        self.homeList.remove(at: indexPath.row)
+        self.getMyTodo.task.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        if self.homeList.isEmpty {
+        if self.getMyTodo.task.isEmpty {
             self.doneButtonTop()
         }
     }
@@ -308,11 +308,11 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         return true
     }
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var homeLists = self.homeList
+        var homeLists = self.getMyTodo.task
         let task = homeLists[sourceIndexPath.row]
         homeLists.remove(at: sourceIndexPath.row)
         homeLists.insert(task, at: destinationIndexPath.row)
-        self.homeList = homeLists
+        self.getMyTodo.task = homeLists
     }
     
 }

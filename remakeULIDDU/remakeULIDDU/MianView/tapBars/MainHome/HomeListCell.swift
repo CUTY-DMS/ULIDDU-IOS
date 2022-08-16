@@ -49,11 +49,11 @@ class HomeListCell: UITableViewCell {
     func configure(whih task : Task) {
         let imageURL = URL(string: task.image)
         ULIDDUImageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "ULIDDL-Logo"))
-        titleLable.text = task.title
-        contentLable.text = task.content
         
         accessoryType = .disclosureIndicator
         selectionStyle = .none
     }
 }
+
+
 

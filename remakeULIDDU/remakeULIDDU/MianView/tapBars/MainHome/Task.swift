@@ -8,9 +8,9 @@
 import UIKit
 
 struct Task {
-    var image : String = ""
-    var title : String
-    var content : String
-    var done : Bool
-    var ispublic : Bool
+    var image : String = .init()
+    var title : String = .init()
+    var content : String = .init()
+    var done : Bool = .init()
+    var ispublic : Bool = .init()
 }

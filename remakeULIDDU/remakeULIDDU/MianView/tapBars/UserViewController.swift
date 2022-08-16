@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Alamofire
 
 class UserViewController : UIViewController {
     
     let profileView = UIView()
     let nameLabel = UILabel()
-    let DetailButton = UIButton()
+    let detailButton = UIButton()
+    var getMyName = UserName()
+//    let myToDoList = UICollectionView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,86 @@ class UserViewController : UIViewController {
         nameLabelSet()
         configureDetailButton()
         lineView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getMyToDoList()
+    }
+    
+//    func collectionViewSize() {
+//
+//        view.addSubview(myToDoList)
+//        myToDoList.backgroundColor = .white
+//
+//
+//        myToDoList.snp.makeConstraints{
+//            $0.height.equalTo(275)
+//            $0.width.equalTo(430)
+//            $0.trailing.equalTo(0)
+//            $0.top.equalTo(515)
+//            $0.leading.equalTo(0)
+//        }
+//    }
+    
+    private func getMyToDoList() {
+        
+        let url = "http://44.209.75.36:8080/user"
+        let AT : String? = KeyChain.read(key: Token.accessToken)
+        let header : HTTPHeaders = [
+            "Authorization" : "Bearer \(AT!)"
+        ]
+        
+        print("")
+        print("====================================")
+        print("-------------------------------")
+        print("주 소 :: ", url)
+        print("====================================")
+        print("")
+        
+        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let res):
+                    do {
+                        
+                        if let data = try? JSONDecoder().decode(UserName.self, from: response.data!) {
+                            
+                            DispatchQueue.main.async {
+                                print(data)
+                                self.getMyName = data
+                                self.nameLabel.text = "\(self.getMyName.name)"
+                            }
+                        }
+                        print("")
+                        print("-------------------------------")
+                        print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                        print("-------------------------------")
+                        print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+                        print("====================================")
+                        debugPrint(response)
+                        print("-------------------------------")
+                        print("")
+                        }
+                catch (let err){
+                    print("")
+                    print("-------------------------------")
+                    print("catch :: ", err.localizedDescription)
+                    print("====================================")
+                    print("")
+                }
+                case .failure(let err):
+                    print("")
+                    print("-------------------------------")
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("에 러 :: ", err.localizedDescription)
+                    print("====================================")
+                    debugPrint(response)
+                    print("")
+                    break
+                }
+            }
     }
     
     func profileSet() {
@@ -68,21 +151,21 @@ class UserViewController : UIViewController {
     }
     
     func configureDetailButton() {
-        DetailButton.setTitle("상세보기", for: .normal)
-        DetailButton.backgroundColor = .black
+        detailButton.setTitle("상세보기", for: .normal)
+        detailButton.backgroundColor = .black
         
-        view.addSubview(DetailButton)
+        view.addSubview(detailButton)
         
-        DetailButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        detailButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         
-        DetailButton.snp.makeConstraints {
+        detailButton.snp.makeConstraints {
             $0.height.equalTo(35)
             $0.width.equalTo(115)
             $0.trailing.equalTo(-120)
             $0.top.equalTo(225)
             $0.leading.equalTo(160)
         }
-        DetailButton.addTarget(self, action: #selector(DetailButtonAction), for: .touchUpInside)
+        detailButton.addTarget(self, action: #selector(DetailButtonAction), for: .touchUpInside)
     }
     @objc func DetailButtonAction(sender: UIButton!){
         print(" 상세보기 버튼 실행됨")
