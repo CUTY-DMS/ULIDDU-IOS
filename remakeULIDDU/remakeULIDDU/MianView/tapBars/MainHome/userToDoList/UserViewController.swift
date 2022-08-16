@@ -13,41 +13,51 @@ class UserViewController : UIViewController {
     let profileView = UIView()
     let nameLabel = UILabel()
     let detailButton = UIButton()
-    var getMyName = UserName()
-//    let myToDoList = UICollectionView()
+    let tableView = UITableView()
     
+    var result: [GetMyList] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         view.backgroundColor = .white
         profileSet()
         nameLabelSet()
         configureDetailButton()
         lineView()
+        tableviewSize()
+        
+        tableView.backgroundColor = .red
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         getMyToDoList()
     }
     
-//    func collectionViewSize() {
-//
-//        view.addSubview(myToDoList)
-//        myToDoList.backgroundColor = .white
-//
-//
-//        myToDoList.snp.makeConstraints{
-//            $0.height.equalTo(275)
-//            $0.width.equalTo(430)
-//            $0.trailing.equalTo(0)
-//            $0.top.equalTo(515)
-//            $0.leading.equalTo(0)
-//        }
-//    }
-    
-    private func getMyToDoList() {
+    func tableviewSize() {
+        //UITableView 설정
+        view.addSubview(tableView)
+        tableView.backgroundColor = .white
         
-        let url = "http://44.209.75.36:8080/user"
+        tableView.register(HomeListCell.self, forCellReuseIdentifier: "UserListCell")
+
+        tableView.snp.makeConstraints{
+            $0.height.equalTo(500)
+            $0.width.equalTo(430)
+            $0.trailing.equalTo(0)
+            $0.top.equalTo(320)
+            $0.leading.equalTo(0)
+            
+        }
+    }
+    
+    func getMyToDoList() {
+        
+        let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
         let header : HTTPHeaders = [
             "Authorization" : "Bearer \(AT!)"
@@ -65,13 +75,11 @@ class UserViewController : UIViewController {
                 switch response.result {
                 case .success(let res):
                     do {
-                        
-                        if let data = try? JSONDecoder().decode(UserName.self, from: response.data!) {
-                            
+                        if let data = try? JSONDecoder().decode([GetMyList].self, from: response.data!) {
                             DispatchQueue.main.async {
                                 print(data)
-                                self.getMyName = data
-                                self.nameLabel.text = "\(self.getMyName.name)"
+                                self.result = data
+                                self.tableView.reloadData()
                             }
                         }
                         print("")
@@ -172,6 +180,21 @@ class UserViewController : UIViewController {
     }
 }
 
+extension UserViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return result.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserListCell", for: indexPath) as? HomeListCell
+        cell?.titleLable.text = "\(result[indexPath.row].title)"
+        cell?.contentLable.text = "\(result[indexPath.row].todoData)"
+        nameLabel.text = "\(result[indexPath.row].id)"
+        
+        return cell!
+    }
+}
 
 
 //view미리보기

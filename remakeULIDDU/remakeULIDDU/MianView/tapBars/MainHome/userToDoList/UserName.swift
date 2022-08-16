@@ -11,4 +11,10 @@ struct UserName : Codable {
     var name : String = .init()
     var userId : String = .init()
     var age : String = .init()
+    
+    enum CodingKeys: String, CodingKey {
+        case name, age
+        case userId = "user-id"
+            
+    }
 }

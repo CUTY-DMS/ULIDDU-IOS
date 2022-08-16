@@ -16,7 +16,9 @@ class MainHomeViewController : UIViewController {
     var addButton = UIButton()
     var correctionButton = UIButton()
     let tableView = UITableView()
-    var getMyTodo = GetMyToDO()
+    var getMyTodo = GetToDoList()
+    
+    var getTodo: [GetToDoList] = []
     
     @objc var doneButton : UIButton!
 
@@ -230,11 +232,12 @@ class MainHomeViewController : UIViewController {
                 case .success(let res):
                     do {
                         
-                        if let data = try? JSONDecoder().decode(GetMyToDO.self, from: response.data!) {
+                        if let data = try? JSONDecoder().decode(GetToDoList.self, from: response.data!) {
                             
                             DispatchQueue.main.async {
                                 print(data)
                                 self.getMyTodo = data
+                                self.tableView.reloadData()
                             }
                         }
                         print("")
@@ -277,9 +280,14 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
-        let mainList = getMyTodo.task[indexPath.row]
+         
+        let mainList = self.getMyTodo.task[indexPath.row]
+        
         cell.configure(whih: mainList)
+
+        
         cell.titleLable.text = "\(getMyTodo.task[indexPath.row].title)"
         cell.contentLable.text = "\(getMyTodo.task[indexPath.row].content)"
         //configure에서 설정
