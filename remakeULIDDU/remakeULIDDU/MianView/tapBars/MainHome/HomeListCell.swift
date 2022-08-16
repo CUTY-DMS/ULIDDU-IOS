@@ -46,10 +46,8 @@ class HomeListCell: UITableViewCell {
             $0.top.equalTo(titleLable.snp.bottom).offset(5)
         }
     }
-    func configure(whih task : Task) {
-        let imageURL = URL(string: task.image)
-        ULIDDUImageView.kf.setImage(with: imageURL, placeholder: #imageLiteral(resourceName: "ULIDDL-Logo"))
-        
+    func configure() {
+        ULIDDUImageView.image = UIImage(named: "ULIDDL-Logo")
         accessoryType = .disclosureIndicator
         selectionStyle = .none
     }

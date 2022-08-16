@@ -8,12 +8,20 @@
 import Foundation
 
 struct GetToDoList : Codable {
-    var id : String = .init()
+    var id : Int = .init()
     var title : String = .init()
     var todoData : String = .init()//yyyy-mm-dd
     var iscompleted : Bool = .init()
     var isliked : Bool = .init()
-    var task = [Task]()
+    
+    enum CodingKeys : String, CodingKey{
+        case id
+        case title
+        case todoData = "todo-date"
+        case iscompleted
+        case isliked
+    }
+
 }
 
 struct GetMyList : Codable {

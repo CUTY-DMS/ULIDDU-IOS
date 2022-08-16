@@ -1,10 +1,3 @@
-//
-//  UserViewController.swift
-//  remakeULIDDU
-//
-//  Created by 박준하 on 2022/08/12.
-//
-
 import UIKit
 import Alamofire
 
@@ -16,11 +9,11 @@ class UserViewController : UIViewController {
     let tableView = UITableView()
     
     var result: [GetMyList] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         view.backgroundColor = .white
         profileSet()
         nameLabelSet()
@@ -32,9 +25,6 @@ class UserViewController : UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         getMyToDoList()
     }
     
@@ -44,7 +34,7 @@ class UserViewController : UIViewController {
         tableView.backgroundColor = .white
         
         tableView.register(HomeListCell.self, forCellReuseIdentifier: "UserListCell")
-
+        
         tableView.snp.makeConstraints{
             $0.height.equalTo(500)
             $0.width.equalTo(430)
@@ -74,31 +64,26 @@ class UserViewController : UIViewController {
             .responseData { response in
                 switch response.result {
                 case .success(let res):
-                    do {
-                        if let data = try? JSONDecoder().decode([GetMyList].self, from: response.data!) {
-                            DispatchQueue.main.async {
-                                print(data)
-                                self.result = data
-                                self.tableView.reloadData()
-                            }
+                    
+                    if let data = try? JSONDecoder().decode([GetMyList].self, from: response.data!) {
+                        DispatchQueue.main.async {
+                            print(data)
+                            self.result = data
+                            self.tableView.reloadData()
                         }
-                        print("")
-                        print("-------------------------------")
-                        print("응답 코드 :: ", response.response?.statusCode ?? 0)
-                        print("-------------------------------")
-                        print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
-                        print("====================================")
-                        debugPrint(response)
-                        print("-------------------------------")
-                        print("")
-                        }
-                catch (let err){
+                    } else {
+                        print("tlqkf==================================")
+                    }
                     print("")
                     print("-------------------------------")
-                    print("catch :: ", err.localizedDescription)
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
                     print("====================================")
+                    debugPrint(response)
+                    print("-------------------------------")
                     print("")
-                }
+                    
                 case .failure(let err):
                     print("")
                     print("-------------------------------")
@@ -114,7 +99,7 @@ class UserViewController : UIViewController {
     }
     
     func profileSet() {
-
+        
         view.addSubview(profileView)
         profileView.backgroundColor = .black
         profileView.layer.cornerRadius = 50
@@ -181,17 +166,17 @@ class UserViewController : UIViewController {
 }
 
 extension UserViewController : UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return result.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserListCell", for: indexPath) as? HomeListCell
         cell?.titleLable.text = "\(result[indexPath.row].title)"
         cell?.contentLable.text = "\(result[indexPath.row].todoData)"
         nameLabel.text = "\(result[indexPath.row].id)"
-        
+
         return cell!
     }
 }
