@@ -6,9 +6,10 @@ import FSCalendar
 
 class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
-    let profileView = UIView()
+    let profile = UIView()
     let nameLabel = UILabel()
     let detailButton = UIButton()
+    let ULIDDUImageView = UIImageView()
     let tableView = UITableView()
     
     var getMyTodo: [GetToDoList] = []
@@ -60,16 +61,30 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     
     func profileSet() {
         
-        view.addSubview(profileView)
-        profileView.backgroundColor = .black
-        profileView.layer.cornerRadius = 50
+        view.addSubview(profile)
+        view.addSubview(ULIDDUImageView)
+        ULIDDUImageView.image = UIImage(named: "ULIDDL-Logo2")
+        ULIDDUImageView.backgroundColor = .black
+        ULIDDUImageView.layer.cornerRadius = ULIDDUImageView.frame.width/8
+        ULIDDUImageView.clipsToBounds = true
+        profile.backgroundColor = .black
+        profile.layer.cornerRadius = 50
         
-        profileView.snp.makeConstraints{
+        profile.snp.makeConstraints {
             $0.height.equalTo(100)
             $0.width.equalTo(100)
             $0.trailing.equalTo(-300)
             $0.top.equalTo(160)
             $0.leading.equalTo(30)
+
+        }
+        
+        ULIDDUImageView.snp.makeConstraints{
+            $0.height.equalTo(50)
+            $0.width.equalTo(50)
+            $0.trailing.equalTo(-320)
+            $0.top.equalTo(180)
+            $0.leading.equalTo(50)
         }
     }
     func lineView() {
@@ -111,7 +126,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         view.addSubview(nameLabel)
         
         nameLabel.textColor = .black
-        nameLabel.text = "박준하"
+        nameLabel.text = "우리두"
         
         nameLabel.font = UIFont.boldSystemFont(ofSize: 30)
         

@@ -200,7 +200,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
-            let task = Task(image: "ULIDDL-Logo", title: title, content: content, done: false, ispublic: false)
+            let task = Task(image: "ULIDDL-Logo1", title: title, content: content, done: false, ispublic: false)
 //            self?.getMyTodo.append(task)
             self?.tableView.reloadData()
            

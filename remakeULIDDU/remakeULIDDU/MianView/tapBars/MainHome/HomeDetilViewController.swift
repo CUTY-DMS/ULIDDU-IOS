@@ -29,7 +29,7 @@ class HomeDetilViewController : UITableViewController {
         
         
         headerView.contentMode = .scaleAspectFit
-        headerView.image = UIImage(named: "ULIDDL-Logo")
+        headerView.image = UIImage(named: "ULIDDL-Logo1")
 
         
         tableView.tableHeaderView = headerView

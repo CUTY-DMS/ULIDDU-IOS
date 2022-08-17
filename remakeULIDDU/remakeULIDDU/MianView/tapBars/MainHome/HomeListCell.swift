@@ -47,7 +47,7 @@ class HomeListCell: UITableViewCell {
         }
     }
     func configure() {
-        ULIDDUImageView.image = UIImage(named: "ULIDDL-Logo")
+        ULIDDUImageView.image = UIImage(named: "ULIDDL-Logo1")
         accessoryType = .disclosureIndicator
         selectionStyle = .none
     }
