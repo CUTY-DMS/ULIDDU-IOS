@@ -12,12 +12,14 @@ import Alamofire
 import FSCalendar
 
 class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalendarDelegate {
-        
+    
     var addButton = UIButton()
     var correctionButton = UIButton()
     let tableView = UITableView()
     
     var getMyTodo: [GetToDoList] = []
+    
+    var getDetilToDo: [DetailView] = []
     
     @objc var doneButton : UIButton!
 
@@ -201,7 +203,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
             let task = Task(image: "ULIDDL-Logo", title: title, content: content, done: false, ispublic: false)
 //            self?.getMyTodo.append(task)
             self?.tableView.reloadData()
-            
+           
             let ispublic : Bool = false
             
             //button 클릭시 시간을 가져오기
@@ -269,7 +271,6 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
         self.present(alert, animated: true, completion: nil)
     }
     
-    
     private func getMyToDoList() {
         
         let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
@@ -322,6 +323,59 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                 }
             }
     }
+    
+    private func detailMyToDoList() {
+        
+        let url = "http://44.209.75.36:8080/todo/{id}"
+        let AT : String? = KeyChain.read(key: Token.accessToken)
+        let header : HTTPHeaders = [
+            "Authorization" : "Bearer \(AT!)"
+        ]
+        
+        print("")
+        print("====================================")
+        print("-------------------------------")
+        print("주 소 :: ", url)
+        print("====================================")
+        print("")
+        
+        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let res):
+                    
+                    do {
+                        let data = try JSONDecoder().decode([DetailView].self, from: response.data!)
+                        print(data)
+                        self.getDetilToDo = data
+                        self.tableView.reloadData()
+                    } catch {
+                        print(error)
+                    }
+                    
+                    print("")
+                    print("-------------------------------")
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+                    print("====================================")
+                    debugPrint(response)
+                    print("-------------------------------")
+                    print("")
+                    
+                case .failure(let err):
+                    print("")
+                    print("-------------------------------")
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("에 러 :: ", err.localizedDescription)
+                    print("====================================")
+                    debugPrint(response)
+                    print("")
+                    break
+                }
+            }
+    }
 }
 
 //UITableView, DataSource, Delegate
@@ -330,26 +384,32 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.getMyTodo.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
-                 
+        
+//        let mainList = self.getMyTodo[indexPath.row]
+        
         cell.configure()
-
+        
         
         cell.titleLable.text = "\(getMyTodo[indexPath.row].title)"
-        cell.contentLable.text = "\(getMyTodo[indexPath.row].todoData)"
+        cell.contentLable.text = "\(getMyTodo[indexPath.row].todoDate)"
         //configure에서 설정
-//        cell.textLabel?.text = mainList.title
-//        cell.detailTextLabel?.text = mainList.content
+        //        cell.textLabel?.text = mainList.title
+        //        cell.detailTextLabel?.text = mainList.content
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedHomeList = getMyTodo[indexPath.row]
-        let detailViewController = HomeDetilViewController()
+//        let detailViewController = HomeDetilViewController()
 //        detailViewController.task = selectedHomeList
-        self.show(detailViewController, sender: nil)
+//        self.show(detailViewController, sender: nil)
+        
+        //데이터를 받아오지 못함
+        
+        let selectedHomeList = getMyTodo[indexPath.row]
+        let goToHomeDetilViewControllerVC = HomeDetilViewController()
+        self.show(goToHomeDetilViewControllerVC, sender: nibName)
     }
     
     //삭제 구현
@@ -358,7 +418,7 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         self.getMyTodo.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        if self.getMyTodo.isEmpty {
+        if getMyTodo.isEmpty {
             self.doneButtonTop()
         }
     }
