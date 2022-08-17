@@ -1,51 +1,131 @@
 import UIKit
+import SwiftUI
+import SnapKit
 import Alamofire
+import FSCalendar
 
-class UserViewController : UIViewController {
+class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
     let profileView = UIView()
     let nameLabel = UILabel()
     let detailButton = UIButton()
     let tableView = UITableView()
     
-    var result: [GetMyList] = []
+    var getMyTodo: [GetToDoList] = []
+    
+//    var getDetilToDo: [DetailView] = []
+    
+    @objc var doneButton : UIButton!
+
+    
+    fileprivate weak var calendar: FSCalendar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        
         view.backgroundColor = .white
+        //UINavigationBar 설정
+        title = "임시 설정"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        tableviewSize()
         profileSet()
+        lineView()
         nameLabelSet()
         configureDetailButton()
-        lineView()
-        tableviewSize()
-        
-        tableView.backgroundColor = .red
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         getMyToDoList()
     }
+    
     
     func tableviewSize() {
         //UITableView 설정
         view.addSubview(tableView)
         tableView.backgroundColor = .white
         
-        tableView.register(HomeListCell.self, forCellReuseIdentifier: "UserListCell")
-        
+        tableView.register(HomeListCell.self, forCellReuseIdentifier: "HomeListCell")
+
         tableView.snp.makeConstraints{
-            $0.height.equalTo(500)
+            $0.height.equalTo(520)
             $0.width.equalTo(430)
             $0.trailing.equalTo(0)
             $0.top.equalTo(320)
             $0.leading.equalTo(0)
-            
+        }
+
+    }
+    
+    func profileSet() {
+        
+        view.addSubview(profileView)
+        profileView.backgroundColor = .black
+        profileView.layer.cornerRadius = 50
+        
+        profileView.snp.makeConstraints{
+            $0.height.equalTo(100)
+            $0.width.equalTo(100)
+            $0.trailing.equalTo(-300)
+            $0.top.equalTo(160)
+            $0.leading.equalTo(30)
+        }
+    }
+    func lineView() {
+        let signUpLine = UIView()
+        view.addSubview(signUpLine)
+        signUpLine.backgroundColor = .black
+        signUpLine.snp.makeConstraints{
+            $0.height.equalTo(10)
+            $0.width.equalTo(325)
+            $0.trailing.equalTo(0)
+            $0.top.equalTo(310)
+            $0.leading.equalTo(0)
         }
     }
     
-    func getMyToDoList() {
+    func configureDetailButton() {
+           detailButton.setTitle("상세보기", for: .normal)
+           detailButton.backgroundColor = .black
+           
+           view.addSubview(detailButton)
+           
+           detailButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+           
+           detailButton.snp.makeConstraints {
+               $0.height.equalTo(35)
+               $0.width.equalTo(115)
+               $0.trailing.equalTo(-120)
+               $0.top.equalTo(225)
+               $0.leading.equalTo(160)
+           }
+           detailButton.addTarget(self, action: #selector(DetailButtonAction), for: .touchUpInside)
+       }
+    @objc func DetailButtonAction(sender: UIButton!){
+        print(" 상세보기 버튼 실행됨")
+    }
+
+    
+    func nameLabelSet() {
+        view.addSubview(nameLabel)
+        
+        nameLabel.textColor = .black
+        nameLabel.text = "박준하"
+        
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 30)
+        
+        nameLabel.snp.makeConstraints{
+            $0.height.equalTo(40)
+            $0.width.equalTo(40)
+            $0.trailing.equalTo(-100)
+            $0.top.equalTo(185)
+            $0.leading.equalTo(160)
+        }
+    }
+    
+    
+    private func getMyToDoList() {
         
         let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
@@ -55,7 +135,6 @@ class UserViewController : UIViewController {
         
         print("")
         print("====================================")
-        print("-------------------------------")
         print("주 소 :: ", url)
         print("====================================")
         print("")
@@ -65,15 +144,15 @@ class UserViewController : UIViewController {
                 switch response.result {
                 case .success(let res):
                     
-                    if let data = try? JSONDecoder().decode([GetMyList].self, from: response.data!) {
-                        DispatchQueue.main.async {
-                            print(data)
-                            self.result = data
-                            self.tableView.reloadData()
-                        }
-                    } else {
-                        print("tlqkf==================================")
+                    do {
+                        let data = try JSONDecoder().decode([GetToDoList].self, from: response.data!)
+                        print(data)
+                        self.getMyTodo = data
+                        self.tableView.reloadData()
+                    } catch {
+                        print(error)
                     }
+                    
                     print("")
                     print("-------------------------------")
                     print("응답 코드 :: ", response.response?.statusCode ?? 0)
@@ -97,109 +176,39 @@ class UserViewController : UIViewController {
                 }
             }
     }
-    
-    func profileSet() {
-        
-        view.addSubview(profileView)
-        profileView.backgroundColor = .black
-        profileView.layer.cornerRadius = 50
-        
-        profileView.snp.makeConstraints{
-            $0.height.equalTo(100)
-            $0.width.equalTo(100)
-            $0.trailing.equalTo(-300)
-            $0.top.equalTo(160)
-            $0.leading.equalTo(30)
-        }
-    }
-    
-    func lineView() {
-        let signUpLine = UIView()
-        view.addSubview(signUpLine)
-        signUpLine.backgroundColor = .black
-        signUpLine.snp.makeConstraints{
-            $0.height.equalTo(10)
-            $0.width.equalTo(325)
-            $0.trailing.equalTo(0)
-            $0.top.equalTo(310)
-            $0.leading.equalTo(0)
-        }
-    }
-    
-    func nameLabelSet() {
-        view.addSubview(nameLabel)
-        
-        nameLabel.textColor = .black
-        nameLabel.text = "박준하"
-        
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 30)
-        
-        nameLabel.snp.makeConstraints{
-            $0.height.equalTo(40)
-            $0.width.equalTo(40)
-            $0.trailing.equalTo(-100)
-            $0.top.equalTo(185)
-            $0.leading.equalTo(160)
-        }
-    }
-    
-    func configureDetailButton() {
-        detailButton.setTitle("상세보기", for: .normal)
-        detailButton.backgroundColor = .black
-        
-        view.addSubview(detailButton)
-        
-        detailButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        
-        detailButton.snp.makeConstraints {
-            $0.height.equalTo(35)
-            $0.width.equalTo(115)
-            $0.trailing.equalTo(-120)
-            $0.top.equalTo(225)
-            $0.leading.equalTo(160)
-        }
-        detailButton.addTarget(self, action: #selector(DetailButtonAction), for: .touchUpInside)
-    }
-    @objc func DetailButtonAction(sender: UIButton!){
-        print(" 상세보기 버튼 실행됨")
-    }
 }
 
-extension UserViewController : UITableViewDelegate, UITableViewDataSource {
-
+//UITableView, DataSource, Delegate
+extension UserViewController : UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return result.count
+        return self.getMyTodo.count
     }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserListCell", for: indexPath) as? HomeListCell
-        cell?.titleLable.text = "\(result[indexPath.row].title)"
-        cell?.contentLable.text = "\(result[indexPath.row].todoData)"
-        nameLabel.text = "\(result[indexPath.row].id)"
-
-        return cell!
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListCell", for: indexPath) as? HomeListCell else { return UITableViewCell() }
+        
+//        let mainList = self.getMyTodo[indexPath.row]
+        
+        cell.configure()
+        
+        
+        cell.titleLable.text = "\(getMyTodo[indexPath.row].title)"
+        cell.contentLable.text = "\(getMyTodo[indexPath.row].todoDate)"
+        //configure에서 설정
+        //        cell.textLabel?.text = mainList.title
+        //        cell.detailTextLabel?.text = mainList.content
+        return cell
     }
-}
-
-
-//view미리보기
-import SwiftUI
-
-struct UserViewControllerRepresentable: UIViewControllerRepresentable {
-    
-    func makeUIViewController(context: Context) -> UserViewController {
-        return UserViewController()
-    }
-    
-    func updateUIViewController(_ uiViewController: UserViewController, context: Context) { }
-    
-    
-    typealias UIViewControllerType = UserViewController
-}
-
-@available(iOS 13.0.0, *)
-struct UserViewPreview: PreviewProvider {
-    static var previews: some View {
-        UserViewControllerRepresentable()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailViewController = HomeDetilViewController()
+//        detailViewController.task = selectedHomeList
+//        self.show(detailViewController, sender: nil)
+        
+        //데이터를 받아오지 못함
+        
+        let selectedHomeList = getMyTodo[indexPath.row]
+        let goToHomeDetilViewControllerVC = HomeDetilViewController()
+        self.show(goToHomeDetilViewControllerVC, sender: nibName)
     }
 }

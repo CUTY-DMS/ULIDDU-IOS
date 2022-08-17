@@ -19,7 +19,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     var getMyTodo: [GetToDoList] = []
     
-    var getDetilToDo: [DetailView] = []
+//    var getDetilToDo: [DetailView] = []
     
     @objc var doneButton : UIButton!
 
@@ -281,7 +281,6 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
         
         print("")
         print("====================================")
-        print("-------------------------------")
         print("주 소 :: ", url)
         print("====================================")
         print("")
@@ -324,58 +323,58 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
             }
     }
     
-    private func detailMyToDoList() {
-        
-        let url = "http://44.209.75.36:8080/todo/{id}"
-        let AT : String? = KeyChain.read(key: Token.accessToken)
-        let header : HTTPHeaders = [
-            "Authorization" : "Bearer \(AT!)"
-        ]
-        
-        print("")
-        print("====================================")
-        print("-------------------------------")
-        print("주 소 :: ", url)
-        print("====================================")
-        print("")
-        
-        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
-            .responseData { response in
-                switch response.result {
-                case .success(let res):
-                    
-                    do {
-                        let data = try JSONDecoder().decode([DetailView].self, from: response.data!)
-                        print(data)
-                        self.getDetilToDo = data
-                        self.tableView.reloadData()
-                    } catch {
-                        print(error)
-                    }
-                    
-                    print("")
-                    print("-------------------------------")
-                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
-                    print("-------------------------------")
-                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
-                    print("====================================")
-                    debugPrint(response)
-                    print("-------------------------------")
-                    print("")
-                    
-                case .failure(let err):
-                    print("")
-                    print("-------------------------------")
-                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
-                    print("-------------------------------")
-                    print("에 러 :: ", err.localizedDescription)
-                    print("====================================")
-                    debugPrint(response)
-                    print("")
-                    break
-                }
-            }
-    }
+//    private func detailMyToDoList() {
+//
+//        let url = "http://44.209.75.36:8080/todo/{id}"
+//        let AT : String? = KeyChain.read(key: Token.accessToken)
+//        let header : HTTPHeaders = [
+//            "Authorization" : "Bearer \(AT!)"
+//        ]
+//
+//        print("")
+//        print("====================================")
+//        print("-------------------------------")
+//        print("주 소 :: ", url)
+//        print("====================================")
+//        print("")
+//
+//        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+//            .responseData { response in
+//                switch response.result {
+//                case .success(let res):
+//
+//                    do {
+//                        let data = try JSONDecoder().decode([DetailView].self, from: response.data!)
+//                        print(data)
+//                        self.getDetilToDo = data
+//                        self.tableView.reloadData()
+//                    } catch {
+//                        print(error)
+//                    }
+//
+//                    print("")
+//                    print("-------------------------------")
+//                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+//                    print("-------------------------------")
+//                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+//                    print("====================================")
+//                    debugPrint(response)
+//                    print("-------------------------------")
+//                    print("")
+//
+//                case .failure(let err):
+//                    print("")
+//                    print("-------------------------------")
+//                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+//                    print("-------------------------------")
+//                    print("에 러 :: ", err.localizedDescription)
+//                    print("====================================")
+//                    debugPrint(response)
+//                    print("")
+//                    break
+//                }
+//            }
+//    }
 }
 
 //UITableView, DataSource, Delegate

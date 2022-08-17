@@ -152,7 +152,7 @@ extension HomeDetilViewController {
             cell.textLabel?.text = "\(task.todoDate)"
             return cell
         case 5:
-            cell.textLabel?.text = task.completedDate
+            cell.textLabel?.text = "\(task.completedDate)"
             return cell
         case 6:
             cell.textLabel?.text = "\(task.iscompleted)" //타입 변환 해야함
