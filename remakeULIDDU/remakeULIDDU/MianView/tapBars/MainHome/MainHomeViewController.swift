@@ -102,7 +102,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     override func viewDidAppear(_ animated: Bool) {
         doneButtonTop()
-        getMyToDoList()
+        getPetList()
     }
     
     func calendarVeiwSet() {
@@ -271,7 +271,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func getMyToDoList() {
+    private func getPetList() {
         
         let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
@@ -294,6 +294,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                         let data = try JSONDecoder().decode([GetToDoList].self, from: response.data!)
                         print(data)
                         self.getMyTodo = data
+                        print("===getMyToDo는 data의 값을 보유 하고 있습니다===")
                         self.tableView.reloadData()
                     } catch {
                         print(error)

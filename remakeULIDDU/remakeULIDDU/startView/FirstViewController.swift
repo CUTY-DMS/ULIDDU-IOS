@@ -13,7 +13,7 @@ class FirstViewController : UIViewController {
     let imageView: UIImageView = {
         let logoImage = UIImageView()
         logoImage.backgroundColor = .white
-        logoImage.image = UIImage(named: "ULIDDL-Logo")
+        logoImage.image = UIImage(named: "ULIDDL-Logo1")
         logoImage.contentMode = .scaleAspectFit
         
         logoImage.translatesAutoresizingMaskIntoConstraints = false

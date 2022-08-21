@@ -91,6 +91,7 @@ class MainLoginViewController : UIViewController {
         passworldField.borderStyle = .none
         passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passworldField.textColor = .black
+        passworldField.isSecureTextEntry = true
         view.addSubview(passworldField)
         passworldField.snp.makeConstraints{
             $0.height.equalTo(40)
@@ -185,6 +186,7 @@ class MainLoginViewController : UIViewController {
                 if let userDate = try? JSONDecoder().decode(TokenModel.self, from: response.data!) {
                     KeyChain.create(key: Token.accessToken, token: userDate.access_token)
                     KeyChain.create(key: Token.refreshToken, token: userDate.resfresh_token)
+                    print("토큰 저장❤️")
                 }
                     print("로그인 성공😁")
                     let goToMainTabBarVC = MainTabBarController()

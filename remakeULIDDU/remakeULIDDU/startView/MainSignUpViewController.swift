@@ -126,6 +126,7 @@ class MainSignUpViewController : UIViewController {
         passworldField.borderStyle = .none
         passworldField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passworldField.textColor = .black
+        passworldField.isSecureTextEntry = true
         view.addSubview(passworldField)
         passworldField.snp.makeConstraints{
             $0.height.equalTo(40)
