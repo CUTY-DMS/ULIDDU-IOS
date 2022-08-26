@@ -30,8 +30,6 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initRefresh()
-        
         view.backgroundColor = .white
         //UINavigationBar 설정
         title = "임시 설정"
@@ -104,6 +102,9 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
 }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.initRefresh()
         doneButtonTop()
         getUserList()
     }
@@ -122,10 +123,6 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
             $0.trailing.equalTo(0)
             $0.leading.equalTo(0)
         }
-        
-        //calendatView 설정
-        
-        
     }
     
     
@@ -274,6 +271,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
             textField.placeholder = "할 일을 입력해주세요"
         })
         self.present(alert, animated: true, completion: nil)
+        self.initRefresh()
     }
     
     private func getUserList() {
@@ -301,6 +299,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                         self.getMyTodo = data
                         print("===getMyToDo는 data의 값을 보유 하고 있습니다===")
                         self.tableView.reloadData()
+                        self.initRefresh()
                     } catch {
                         print(error)
                     }
@@ -314,6 +313,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                     debugPrint(response)
                     print("-------------------------------")
                     print("")
+                    self.initRefresh()
                     
                 case .failure(let err):
                     print("")

@@ -12,6 +12,8 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     let ULIDDUImageView = UIImageView()
     let tableView = UITableView()
     
+    let refresh = UIRefreshControl()
+    
     var getMyTodo: [GetToDoList] = []
     var userView: UserContent = UserContent(name: "null", userID: "", age: 0)
     
@@ -37,11 +39,11 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         nameLabelSet()
         configureDetailButton()
         getMyToDoList()
-        
         userName()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.initRefresh()
         getMyToDoList()
     }
     
@@ -85,9 +87,9 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         
         ULIDDUImageView.snp.makeConstraints{
             $0.height.equalTo(50)
-            $0.width.equalTo(50)
+            $0.width.equalTo(30)
             $0.trailing.equalTo(-320)
-            $0.top.equalTo(180)
+            $0.top.equalTo(183)
             $0.leading.equalTo(50)
         }
     }
@@ -130,7 +132,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         view.addSubview(nameLabel)
         
         nameLabel.textColor = .black
-        nameLabel.text = "우리두"
+        nameLabel.text = ""
         
         nameLabel.font = UIFont.boldSystemFont(ofSize: 30)
         
@@ -168,6 +170,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                         print(data)
                         self.getMyTodo = data
                         self.tableView.reloadData()
+                        self.initRefresh()
                     } catch {
                         print(error)
                     }
@@ -222,6 +225,9 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                         print("🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸")
                         print("===userView는 data의 값을 보유 하고 있습니다===")
                         print("🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸")
+                        
+                        
+                        self.nameLabel.text = "\(self.userView.name)"
                     } catch {
                         print("🤬🤬🤬🤬🤬🤬🤬")
                         print(error)
@@ -284,4 +290,30 @@ extension UserViewController : UITableViewDataSource, UITableViewDelegate {
         let goToHomeDetilViewControllerVC = UserDetilViewController()
         self.show(goToHomeDetilViewControllerVC, sender: nibName)
     }
+}
+
+//새로 고침
+extension UserViewController {
+    
+    func initRefresh() {
+        refresh.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)
+        refresh.backgroundColor = UIColor.clear
+        self.tableView.refreshControl = refresh
+    }
+ 
+    @objc func refreshTable(refresh: UIRefreshControl) {
+        print("새로고침")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.tableView.reloadData()
+            self.getMyToDoList()
+            refresh.endRefreshing()
+        }
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y < -0.1) {
+            self.refreshTable(refresh: self.refresh)
+        }
+    }
+ 
 }
