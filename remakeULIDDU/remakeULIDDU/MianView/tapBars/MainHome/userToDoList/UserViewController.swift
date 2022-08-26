@@ -13,6 +13,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     let tableView = UITableView()
     
     var getMyTodo: [GetToDoList] = []
+    var userView: UserContent = UserContent(name: "null", userID: "", age: 0)
     
 //    var getDetilToDo: [DetailView] = []
     
@@ -36,6 +37,8 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         nameLabelSet()
         configureDetailButton()
         getMyToDoList()
+        
+        userName()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -176,6 +179,60 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                     print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
                     print("====================================")
                     debugPrint(response)
+                    print("-------------------------------")
+                    print("")
+                    
+                case .failure(let err):
+                    print("")
+                    print("-------------------------------")
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("에 러 :: ", err.localizedDescription)
+                    print("====================================")
+                    debugPrint(response)
+                    print("")
+                    break
+                }
+            }
+    }
+    
+    private func userName() {
+        
+        let url = "http://44.209.75.36:8080/user"
+        let AT : String? = KeyChain.read(key: Token.accessToken)
+        let header : HTTPHeaders = [
+            "Authorization" : "Bearer \(AT!)"
+        ]
+        
+        print("====================================")
+        print("주 소 :: ", url)
+        print("====================================")
+        
+        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let res):
+                    do {
+                        print("야옹")
+                        print(response.data!)
+                        print("야옹")
+                        let data = try JSONDecoder().decode(UserContent.self, from: response.data!)
+                        print(data)
+                        self.userView = data
+                        print("🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸")
+                        print("===userView는 data의 값을 보유 하고 있습니다===")
+                        print("🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸")
+                    } catch {
+                        print("🤬🤬🤬🤬🤬🤬🤬")
+                        print(error)
+                        print("🥵🥵🥵🥵🥵🥵🥵")
+                    }
+                    
+                    print("")
+                    print("-------------------------------")
+                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+                    print("-------------------------------")
+                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
                     print("-------------------------------")
                     print("")
                     

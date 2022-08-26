@@ -400,11 +400,13 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     
     //삭제 구현
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        self.getMyTodo.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        print("🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝")
+        print(indexPath.row)
+        print("🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝")
         let test = getMyTodo[indexPath.row]
         deleteList(id: test.id)
+        self.getMyTodo.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         
         if getMyTodo.isEmpty {
             self.doneButtonTop()
