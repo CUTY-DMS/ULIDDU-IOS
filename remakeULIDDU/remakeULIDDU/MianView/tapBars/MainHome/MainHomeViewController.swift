@@ -17,6 +17,8 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     var correctionButton = UIButton()
     let tableView = UITableView()
     
+    let refresh = UIRefreshControl()
+    
     var getMyTodo: [GetToDoList] = []
     var addMyTodo: [Task] = []
     
@@ -27,6 +29,8 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.initRefresh()
         
         view.backgroundColor = .white
         //UINavigationBar 설정
@@ -133,7 +137,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
         tableView.register(HomeListCell.self, forCellReuseIdentifier: "HomeListCell")
 
         tableView.snp.makeConstraints{
-            $0.height.equalTo(275)
+            $0.height.equalTo(310)
             $0.width.equalTo(430)
             $0.trailing.equalTo(0)
             $0.top.equalTo(515)
@@ -246,11 +250,13 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                     debugPrint(response)
                     self?.navigationController?.popViewController(animated: true)
                     print("✅add ToDo POST 성공✅")
+                    self!.initRefresh()
                     
                 case 201:
                     debugPrint(response)
                     self?.navigationController?.popViewController(animated: true)
                     print("✅add ToDo POST 성공✅")
+                    self!.initRefresh()
                 default:
                     print("🤯post 성공하지 못했습니다🤬")
                     debugPrint(response)
@@ -383,7 +389,6 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
 //        self.show(detailViewController, sender: nil)
         
         //데이터를 받아오지 못함
-        
         let selectedHomeList = getMyTodo[indexPath.row]
         let goToHomeDetilViewControllerVC = HomeDetilViewController()
         goToHomeDetilViewControllerVC.getTodoUser = selectedHomeList
@@ -398,7 +403,6 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         
         self.getMyTodo.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
-//        deleteList()
         let test = getMyTodo[indexPath.row]
         deleteList(id: test.id)
         
@@ -418,4 +422,31 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         self.getMyTodo = homeLists
     }
     
+}
+
+
+//새로 고침
+extension MainHomeViewController {
+    
+    func initRefresh() {
+        refresh.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)
+        refresh.backgroundColor = UIColor.clear
+        self.tableView.refreshControl = refresh
+    }
+ 
+    @objc func refreshTable(refresh: UIRefreshControl) {
+        print("새로고침")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.tableView.reloadData()
+            self.getUserList()
+            refresh.endRefreshing()
+        }
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y < -0.1) {
+            self.refreshTable(refresh: self.refresh)
+        }
+    }
+ 
 }

@@ -76,8 +76,8 @@
 		0E09B1F128ABBD6600B6A6A5 /* userToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				0E19473028A8E90500C4DA41 /* UserDetilViewController.swift */,
 				0ED5068728A6070400D73CFD /* UserViewController.swift */,
+				0E19473028A8E90500C4DA41 /* UserDetilViewController.swift */,
 			);
 			path = userToDoList;
 			sourceTree = "<group>";
