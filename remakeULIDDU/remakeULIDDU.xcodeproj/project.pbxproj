@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E09B1D728AA2CAB00B6A6A5 /* GetMyToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */; };
 		0E19472D28A8E2C000C4DA41 /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */; };
-		0E19473128A8E90500C4DA41 /* HomeDetilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */; };
+		0E19473128A8E90500C4DA41 /* UserDetilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E19473028A8E90500C4DA41 /* UserDetilViewController.swift */; };
+		0E235DA428B88F0D000B3ED5 /* HomeDetilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E235DA328B88F0D000B3ED5 /* HomeDetilViewController.swift */; };
 		0E34201A28A72B4500A0933E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201928A72B4500A0933E /* Header.swift */; };
 		0E34201C28A72BEB00A0933E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201B28A72BEB00A0933E /* TokenModel.swift */; };
 		0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201D28A7678300A0933E /* MainSignUpViewController.swift */; };
@@ -29,7 +30,8 @@
 /* Begin PBXFileReference section */
 		0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyToDo.swift; sourceTree = "<group>"; };
 		0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
-		0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetilViewController.swift; sourceTree = "<group>"; };
+		0E19473028A8E90500C4DA41 /* UserDetilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetilViewController.swift; sourceTree = "<group>"; };
+		0E235DA328B88F0D000B3ED5 /* HomeDetilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeDetilViewController.swift; path = "/Users/junha/Desktop/ULIDDU/ULIDDU-IOS/remakeULIDDU/remakeULIDDU/MianView/tapBars/MainHome/HomeDetilViewController.swift"; sourceTree = "<absolute>"; };
 		0E34201928A72B4500A0933E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0E34201B28A72BEB00A0933E /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		0E34201D28A7678300A0933E /* MainSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignUpViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		0E09B1F128ABBD6600B6A6A5 /* userToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				0E19473028A8E90500C4DA41 /* UserDetilViewController.swift */,
 				0ED5068728A6070400D73CFD /* UserViewController.swift */,
 			);
 			path = userToDoList;
@@ -83,9 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				0ED5068528A606E700D73CFD /* MainHomeViewController.swift */,
-				0E19473028A8E90500C4DA41 /* HomeDetilViewController.swift */,
 				0E19472C28A8E2C000C4DA41 /* HomeListCell.swift */,
 				0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */,
+				0E235DA328B88F0D000B3ED5 /* HomeDetilViewController.swift */,
 				0E09B1F128ABBD6600B6A6A5 /* userToDoList */,
 			);
 			path = MainHome;
@@ -301,8 +304,9 @@
 				0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */,
 				0ED5068228A605FB00D73CFD /* MainTabBarController.swift in Sources */,
 				0E09B1D728AA2CAB00B6A6A5 /* GetMyToDo.swift in Sources */,
-				0E19473128A8E90500C4DA41 /* HomeDetilViewController.swift in Sources */,
+				0E19473128A8E90500C4DA41 /* UserDetilViewController.swift in Sources */,
 				0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */,
+				0E235DA428B88F0D000B3ED5 /* HomeDetilViewController.swift in Sources */,
 				0ED5068A28A6166200D73CFD /* MainLoginViewController.swift in Sources */,
 				0ED5068428A6068700D73CFD /* PublicFeedViewController.swift in Sources */,
 			);

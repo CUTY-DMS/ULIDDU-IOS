@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/junha/Desktop/ULIDDU/ULIDDU-IOS/remakeULIDDU/remakeULIDDU/MianView/tapBars/MainHome/HomeDetilViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:remakeULIDDU.xcodeproj">
    </FileRef>
    <FileRef

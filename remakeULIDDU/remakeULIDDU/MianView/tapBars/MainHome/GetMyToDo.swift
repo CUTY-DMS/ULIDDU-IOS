@@ -24,6 +24,8 @@ struct GetToDoList : Codable {
 
 }
 
+
+
 struct DetailView : Codable {
     var id : Int = .init()
     var title : String = .init()
@@ -49,13 +51,15 @@ struct DetailView : Codable {
     }
 }
 
+
+
+
 struct GetMyList : Codable {
     var id : String
     var title : String
     var todoData : String
     var iscompleted : Bool
     var isliked : Bool
-    var task = [Task]()
 }
 
 struct Task : Codable {

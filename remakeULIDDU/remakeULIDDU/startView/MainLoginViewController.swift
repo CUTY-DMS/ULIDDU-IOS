@@ -194,6 +194,7 @@ class MainLoginViewController : UIViewController {
                     self.present(goToMainTabBarVC, animated: true, completion: nil)
             default:
                 debugPrint(response)
+                debugPrint(request)
                 if response.response?.statusCode != 200 {
                     print("로그인 실패")
                     let AlertMassge = UIAlertController(title: "경고", message: "로그인 실패", preferredStyle: UIAlertController.Style.alert)

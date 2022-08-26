@@ -35,6 +35,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         lineView()
         nameLabelSet()
         configureDetailButton()
+        getMyToDoList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -223,7 +224,7 @@ extension UserViewController : UITableViewDataSource, UITableViewDelegate {
         //데이터를 받아오지 못함
         
         let selectedHomeList = getMyTodo[indexPath.row]
-        let goToHomeDetilViewControllerVC = HomeDetilViewController()
+        let goToHomeDetilViewControllerVC = UserDetilViewController()
         self.show(goToHomeDetilViewControllerVC, sender: nibName)
     }
 }
