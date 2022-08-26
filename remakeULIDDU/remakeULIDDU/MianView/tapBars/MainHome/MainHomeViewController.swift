@@ -19,9 +19,6 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     var getMyTodo: [GetToDoList] = []
     var addMyTodo: [Task] = []
-    var myList: [GetMyList] = []
-    
-//    var getDetilToDo: [DetailView] = []
     
     @objc var doneButton : UIButton!
 
@@ -325,32 +322,36 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                 }
             }
     }
-//    func deletePet() {
-//            let AT : String? = KeyChain.read(key: Token.accessToken)
-//            let RT : String? = KeyChain.read(key: Token.refreshToken)
-//        let url = "http://44.209.75.36:8080/todo/\()"
-//            var request = URLRequest(url: URL(string: url)!)
-//            request.httpMethod = "DELETE"
-//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//            request.timeoutInterval = 10
-//            var header = HTTPHeaders()
-//            header.add(name: "Authorization", value: "Bearer \(AT!)")
-//            header.add(name: "X-Refresh-Token", value: RT!)
-//            
-//
-//        AF.request(url,method: .delete, encoding: JSONEncoding.default, headers: header)
-//            .responseString { (response) in
-//                switch response.response?.statusCode {
-//                case 200:
-//                    debugPrint(response)
-//                    print("url 경로 : \(request.url as Any)")
-//                    print("✅POST 성공✅")
-//                default:
-//                    print("🤯post 성공하지 못했습니다🤬")
-//                    debugPrint(response)
-//            }
-//        }
-//    }
+    func deleteList(id: Int) {
+            let AT : String? = KeyChain.read(key: Token.accessToken)
+            let RT : String? = KeyChain.read(key: Token.refreshToken)
+        let url = "http://44.209.75.36:8080/todo/\(id)"
+            var request = URLRequest(url: URL(string: url)!)
+            request.httpMethod = "DELETE"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.timeoutInterval = 10
+            var header = HTTPHeaders()
+            header.add(name: "Authorization", value: "Bearer \(AT!)")
+            header.add(name: "X-Refresh-Token", value: RT!)
+
+
+        AF.request(url,method: .delete, encoding: JSONEncoding.default, headers: header)
+            .responseString { (response) in
+                switch response.response?.statusCode {
+                case 200:
+                    debugPrint(response)
+                    print("url 경로 : \(request.url as Any)")
+                    print("🌹delete 성공🌹")
+                case 204:
+                    debugPrint(response)
+                    print("url 경로 : \(request.url as Any)")
+                    print("🌹delete 성공🌹")
+                default:
+                    print("🤯delete 성공하지 못했습니다🤬")
+                    debugPrint(response)
+            }
+        }
+    }
 }
 
 
@@ -387,7 +388,9 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         let goToHomeDetilViewControllerVC = HomeDetilViewController()
         goToHomeDetilViewControllerVC.getTodoUser = selectedHomeList
         self.show(goToHomeDetilViewControllerVC, sender: nil)
+        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
         print(selectedHomeList)
+        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
     }
     
     //삭제 구현
@@ -395,6 +398,9 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         
         self.getMyTodo.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+//        deleteList()
+        let test = getMyTodo[indexPath.row]
+        deleteList(id: test.id)
         
         if getMyTodo.isEmpty {
             self.doneButtonTop()

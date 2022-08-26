@@ -14,14 +14,13 @@ struct GetToDoList : Codable {
     var iscompleted : Bool = .init()
     var isliked : Bool = .init()
     
-    enum CodingKeys : String, CodingKey{
+    enum CodingKeys : String, CodingKey {
         case id
         case title
         case todoDate = "todo-date"
         case iscompleted
         case isliked
     }
-
 }
 
 
