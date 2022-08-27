@@ -384,9 +384,6 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailViewController = HomeDetilViewController()
-//        detailViewController.task = selectedHomeList
-//        self.show(detailViewController, sender: nil)
         
         //데이터를 받아오지 못함
         let selectedHomeList = getMyTodo[indexPath.row]

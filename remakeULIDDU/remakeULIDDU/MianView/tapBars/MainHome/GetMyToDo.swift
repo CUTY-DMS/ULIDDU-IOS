@@ -25,13 +25,13 @@ struct GetToDoList : Codable {
 
 
 
-struct DetailView : Codable {
+struct DetailUserContent : Codable {
     var id : Int = .init()
     var title : String = .init()
     var content : String = .init()
     var writer : String = .init()
     var todoDate : String = .init()
-    var completedDate : String = .init()
+    var completedDate : Bool = .init()
     var iscompleted : Bool = .init()
     var ispublic : Bool = .init()
     var isliked : Bool = .init()

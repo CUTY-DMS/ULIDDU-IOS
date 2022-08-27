@@ -1,10 +1,17 @@
+//
+//  test.swift
+//  remakeULIDDU
+//
+//  Created by 박준하 on 2022/08/26.
+//
+
 import UIKit
 import SwiftUI
 import SnapKit
 import Alamofire
 import FSCalendar
 
-class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDelegate {
+class TestViewController : UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
     let profile = UIView()
     let nameLabel = UILabel()
@@ -14,7 +21,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     
     let refresh = UIRefreshControl()
     
-    var getMyTodo: [GetToDoList] = []
+//    var getMyTodo: [GetToDoList] = []
     var userView: UserContent = UserContent(name: "null", userID: "", age: 0)
     var detilView: DetailUserContent = DetailUserContent(id: 0, title: "", content: "", writer: "", todoDate: "yyyy-mm-nn", completedDate: false, iscompleted: false, ispublic: false, isliked: false, likeCount: 0)
     
@@ -306,7 +313,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
 }
 
 //UITableView, DataSource, Delegate
-extension UserViewController : UITableViewDataSource, UITableViewDelegate {
+extension TestViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return getMyTodo.count
@@ -326,15 +333,11 @@ extension UserViewController : UITableViewDataSource, UITableViewDelegate {
         
         let detailPageIndexPath = getMyTodo[indexPath.row]
         
-        print(detailPageIndexPath)
-//        
-//        let detail = getDetailList(id: detailPageIndexPath.id)
-//        
-//        let goToHomeDetilViewControllerVC = UserDetilViewController()
-//        
-//        goToHomeDetilViewControllerVC.Detail = detailPageIndexPath
-//        
-//        self.show(goToHomeDetilViewControllerVC, sender: nibName)
+        let detail = getDetailList(id: detailPageIndexPath.id)
+        
+        let goToHomeDetilViewControllerVC = UserDetilViewController()
+        
+        goToHomeDetilViewControllerVC.Detail =
         
 //        let petListIndexPath = showList.pets[indexPath.row]
 //        let showDetailViewController = ShowPetDetailViewController()
@@ -349,7 +352,7 @@ extension UserViewController : UITableViewDataSource, UITableViewDelegate {
 }
 
 //새로 고침
-extension UserViewController {
+extension TestViewController {
     
     func initRefresh() {
         refresh.addTarget(self, action: #selector(refreshTable(refresh:)), for: .valueChanged)

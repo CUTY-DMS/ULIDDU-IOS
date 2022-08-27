@@ -10,12 +10,12 @@ import Alamofire
 
 class UserDetilViewController : UITableViewController {
     
-    var task = DetailView()
+    var Detail = DetailUserContent()
       
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = task.title
+        title = Detail.title
         
         
         tableView = UITableView(frame: tableView.frame, style: .insetGrouped)
@@ -82,34 +82,34 @@ extension UserDetilViewController {
         
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = "\(task.id)"
+            cell.textLabel?.text = "\(Detail.id)"
             return cell
         case 1:
-            cell.textLabel?.text = "\(task.title)"
+            cell.textLabel?.text = "\(Detail.title)"
             return cell
         case 2:
-            cell.textLabel?.text = "\(task.content)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detail.content)" //타입 변환 해야함
             return cell
         case 3:
-            cell.textLabel?.text = "\(task.writer)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detail.writer)" //타입 변환 해야함
             return cell
         case 4:
-            cell.textLabel?.text = "\(task.todoDate)"
+            cell.textLabel?.text = "\(Detail.todoDate)"
             return cell
         case 5:
-            cell.textLabel?.text = "\(task.completedDate)"
+            cell.textLabel?.text = "\(Detail.completedDate)"
             return cell
         case 6:
-            cell.textLabel?.text = "\(task.iscompleted)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detail.iscompleted)" //타입 변환 해야함
             return cell
         case 7:
-            cell.textLabel?.text = "\(task.ispublic)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detail.ispublic)" //타입 변환 해야함
             return cell
         case 8:
-            cell.textLabel?.text = "\(task.isliked)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detail.isliked)" //타입 변환 해야함
             return cell
         case 9:
-            cell.textLabel?.text = "\(task.likeCount)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detail.likeCount)" //타입 변환 해야함
             return cell
         default:
             return cell
