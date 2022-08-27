@@ -386,13 +386,21 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //데이터를 받아오지 못함
+//        let selectedHomeList = getMyTodo[indexPath.row]
+//        let goToHomeDetilViewControllerVC = HomeDetilViewController()
+//        goToHomeDetilViewControllerVC.getTodoUser = selectedHomeList
+//        self.show(goToHomeDetilViewControllerVC, sender: nil)
+//        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
+//        print(selectedHomeList)
+//        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
         let selectedHomeList = getMyTodo[indexPath.row]
-        let goToHomeDetilViewControllerVC = HomeDetilViewController()
-        goToHomeDetilViewControllerVC.getTodoUser = selectedHomeList
+        let goToHomeDetilViewControllerVC = HomeDetilShowViewController()
+        goToHomeDetilViewControllerVC.getTodoWrite = selectedHomeList
         self.show(goToHomeDetilViewControllerVC, sender: nil)
         print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
         print(selectedHomeList)
         print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
+              
     }
     
     //삭제 구현

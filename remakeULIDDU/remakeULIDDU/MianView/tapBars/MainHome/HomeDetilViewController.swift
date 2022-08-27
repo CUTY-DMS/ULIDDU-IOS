@@ -11,7 +11,11 @@ import Alamofire
 
 class HomeDetilViewController : UIViewController {
     
-    var getTodoUser : GetToDoList?
+    var getTodoEdit : GetToDoList?
+    
+    var titleEdit: String = ""
+    var contentEdit: String = ""
+    var dateEdit: String = ""
     
     let titleText = UILabel()
     let contentText = UILabel()
@@ -29,6 +33,10 @@ class HomeDetilViewController : UIViewController {
         titleLabel()
         contentLabel()
         dateLabel()
+        
+        titleField.text = "\(titleEdit)"
+        contentField.text = "\(contentEdit)"
+        dateField.text = "\(dateEdit)"
     }
     
     func titleLabel() {
@@ -83,7 +91,6 @@ class HomeDetilViewController : UIViewController {
         
         titleField.borderStyle = .roundedRect
         view.addSubview(titleField)
-        titleField.attributedPlaceholder = NSAttributedString(string: "Id", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         titleField.textColor = .black
         titleField.snp.makeConstraints{
             $0.height.equalTo(35)
@@ -93,9 +100,7 @@ class HomeDetilViewController : UIViewController {
         }
         
         contentField.borderStyle = .roundedRect
-        contentField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         contentField.textColor = .black
-        contentField.isSecureTextEntry = true
         view.addSubview(contentField)
         contentField.snp.makeConstraints{
             $0.height.equalTo(35)
@@ -105,9 +110,7 @@ class HomeDetilViewController : UIViewController {
         }
         
         dateField.borderStyle = .roundedRect
-        dateField.attributedPlaceholder = NSAttributedString(string: "Passworld", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         dateField.textColor = .black
-        dateField.isSecureTextEntry = true
         view.addSubview(dateField)
         dateField.snp.makeConstraints{
             $0.height.equalTo(35)

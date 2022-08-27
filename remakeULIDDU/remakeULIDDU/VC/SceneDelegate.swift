@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 //        let mainTC = MainTabBarController()
         let FirstView = FirstViewController()
-//        let homeDetilView = HomeDetilViewController()
+//        let homeDetilEditView = HomeDetilViewController()
+//        let homeShowDetilView = HomeDetilShowViewController()
 
 
         window?.rootViewController = FirstView

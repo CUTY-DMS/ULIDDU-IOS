@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class UserDetilViewController : UITableViewController {
+class UserDetilEditViewController : UITableViewController {
     
     var Detail = DetailUserContent()
       
@@ -36,7 +36,7 @@ class UserDetilViewController : UITableViewController {
 }
 
 //UITableView delegate dataSource
-extension UserDetilViewController {
+extension UserDetilEditViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 10
