@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let FirstView = FirstViewController()
 //        let homeDetilEditView = HomeDetilViewController()
 //        let homeShowDetilView = HomeDetilShowViewController()
+//        let publicView = PublicFeedViewController()
+//        let EditView = UserDetilEditViewController()
 
 
         window?.rootViewController = FirstView

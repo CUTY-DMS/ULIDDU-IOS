@@ -16,6 +16,8 @@
 		0E34201A28A72B4500A0933E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201928A72B4500A0933E /* Header.swift */; };
 		0E34201C28A72BEB00A0933E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201B28A72BEB00A0933E /* TokenModel.swift */; };
 		0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E34201D28A7678300A0933E /* MainSignUpViewController.swift */; };
+		0E5DA1FC28BB076F004D0881 /* DetilVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DA1FB28BB076F004D0881 /* DetilVO.swift */; };
+		0E5DA1FE28BB851C004D0881 /* userSetViewConteller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5DA1FD28BB851C004D0881 /* userSetViewConteller.swift */; };
 		0E792FBE289E0EAB008E3209 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E792FBD289E0EAB008E3209 /* AppDelegate.swift */; };
 		0E792FC0289E0EAB008E3209 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */; };
 		0E792FC7289E0EAC008E3209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E792FC6289E0EAC008E3209 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		0E34201928A72B4500A0933E /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		0E34201B28A72BEB00A0933E /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		0E34201D28A7678300A0933E /* MainSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignUpViewController.swift; sourceTree = "<group>"; };
+		0E5DA1FB28BB076F004D0881 /* DetilVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetilVO.swift; sourceTree = "<group>"; };
+		0E5DA1FD28BB851C004D0881 /* userSetViewConteller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userSetViewConteller.swift; sourceTree = "<group>"; };
 		0E792FBA289E0EAB008E3209 /* remakeULIDDU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = remakeULIDDU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E792FBD289E0EAB008E3209 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E792FBF289E0EAB008E3209 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,8 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				0ED5068728A6070400D73CFD /* UserViewController.swift */,
-				0E235DC528B8D57C000B3ED5 /* UserContent.swift */,
+				0E5DA1FD28BB851C004D0881 /* userSetViewConteller.swift */,
 				0E19473028A8E90500C4DA41 /* UserDetilViewController.swift */,
+				0E235DC528B8D57C000B3ED5 /* UserContent.swift */,
 			);
 			path = userToDoList;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 				0E235DC928BA44DA000B3ED5 /* HomeDetilShowViewController.swift */,
 				0E235DA328B88F0D000B3ED5 /* HomeDetilViewController.swift */,
 				0E09B1D628AA2CAB00B6A6A5 /* GetMyToDo.swift */,
+				0E5DA1FB28BB076F004D0881 /* DetilVO.swift */,
 				0E09B1F128ABBD6600B6A6A5 /* userToDoList */,
 			);
 			path = MainHome;
@@ -315,8 +321,10 @@
 				0E19473128A8E90500C4DA41 /* UserDetilViewController.swift in Sources */,
 				0E34201E28A7678300A0933E /* MainSignUpViewController.swift in Sources */,
 				0E235DA428B88F0D000B3ED5 /* HomeDetilViewController.swift in Sources */,
+				0E5DA1FE28BB851C004D0881 /* userSetViewConteller.swift in Sources */,
 				0ED5068A28A6166200D73CFD /* MainLoginViewController.swift in Sources */,
 				0ED5068428A6068700D73CFD /* PublicFeedViewController.swift in Sources */,
+				0E5DA1FC28BB076F004D0881 /* DetilVO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,15 +9,31 @@ import UIKit
 
 class HomeDetilShowViewController : UIViewController {
     
-    var getTodoWrite : GetToDoList?
+    var getTodoWrite : UserDetailTodo?
+
+    
+    var showId : String = ""
+    var showTitle : String = ""
+    var showContent : String = ""
+    var showWriter : String = ""
+    var showTodoDate : String = ""
+    var showCompleteDate : String = ""
+    var showIscompleted : String = ""
+    var showIspublic : Bool = true
+    var showIsliked : Bool = false
+    var showLikeCount : Int = 0
+    
+
     
     let titleText = UILabel()
     let contentText = UILabel()
     let dateText = UILabel()
+    let publicText = UILabel()
     
     let titleWrite = UILabel()
     let contentWrite = UILabel()
     let dateWrite = UILabel()
+    let publicWrite = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +42,7 @@ class HomeDetilShowViewController : UIViewController {
         titleLabel()
         contentLabel()
         dateLabel()
+        pubilcLabel()
         
         userWrite()
         
@@ -42,7 +59,7 @@ class HomeDetilShowViewController : UIViewController {
         titleText.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.width.equalTo(200)
-            $0.top.equalTo(100)
+            $0.top.equalTo(20)
             $0.leading.equalTo(25)
             
         }
@@ -58,7 +75,7 @@ class HomeDetilShowViewController : UIViewController {
         contentText.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.width.equalTo(200)
-            $0.top.equalTo(250)
+            $0.top.equalTo(150)
             $0.leading.equalTo(25)
             
         }
@@ -74,11 +91,27 @@ class HomeDetilShowViewController : UIViewController {
         dateText.snp.makeConstraints {
             $0.height.equalTo(50)
             $0.width.equalTo(200)
-            $0.top.equalTo(400)
+            $0.top.equalTo(280)
             $0.leading.equalTo(25)
             
         }
     }
+    func pubilcLabel() {
+        publicText.textColor = .black
+        publicText.text = "공개 여부"
+        view.addSubview(publicText)
+        
+        publicText.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        publicText.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.width.equalTo(200)
+            $0.top.equalTo(410)
+            $0.leading.equalTo(25)
+            
+        }
+    }
+
     
     
     func userWrite() {
@@ -92,13 +125,13 @@ class HomeDetilShowViewController : UIViewController {
         titleWrite.snp.makeConstraints{
             $0.height.equalTo(35)
             $0.width.equalTo(390)
-            $0.top.equalTo(150)
-            $0.leading.equalTo(20)
+            $0.top.equalTo(70)
+            $0.leading.equalTo(25)
         }
         
         contentWrite.textColor = .black
         //임시 원래는 content값이 들어가야함
-        contentWrite.text = "\(getTodoWrite!.id)"
+        contentWrite.text = "\(showContent)"
         view.addSubview(contentWrite)
         
         contentWrite.font = UIFont.boldSystemFont(ofSize: 20)
@@ -106,12 +139,12 @@ class HomeDetilShowViewController : UIViewController {
         contentWrite.snp.makeConstraints{
             $0.height.equalTo(35)
             $0.width.equalTo(390)
-            $0.top.equalTo(300)
-            $0.leading.equalTo(20)
+            $0.top.equalTo(200)
+            $0.leading.equalTo(25)
         }
         
         dateWrite.textColor = .black
-        dateWrite.text = "\(getTodoWrite!.todoDate)"
+        dateWrite.text = "\(showTodoDate)"
         view.addSubview(dateWrite)
         
         dateWrite.font = UIFont.boldSystemFont(ofSize: 20)
@@ -119,8 +152,21 @@ class HomeDetilShowViewController : UIViewController {
         dateWrite.snp.makeConstraints{
             $0.height.equalTo(35)
             $0.width.equalTo(390)
-            $0.top.equalTo(450)
-            $0.leading.equalTo(20)
+            $0.top.equalTo(330)
+            $0.leading.equalTo(25)
+        }
+        
+        publicWrite.textColor = .black
+        publicWrite.text = "\(showIspublic)"
+        view.addSubview(publicWrite)
+        
+        publicWrite.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        publicWrite.snp.makeConstraints{
+            $0.height.equalTo(35)
+            $0.width.equalTo(390)
+            $0.top.equalTo(460)
+            $0.leading.equalTo(25)
         }
     }
     func configureEditButton() {
@@ -150,7 +196,9 @@ class HomeDetilShowViewController : UIViewController {
         let homeDetil = HomeDetilViewController()
         homeDetil.titleEdit = "\(titleWrite.text!)"
         homeDetil.contentEdit = "\(contentWrite.text!)"
-        homeDetil.dateEdit = "\(dateWrite.text!)"
+//        homeDetil.dateEdit = "\(dateWrite.text!)"
+//        homeDetil.pubilcEdit = "\(publicWrite.text!)"
+        homeDetil.userId = getTodoWrite!.id
         
         self.show(homeDetil, sender: nil)
     }

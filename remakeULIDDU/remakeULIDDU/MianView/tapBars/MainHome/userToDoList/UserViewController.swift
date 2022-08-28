@@ -16,9 +16,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     
     var getMyTodo: [GetToDoList] = []
     var userView: UserContent = UserContent(name: "null", userID: "", age: 0)
-    var detilView: DetailUserContent = DetailUserContent(id: 0, title: "", content: "", writer: "", todoDate: "yyyy-mm-nn", completedDate: false, iscompleted: false, ispublic: false, isliked: false, likeCount: 0)
-    
-//    var getDetilToDo: [DetailView] = []
+    var detilView : [UserDetailTodo] = []
     
     @objc var doneButton : UIButton!
 
@@ -27,6 +25,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initRefresh()
         
         view.backgroundColor = .white
         //UINavigationBar 설정
@@ -39,13 +38,15 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         lineView()
         nameLabelSet()
         configureDetailButton()
-        getMyToDoList()
+//        getMyToDoList()
         userName()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.initRefresh()
-        getMyToDoList()
+        getDetailList()
+//        getMyToDoList()
     }
     
     
@@ -126,6 +127,11 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
        }
     @objc func DetailButtonAction(sender: UIButton!){
         print(" 상세보기 버튼 실행됨")
+        let goToUserSetVC = userSetViewConteller()
+        goToUserSetVC.userName = "\(userView.name)"
+        goToUserSetVC.userId = "\(userView.userID)"
+        goToUserSetVC.userAge = userView.age
+        self.show(goToUserSetVC, sender: nil)
     }
 
     
@@ -145,60 +151,60 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
             $0.leading.equalTo(160)
         }
     }
-    
-    
-    private func getMyToDoList() {
-        
-        let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
-        let AT : String? = KeyChain.read(key: Token.accessToken)
-        let header : HTTPHeaders = [
-            "Authorization" : "Bearer \(AT!)"
-        ]
-        
-        print("")
-        print("====================================")
-        print("주 소 :: ", url)
-        print("====================================")
-        print("")
-        
-        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
-            .responseData { response in
-                switch response.result {
-                case .success(let res):
-                    
-                    do {
-                        let data = try JSONDecoder().decode([GetToDoList].self, from: response.data!)
-                        print(data)
-                        self.getMyTodo = data
-                        self.tableView.reloadData()
-                        self.initRefresh()
-                    } catch {
-                        print(error)
-                    }
-                    
-                    print("")
-                    print("-------------------------------")
-                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
-                    print("-------------------------------")
-                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
-                    print("====================================")
-                    debugPrint(response)
-                    print("-------------------------------")
-                    print("")
-                    
-                case .failure(let err):
-                    print("")
-                    print("-------------------------------")
-                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
-                    print("-------------------------------")
-                    print("에 러 :: ", err.localizedDescription)
-                    print("====================================")
-                    debugPrint(response)
-                    print("")
-                    break
-                }
-            }
-    }
+//
+//    
+//    private func getMyToDoList() {
+//        
+//        let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
+//        let AT : String? = KeyChain.read(key: Token.accessToken)
+//        let header : HTTPHeaders = [
+//            "Authorization" : "Bearer \(AT!)"
+//        ]
+//        
+//        print("")
+//        print("====================================")
+//        print("주 소 :: ", url)
+//        print("====================================")
+//        print("")
+//        
+//        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
+//            .responseData { response in
+//                switch response.result {
+//                case .success(let res):
+//                    
+//                    do {
+//                        let data = try JSONDecoder().decode([GetToDoList].self, from: response.data!)
+//                        print(data)
+//                        self.getMyTodo = data
+//                        self.tableView.reloadData()
+//                        self.initRefresh()
+//                    } catch {
+//                        print(error)
+//                    }
+//                    
+//                    print("")
+//                    print("-------------------------------")
+//                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+//                    print("-------------------------------")
+//                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+//                    print("====================================")
+//                    debugPrint(response)
+//                    print("-------------------------------")
+//                    print("")
+//                    
+//                case .failure(let err):
+//                    print("")
+//                    print("-------------------------------")
+//                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
+//                    print("-------------------------------")
+//                    print("에 러 :: ", err.localizedDescription)
+//                    print("====================================")
+//                    debugPrint(response)
+//                    print("")
+//                    break
+//                }
+//            }
+//    }
     
     private func userName() {
         
@@ -253,9 +259,9 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                 }
             }
     }
-    private func getDetailList(id: Int) {
+    private func getDetailList() {
         
-        let url = "http://44.209.75.36:8080/todo/\(id)"
+        let url = "http://44.209.75.36:8080/todos/v2/list?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
         let header : HTTPHeaders = [
             "Authorization" : "Bearer \(AT!)"
@@ -270,7 +276,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                 switch response.result {
                 case .success(let res):
                     do {
-                        let data = try JSONDecoder().decode(DetailUserContent.self, from: response.data!)
+                        let data = try JSONDecoder().decode([UserDetailTodo].self, from: response.data!)
                         print(data)
                         self.detilView = data
                         print("🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕")
@@ -309,7 +315,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
 extension UserViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return getMyTodo.count
+        return detilView.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -317,14 +323,14 @@ extension UserViewController : UITableViewDataSource, UITableViewDelegate {
         
         cell.configure()
         
-        cell.titleLable.text = "\(getMyTodo[indexPath.row].title)"
-        cell.contentLable.text = "\(getMyTodo[indexPath.row].todoDate)"
+        cell.titleLable.text = "\(detilView[indexPath.row].title)"
+        cell.contentLable.text = "\(detilView[indexPath.row].todoDate)"
         
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let detailPageIndexPath = getMyTodo[indexPath.row]
+        let detailPageIndexPath = detilView[indexPath.row]
         
         print(detailPageIndexPath)
 //        
@@ -361,7 +367,8 @@ extension UserViewController {
         print("새로고침")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.tableView.reloadData()
-            self.getMyToDoList()
+//            self.getMyToDoList()
+            self.viewDidLoad()
             refresh.endRefreshing()
         }
     }

@@ -23,36 +23,6 @@ struct GetToDoList : Codable {
     }
 }
 
-
-
-struct DetailUserContent : Codable {
-    var id : Int = .init()
-    var title : String = .init()
-    var content : String = .init()
-    var writer : String = .init()
-    var todoDate : String = .init()
-    var completedDate : Bool = .init()
-    var iscompleted : Bool = .init()
-    var ispublic : Bool = .init()
-    var isliked : Bool = .init()
-    var likeCount : Int = .init()
-    
-    enum CodigKeys : String, CodingKey {
-        case id
-        case title
-        case content
-        case writer
-        case todoDate = "todo-date"
-        case completedDate = "completed-date"
-        case iscompleted
-        case isliked
-        case likeCount
-    }
-}
-
-
-
-
 struct GetMyList : Codable {
     var id : String
     var title : String

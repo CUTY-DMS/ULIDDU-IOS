@@ -21,6 +21,8 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     var getMyTodo: [GetToDoList] = []
     var addMyTodo: [Task] = []
+    var getUserDetil : [UserDetailTodo] = []
+//    var detilTodo: UserDetailUserTodo?
     
     @objc var doneButton : UIButton!
 
@@ -192,19 +194,19 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     }
     @objc func toDoPostbuttonAction(sender: UIButton!){
         print("버튼 클릭 ✅")
-        addToDoPost()
+        addToDoPost(id: 10)
     }
     
-    func addToDoPost() {
+    func addToDoPost(id : Int) {
         let alert = UIAlertController(title: "할 일 등록", message: nil, preferredStyle: .alert)
         let registerButton = UIAlertAction(title: "등록", style: .default, handler: { [weak self] _ in
             guard let title = alert.textFields?[0].text else { return }
             guard let content = alert.textFields?[1].text else { return }
-            let task = Task(image: "ULIDDL-Logo1", title: title, content: content, done: false, ispublic: false)
+            let task = Task(image: "ULIDDL-Logo1", title: title, content: content, done: false, ispublic: true)
             self?.addMyTodo.append(task)
             self?.tableView.reloadData()
            
-            let ispublic : Bool = false
+            let ispublic : Bool = true
             
             //button 클릭시 시간을 가져오기
             let formatter = DateFormatter()
@@ -216,7 +218,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
 //----------------------------------------------------------------------------------------------
             let AT : String? = KeyChain.read(key: Token.accessToken)
             let RT : String? = KeyChain.read(key: Token.refreshToken)
-            let url = "http://44.209.75.36:8080/todo"
+            let url = "http://44.209.75.36:8080/todo\(id)"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -276,7 +278,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     private func getUserList() {
         
-        let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
+        let url = "http://44.209.75.36:8080/todos/v2/list?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
         let header : HTTPHeaders = [
             "Authorization" : "Bearer \(AT!)"
@@ -292,12 +294,12 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
             .responseData { response in
                 switch response.result {
                 case .success(let res):
-                    
+                    let str = String(data: res, encoding: .utf8)?.replacingOccurrences(of: "todo-date", with: "todoDate").replacingOccurrences(of: "like-count", with: "likeCount")
                     do {
-                        let data = try JSONDecoder().decode([GetToDoList].self, from: response.data!)
+                        let data = try JSONDecoder().decode([UserDetailTodo].self, from: (str!.data(using: .utf8))!)
                         print(data)
-                        self.getMyTodo = data
-                        print("===getMyToDo는 data의 값을 보유 하고 있습니다===")
+                        self.getUserDetil = data
+                        print("===UserDetailTodo는 data의 값을 보유 하고 있습니다===")
                         self.tableView.reloadData()
                         self.initRefresh()
                     } catch {
@@ -308,7 +310,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                     print("-------------------------------")
                     print("응답 코드 :: ", response.response?.statusCode ?? 0)
                     print("-------------------------------")
-                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+                    print("응답 데이터 :: ", str ?? "")
                     print("====================================")
                     debugPrint(response)
                     print("-------------------------------")
@@ -365,7 +367,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
 extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getMyTodo.count
+        return self.getUserDetil.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -376,8 +378,8 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         cell.configure()
         
         
-        cell.titleLable.text = "\(getMyTodo[indexPath.row].title)"
-        cell.contentLable.text = "\(getMyTodo[indexPath.row].todoDate)"
+        cell.titleLable.text = "\(getUserDetil[indexPath.row].title)"
+        cell.contentLable.text = "\(getUserDetil[indexPath.row].todoDate)"
         //configure에서 설정
         //        cell.textLabel?.text = mainList.title
         //        cell.detailTextLabel?.text = mainList.content
@@ -393,13 +395,23 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
 //        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
 //        print(selectedHomeList)
 //        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
-        let selectedHomeList = getMyTodo[indexPath.row]
-        let goToHomeDetilViewControllerVC = HomeDetilShowViewController()
-        goToHomeDetilViewControllerVC.getTodoWrite = selectedHomeList
-        self.show(goToHomeDetilViewControllerVC, sender: nil)
+        let selectedHomeList = getUserDetil[indexPath.row]
         print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
+        let goToDetilVC = HomeDetilShowViewController()
+        goToDetilVC.showId = "\(getUserDetil[indexPath.row].id)"
+        goToDetilVC.showTitle = "\(getUserDetil[indexPath.row].title)"
+        goToDetilVC.showContent = "\(getUserDetil[indexPath.row].content)"
+        goToDetilVC.showWriter = "\(getUserDetil[indexPath.row].writer)"
+        goToDetilVC.showTodoDate = "\(getUserDetil[indexPath.row].todoDate)"
+        goToDetilVC.showCompleteDate = "\(getUserDetil[indexPath.row].iscompleted)"
+        goToDetilVC.showIspublic = getUserDetil[indexPath.row].ispublic
+        goToDetilVC.showIsliked = getUserDetil[indexPath.row].isliked
+        goToDetilVC.showLikeCount = getUserDetil[indexPath.row].likeCount
+        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
+        goToDetilVC.getTodoWrite = selectedHomeList
+        self.show(goToDetilVC, sender: nil)
         print(selectedHomeList)
-        print("⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️")
+
               
     }
     
@@ -408,12 +420,12 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
         print("🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝")
         print(indexPath.row)
         print("🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝🤝")
-        let test = getMyTodo[indexPath.row]
+        let test = getUserDetil[indexPath.row]
         deleteList(id: test.id)
-        self.getMyTodo.remove(at: indexPath.row)
+        self.getUserDetil.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         
-        if getMyTodo.isEmpty {
+        if getUserDetil.isEmpty {
             self.doneButtonTop()
         }
     }
@@ -422,11 +434,11 @@ extension MainHomeViewController : UITableViewDataSource, UITableViewDelegate {
     }
     //cell 위치 변경
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var homeLists = self.getMyTodo
+        var homeLists = self.getUserDetil
         let task = homeLists[sourceIndexPath.row]
         homeLists.remove(at: sourceIndexPath.row)
         homeLists.insert(task, at: destinationIndexPath.row)
-        self.getMyTodo = homeLists
+        self.getUserDetil = homeLists
     }
     
 }
