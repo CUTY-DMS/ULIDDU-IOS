@@ -20,9 +20,6 @@ class PublicFeedViewController : UIViewController {
         tableviewSize()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        for i in 0...300 {
-            getPersonList(id: i)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

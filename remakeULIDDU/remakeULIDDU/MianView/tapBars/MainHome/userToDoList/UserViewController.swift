@@ -42,11 +42,11 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         userName()
         
     }
-    
     override func viewDidAppear(_ animated: Bool) {
-        self.initRefresh()
+        super.viewDidAppear(animated)
+        
+        initRefresh()
         getDetailList()
-//        getMyToDoList()
     }
     
     
@@ -151,60 +151,6 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
             $0.leading.equalTo(160)
         }
     }
-//
-//    
-//    private func getMyToDoList() {
-//        
-//        let url = "http://44.209.75.36:8080/todos/list?todoYearMonth=2022-08"
-//        let AT : String? = KeyChain.read(key: Token.accessToken)
-//        let header : HTTPHeaders = [
-//            "Authorization" : "Bearer \(AT!)"
-//        ]
-//        
-//        print("")
-//        print("====================================")
-//        print("주 소 :: ", url)
-//        print("====================================")
-//        print("")
-//        
-//        AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
-//            .responseData { response in
-//                switch response.result {
-//                case .success(let res):
-//                    
-//                    do {
-//                        let data = try JSONDecoder().decode([GetToDoList].self, from: response.data!)
-//                        print(data)
-//                        self.getMyTodo = data
-//                        self.tableView.reloadData()
-//                        self.initRefresh()
-//                    } catch {
-//                        print(error)
-//                    }
-//                    
-//                    print("")
-//                    print("-------------------------------")
-//                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
-//                    print("-------------------------------")
-//                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
-//                    print("====================================")
-//                    debugPrint(response)
-//                    print("-------------------------------")
-//                    print("")
-//                    
-//                case .failure(let err):
-//                    print("")
-//                    print("-------------------------------")
-//                    print("응답 코드 :: ", response.response?.statusCode ?? 0)
-//                    print("-------------------------------")
-//                    print("에 러 :: ", err.localizedDescription)
-//                    print("====================================")
-//                    debugPrint(response)
-//                    print("")
-//                    break
-//                }
-//            }
-//    }
     
     private func userName() {
         
@@ -275,8 +221,9 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
             .responseData { response in
                 switch response.result {
                 case .success(let res):
+                    let str = String(data: res, encoding: .utf8)?.replacingOccurrences(of: "todo-date", with: "todoDate").replacingOccurrences(of: "like-count", with: "likeCount")
                     do {
-                        let data = try JSONDecoder().decode([UserDetailTodo].self, from: response.data!)
+                        let data = try JSONDecoder().decode([UserDetailTodo].self, from: (str!.data(using: .utf8))!)
                         print(data)
                         self.detilView = data
                         print("🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕")
@@ -292,7 +239,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                     print("-------------------------------")
                     print("응답 코드 :: ", response.response?.statusCode ?? 0)
                     print("-------------------------------")
-                    print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
+                    print("응답 데이터 :: ", str ?? "")
                     print("-------------------------------")
                     print("")
                     
