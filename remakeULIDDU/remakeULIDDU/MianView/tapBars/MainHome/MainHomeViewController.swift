@@ -168,7 +168,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
 //
     @objc func correctionbuttonAction(sender: UIButton!){
         print("버튼 클릭 ✅")
-        guard !self.getMyTodo.isEmpty else { return }
+        guard !self.getUserDetil.isEmpty else { return }
         self.tableView.setEditing(true, animated: true)
     }
     
