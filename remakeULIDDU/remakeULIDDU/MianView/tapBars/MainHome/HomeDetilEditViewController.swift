@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class HomeDetilViewController : UIViewController {
+class HomeDetilEditViewController : UIViewController {
     
     var getTodoEdit : GetToDoList?
     
@@ -26,6 +26,8 @@ class HomeDetilViewController : UIViewController {
     let titleField = UITextField()
     let contentField = UITextField()
     let pubilcSwitch = UISwitch()
+    
+    var boolSwitch : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,8 +129,10 @@ class HomeDetilViewController : UIViewController {
     
     @objc func onClickSwitch(sender: UISwitch) {
         if sender.isOn {
+            boolSwitch = true
             print("공유")
         } else {
+            boolSwitch = false
             print("공유하지 않음")
         }
     }
@@ -162,6 +166,10 @@ class HomeDetilViewController : UIViewController {
     
     func userEditPatch() {
             let url = "http://44.209.75.36:8080/todo/\(userId)"
+            let AT : String? = KeyChain.read(key: Token.accessToken)
+            let header : HTTPHeaders = [
+                "Authorization" : "Bearer \(AT!)"
+            ]
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "PATCH"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -169,15 +177,20 @@ class HomeDetilViewController : UIViewController {
             // POST 로 보낼 정보
         print(url)
         let params = [
-            "title" : "\(titleField)",
-            "content" : "\(contentField)"
-//            "ispublic" : pubilField
+            "title" : "\(titleField.text!)",
+            "content" : "\(contentField.text!)",
+            "is-public" : boolSwitch
                      ] as Dictionary
+        
+        print("🥶🥶🥶🥶🥶🥶🥶🥶🥶🥶🥶🥶")
+        print(titleField.text!)
+        print(contentField.text!)
+        print("🥶🥶🥶🥶🥶🥶🥶🥶🥶🥶🥶🥶")
         
         let jsonData = try! JSONSerialization.data(withJSONObject: params, options: [])
         request.httpBody = jsonData
 
-        AF.request(url,method: .patch,parameters: params, encoding: JSONEncoding.default)
+        AF.request(url,method: .patch,parameters: params, encoding: JSONEncoding.default,headers: header)
             .responseString { (response) in
             debugPrint(response)
                 

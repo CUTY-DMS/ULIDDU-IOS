@@ -15,6 +15,9 @@ class HomeListCell: UITableViewCell {
     let titleLable = UILabel()
     let contentLable = UILabel()
     
+    let refresh = UIRefreshControl()
+
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         [ULIDDUImageView, titleLable, contentLable].forEach {
@@ -52,6 +55,3 @@ class HomeListCell: UITableViewCell {
         selectionStyle = .none
     }
 }
-
-
-

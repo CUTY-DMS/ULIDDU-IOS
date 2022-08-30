@@ -8,9 +8,9 @@
 import UIKit
 import Alamofire
 
-class UserDetilEditViewController : UITableViewController {
+class UserDetilViewController : UITableViewController {
     
-    var Detil : [UserDetailTodo] = []
+    var Detil : UserDetailTodo?
 
       
     override func viewDidLoad() {
@@ -34,10 +34,10 @@ class UserDetilEditViewController : UITableViewController {
 }
 
 //UITableView delegate dataSource
-extension UserDetilEditViewController {
+extension UserDetilViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,24 +47,18 @@ extension UserDetilEditViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "id"
-        case 1:
             return "제목"
-        case 2:
+        case 1:
             return "내용"
-        case 3:
+        case 2:
             return "작성자"
-        case 4:
+        case 3:
             return "작성 날짜"
-        case 5:
+        case 4:
             return "수정 날짜"
-        case 6:
-            return "성공 여부"
-        case 7:
+        case 5:
             return "공개 여부"
-        case 8:
-            return "좋아요 여부"
-        case 9:
+        case 6:
             return "좋아요 개수"
         default:
             return nil
@@ -84,34 +78,25 @@ extension UserDetilEditViewController {
 
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = "\(Detil[indexPath.row].id)"
+            cell.textLabel?.text = "\(Detil!.title)"
             return cell
         case 1:
-            cell.textLabel?.text = "\(Detil[indexPath.row].title)"
+            cell.textLabel?.text = "\(Detil!.content)" //타입 변환 해야함
             return cell
         case 2:
-            cell.textLabel?.text = "\(Detil[indexPath.row].content)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detil!.writer)" //타입 변환 해야함
             return cell
         case 3:
-            cell.textLabel?.text = "\(Detil[indexPath.row].writer)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detil!.todoDate)"
             return cell
         case 4:
-            cell.textLabel?.text = "\(Detil[indexPath.row].todoDate)"
-            return cell
-        case 5:
             cell.textLabel?.text = "\(nowDetaTime)"
             return cell
+        case 5:
+            cell.textLabel?.text = "\(Detil!.ispublic)" //타입 변환 해야함
+            return cell
         case 6:
-            cell.textLabel?.text = "\(Detil[indexPath.row].iscompleted)" //타입 변환 해야함
-            return cell
-        case 7:
-            cell.textLabel?.text = "\(Detil[indexPath.row].ispublic)" //타입 변환 해야함
-            return cell
-        case 8:
-            cell.textLabel?.text = "\(Detil[indexPath.row].isliked)" //타입 변환 해야함
-            return cell
-        case 9:
-            cell.textLabel?.text = "\(Detil[indexPath.row].likeCount)" //타입 변환 해야함
+            cell.textLabel?.text = "\(Detil!.likeCount)" //타입 변환 해야함
             return cell
         default:
             return cell

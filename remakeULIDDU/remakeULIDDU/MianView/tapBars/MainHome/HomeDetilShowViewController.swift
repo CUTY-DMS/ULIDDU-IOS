@@ -193,7 +193,7 @@ class HomeDetilShowViewController : UIViewController {
         }
     @objc func editButtonAction(sender: UIButton!){
         print("수정버튼 🔨")
-        let homeDetil = HomeDetilViewController()
+        let homeDetil = HomeDetilEditViewController()
         homeDetil.titleEdit = "\(titleWrite.text!)"
         homeDetil.contentEdit = "\(contentWrite.text!)"
 //        homeDetil.dateEdit = "\(dateWrite.text!)"

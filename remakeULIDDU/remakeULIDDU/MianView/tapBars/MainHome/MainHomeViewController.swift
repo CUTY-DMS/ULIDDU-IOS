@@ -31,7 +31,7 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         
         view.backgroundColor = .white
         //UINavigationBar 설정
         title = "임시 설정"
@@ -100,13 +100,15 @@ class MainHomeViewController : UIViewController, FSCalendarDataSource, FSCalenda
                 
         // day 폰트 설정
             calendar?.appearance.titleFont = UIFont(name: "Roboto-Regular", size: 14)
+            
+            self.initRefresh()
     }
 }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.initRefresh()
+
         doneButtonTop()
         getUserList()
     }

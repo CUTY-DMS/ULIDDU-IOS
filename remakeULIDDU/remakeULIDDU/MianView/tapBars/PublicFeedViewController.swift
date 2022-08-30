@@ -20,6 +20,7 @@ class PublicFeedViewController : UIViewController {
         tableviewSize()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,22 +41,19 @@ class PublicFeedViewController : UIViewController {
             $0.top.equalTo(150)
             $0.bottom.equalTo(0)
         }
-
     }
     
     private func getPersonList(id : Int) {
         
-        let url = "http://44.209.75.36:8080/todos/list/user/\(id)?todoYearMonth=2022-08"
+        let url = "http://44.209.75.36:8080/todos/v2/list/user/\(id)?todoYearMonth=2022-08"
         let AT : String? = KeyChain.read(key: Token.accessToken)
         let header : HTTPHeaders = [
             "Authorization" : "Bearer \(AT!)"
         ]
-        
-        print("")
+
         print("====================================")
         print("주 소 :: ", url)
         print("====================================")
-        print("")
         
         AF.request(url, method: .get, encoding: URLEncoding.queryString, headers: header).validate(statusCode: 200..<300)
             .responseData { response in

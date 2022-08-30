@@ -18,15 +18,17 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
     var userView: UserContent = UserContent(name: "null", userID: "", age: 0)
     var detilView : [UserDetailTodo] = []
     
-    @objc var doneButton : UIButton!
-
-    
     fileprivate weak var calendar: FSCalendar!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.initRefresh()
+        getDetailList()
+        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initRefresh()
-        
         view.backgroundColor = .white
         //UINavigationBar 설정
         title = "임시 설정"
@@ -40,13 +42,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         configureDetailButton()
 //        getMyToDoList()
         userName()
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        initRefresh()
-        getDetailList()
+        self.tableView.reloadData()
     }
     
     
@@ -278,16 +274,14 @@ extension UserViewController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailPageIndexPath = detilView[indexPath.row]
-        
-        print(detailPageIndexPath)
 //        
 //        let detail = getDetailList(id: detailPageIndexPath.id)
 //        
-//        let goToHomeDetilViewControllerVC = UserDetilViewController()
+        let goToHomeDetilViewControllerVC = UserDetilViewController()
 //        
-//        goToHomeDetilViewControllerVC.Detail = detailPageIndexPath
+        goToHomeDetilViewControllerVC.Detil = detailPageIndexPath
 //        
-//        self.show(goToHomeDetilViewControllerVC, sender: nibName)
+        self.show(goToHomeDetilViewControllerVC, sender: nibName)
         
 //        let petListIndexPath = showList.pets[indexPath.row]
 //        let showDetailViewController = ShowPetDetailViewController()
