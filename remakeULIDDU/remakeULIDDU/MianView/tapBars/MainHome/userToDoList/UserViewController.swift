@@ -24,7 +24,6 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
         super.viewDidAppear(animated)
         self.initRefresh()
         getDetailList()
-        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -187,6 +186,9 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                     print("응답 데이터 :: ", String(data: res, encoding: .utf8) ?? "")
                     print("-------------------------------")
                     print("")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                        self.tableView.reloadData()
+                    })
                     
                 case .failure(let err):
                     print("")
@@ -225,6 +227,7 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                         print("🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕")
                         print("===DetilView는 data의 값을 보유 하고 있습니다===")
                         print("🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕🌕")
+                        self.tableView.reloadData()
                         
                     } catch {
                         print("🤬🤬🤬🤬🤬🤬🤬")
@@ -238,6 +241,9 @@ class UserViewController : UIViewController, FSCalendarDataSource, FSCalendarDel
                     print("응답 데이터 :: ", str ?? "")
                     print("-------------------------------")
                     print("")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                        self.tableView.reloadData()
+                    })
                     
                 case .failure(let err):
                     print("")

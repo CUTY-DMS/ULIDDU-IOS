@@ -20,17 +20,23 @@ class PublicFeedViewController : UIViewController {
         tableviewSize()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.getUserTodos = []
+        for i in 0...25 {
+            DispatchQueue.main.async {
+                self.getPersonList(id: i)
+            }
+        }
     }
     
     func tableviewSize() {
         //UITableView 설정
         view.addSubview(tableView)
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = .white
         
         tableView.register(HomeListCell.self, forCellReuseIdentifier: "HomeListCell")
 
@@ -64,7 +70,11 @@ class PublicFeedViewController : UIViewController {
                     do {
                         let data = try JSONDecoder().decode([UserDetailTodo].self, from: (str!.data(using: .utf8))!)
                         print(data)
-                        self.getUserTodos = data
+                        if(!data.isEmpty) {
+                            data.forEach { d in
+                                self.getUserTodos.append(d)
+                            }
+                        }
                         print("===UserDetailTodo는 data의 값을 보유 하고 있습니다===")
                         self.tableView.reloadData()
                     } catch {
