@@ -133,7 +133,8 @@ extension PublicFeedViewController : UITableViewDataSource, UITableViewDelegate 
         
         //데이터를 받아오지 못함
         
-//        let selectedHomeList = getMyTodo[indexPath.row]
+        let selectedHomeList = getUserTodos[indexPath.row]
+        print(selectedHomeList)
 //        let goToHomeDetilViewControllerVC = HomeDetilViewController()
 //        self.show(goToHomeDetilViewControllerVC, sender: nibName)
     }
